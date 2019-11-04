@@ -35,3 +35,12 @@ export const readUser = axios.create({
     authorization: `Bearer ${TokenService.getAuthToken()}`
   }
 });
+
+// SCRIPTS
+export const readScripts = axios.create({
+  baseURL: `${Config.API_ENDPOINT}/scripts/${TokenService.getId()}`,
+  method: "GET",
+  headers: {
+    authorization: `Bearer ${TokenService.getAuthToken()}`
+  }
+});
