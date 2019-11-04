@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { ScriptsContext } from "../../Contexts/ScriptsContext";
 import { UserContext } from "../../Contexts/UserContext";
 import { AtlSection } from "../Utils/Utils";
