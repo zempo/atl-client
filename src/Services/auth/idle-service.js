@@ -1,7 +1,7 @@
 let _timeoutId;
 let _idleCallback = null;
 let _notIdleEvents = ["mousedown", "mousemove", "keypress", "scroll", "touchstart"];
-let _30_DAYS_IN_MS = 43200 * 60 * 1000;
+let _30_DAYS_IN_MS = 2592000 * 1000;
 
 const IdleService = {
   setIdleCallback(idleCallback) {

@@ -34,9 +34,7 @@ class App extends Component {
     IdleService.setIdleCallback(this.logoutFromIdle);
 
     if (TokenService.hasAuthToken()) {
-      console.log("authorized");
       // IdleService.regiserIdleTimerResets();
-
       // TokenService.queueCallbackBeforeExpiry(() => {
       //   AuthService.postRefreshToken();
       // });
