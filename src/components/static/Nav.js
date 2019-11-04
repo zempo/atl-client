@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
-import TokenService from "../../services/auth/token-service";
-import IdleService from "../../services/auth/idle-service";
+import TokenService from "../../Services/auth/token-service";
+import IdleService from "../../Services/auth/idle-service";
 import { Hyph } from "../Utils/Utils";
 
 class Nav extends Component {

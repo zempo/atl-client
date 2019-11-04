@@ -9,13 +9,14 @@ import Nav from "./static/Nav";
 import Footer from "./static/Footer";
 
 // Routes
-import Landing from "./routes/Landing";
-import ScriptsPage from "./routes/ScriptsPage";
-import ScriptEditor from "./routes/ScriptEditor";
-import UserGuide from "./routes/UserGuide";
-import UserSettings from "./routes/UserSettings";
-import RegisterPage from "./routes/RegisterPage";
-import LoginPage from "./routes/LoginPage";
+import ErrorPage from "./Routes/ErrorPage";
+import Landing from "./Routes/Landing";
+import ScriptsPage from "./Routes/ScriptsPage";
+import ScriptEditor from "./Routes/ScriptEditor";
+import UserGuide from "./Routes/UserGuide";
+import UserSettings from "./Routes/UserSettings";
+import RegisterPage from "./Routes/RegisterPage";
+import LoginPage from "./Routes/LoginPage";
 // Utils + Styles
 import AuthorizedRoute from "./Utils/Auth/AuthorizedRoute";
 import PublicRoute from "./Utils/Auth/PublicRoute";
