@@ -19,7 +19,22 @@ export const ScriptsContextProvider = (props) => {
       setLoading(true);
       try {
         const result = await readScripts.get("/");
-      } catch (error) {}
+
+        setLoading(false);
+        setScripts(result.data);
+      } catch (error) {
+        setLoading(false);
+        setError(true);
+      }
     };
-  });
+
+    scriptsFound();
+  }, []);
+
+  const value = {
+    scripts,
+    currentPg
+  };
+
+  return <ScriptsContext.Provider value={{ value }}>{props.children}</ScriptsContext.Provider>;
 };

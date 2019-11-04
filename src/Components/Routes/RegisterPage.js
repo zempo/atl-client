@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import RegisterForm from "../Forms/Auth/RegisterForm";
 import { AuthService } from "../../Services/Auth/auth-service";
 import { AtlSection } from "../Utils/Utils";
@@ -21,6 +21,10 @@ const RegistrationPage = (props) => {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <AtlSection className="atl-page registration-page">

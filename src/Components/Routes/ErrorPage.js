@@ -6,6 +6,9 @@ export default class ErrorPage extends Component {
     this.state = { error: null, info: null };
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
   static getDerivedStateFromError(error) {
     // Update state so the next render will show the fallback UI.
     return { error };
@@ -16,6 +19,7 @@ export default class ErrorPage extends Component {
     // logErrorToMyService(error, info);
     this.setState({ error, info });
   }
+
   render() {
     if (this.state.info) {
       return (

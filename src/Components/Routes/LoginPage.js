@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import LoginForm from "../Forms/Auth/LoginForm";
 import { AtlSection } from "../Utils/Utils";
 
@@ -8,6 +8,10 @@ const Login = (props) => {
     const destination = (location.state || {}).from || "/";
     history.push(destination);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <AtlSection className="atl-page login-page">
