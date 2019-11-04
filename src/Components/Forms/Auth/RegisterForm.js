@@ -42,8 +42,8 @@ const RegisterForm = (props) => {
       setResStatus(createdUser.status);
       setResMsg("Account Sucessfully Created!");
       setValidReq(false);
+      props.onRegistrationSuccess(email, password);
       reset();
-      props.onRegistrationSuccess();
     } catch (error) {
       setResStatus(error.response.status);
       setResMsg(Object.values(error.response.data.error));
@@ -72,7 +72,7 @@ const RegisterForm = (props) => {
             ref={usernameRef}
             type="text"
             name="username"
-            placeholder="paper_cut-27"
+            placeholder="Steven SpielBerg"
             id={1}
             value={values.username}
             onChange={handleChange}
@@ -92,7 +92,7 @@ const RegisterForm = (props) => {
             ref={emailRef}
             type="text"
             name="email"
-            placeholder="ecardman@gmail.com"
+            placeholder="notspielberg@gmail.com"
             id={2}
             value={values.email}
             onChange={handleChange}
@@ -112,7 +112,7 @@ const RegisterForm = (props) => {
             ref={pwdRef}
             type="text"
             name="password"
-            placeholder="Password1@"
+            placeholder="etGoHome1234$"
             id={3}
             value={values.password}
             onChange={handleChange}
@@ -128,7 +128,7 @@ const RegisterForm = (props) => {
           }
           type="submit"
         >
-          Create Occasions
+          Bring My Scenes to Life
         </button>
       </form>
     </>
