@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import { readUser } from "../services/endpoints-service";
+import { readUser } from "../Services/endpoints-service";
 
 export const UserContext = createContext();
 

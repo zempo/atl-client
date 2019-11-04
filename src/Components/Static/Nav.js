@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
 import TokenService from "../../Services/auth/token-service";
 import IdleService from "../../Services/auth/idle-service";
+import { UserContext } from "../../Contexts/UserContext";
 import { Hyph } from "../Utils/Utils";
 
 class Nav extends Component {
@@ -10,6 +11,8 @@ class Nav extends Component {
     TokenService.clearCallbackBeforeExpiry();
     IdleService.unRegisterIdleResets();
   };
+
+  static contextType = UserContext;
 
   renderLogoutLink() {
     // console.log(TokenService.getId());
@@ -50,7 +53,6 @@ class Nav extends Component {
   }
 
   render() {
-    const { showing } = this.state;
     // let error = this.context.value.error;
 
     return (

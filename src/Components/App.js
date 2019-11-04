@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { BrowserRouter as ROUTER, Route, Switch } from "react-router-dom";
 // SERVICES
-import { AuthService } from "../services/auth/auth-service";
-import IdleService from "../services/auth/idle-service";
-import TokenService from "../services/auth/token-service";
+import { AuthService } from "../Services/auth/auth-service";
+import IdleService from "../Services/auth/idle-service";
+import TokenService from "../Services/auth/token-service";
 // Static
-import Nav from "./static/Nav";
-import Footer from "./static/Footer";
+import Nav from "./Static/Nav";
+import Footer from "./Static/Footer";
 
 // Routes
 import ErrorPage from "./Routes/ErrorPage";
@@ -34,11 +34,12 @@ class App extends Component {
     IdleService.setIdleCallback(this.logoutFromIdle);
 
     if (TokenService.hasAuthToken()) {
-      IdleService.regiserIdleTimerResets();
+      console.log("authorized");
+      // IdleService.regiserIdleTimerResets();
 
-      TokenService.queueCallbackBeforeExpiry(() => {
-        AuthService.postRefreshToken();
-      });
+      // TokenService.queueCallbackBeforeExpiry(() => {
+      //   AuthService.postRefreshToken();
+      // });
     }
   }
 

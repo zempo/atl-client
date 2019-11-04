@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./components/App";
-import { UserContextProvider as UserProvider } from "./contexts/UserContext";
+import App from "./Components/App";
+import { UserContextProvider as UserProvider } from "./Contexts/UserContext";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "./index.css";
 
