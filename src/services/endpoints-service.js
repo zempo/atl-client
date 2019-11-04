@@ -26,3 +26,12 @@ export const refresh = axios.create({
     authorization: `Bearer ${TokenService.getAuthToken()}`
   }
 });
+
+// USERS
+export const readUser = axios.create({
+  baseURL: `${Config.API_ENDPOINT}/users/${TokenService.getId()}`,
+  method: "GET",
+  headers: {
+    authorization: `Bearer ${TokenService.getAuthToken()}`
+  }
+});
