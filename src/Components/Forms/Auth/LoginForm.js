@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useForm } from "../../../Hooks/use-files";
-import { AuthService } from "../../../Services/auth/auth-service";
+import { AuthService } from "../../../Services/Auth/auth-service";
 import { validateLogin } from "../../../Services/validation/auth-form-service";
 import { AtlNotification, Required } from "../../Utils/Utils";
 import "../css/Forms.css";

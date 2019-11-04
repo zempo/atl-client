@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { validatePwd, validateUsername, validateEmail } from "../../../Services/validation/auth-form-service";
 import { useForm } from "../../../Hooks/use-files";
-import { AuthService } from "../../../Services/auth/auth-service";
+import { AuthService } from "../../../Services/Auth/auth-service";
 import { AtlNotification, Required } from "../../Utils/Utils";
 import "../css/Forms.css";
 import "../css/Auth.css";

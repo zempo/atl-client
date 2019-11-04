@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { BrowserRouter as ROUTER, Route, Switch } from "react-router-dom";
 // SERVICES
-import { AuthService } from "../Services/auth/auth-service";
-import IdleService from "../Services/auth/idle-service";
-import TokenService from "../Services/auth/token-service";
+import { AuthService } from "../Services/Auth/auth-service";
+import IdleService from "../Services/Auth/idle-service";
+import TokenService from "../Services/Auth/token-service";
 // Static
 import Nav from "./Static/Nav";
 import Footer from "./Static/Footer";

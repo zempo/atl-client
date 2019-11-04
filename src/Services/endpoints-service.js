@@ -1,6 +1,6 @@
 import Config from "../config";
 import axios from "axios";
-import TokenService from "./auth/token-service";
+import TokenService from "./Auth/token-service";
 
 // AUTHENTICATION
 export const register = axios.create({

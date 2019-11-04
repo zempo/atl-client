@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import TokenService from "../../../Services/auth/token-service";
+import TokenService from "../../../Services/Auth/token-service";
 
 export default function AuthorizedRoute({ component, ...props }) {
   const Component = component;
