@@ -8,6 +8,7 @@ const ScriptEditor = (props) => {
   const [subtitle, setSubtitle] = useState("");
   const [author, setAuthor] = useState("");
   const [date, setDate] = useState("");
+  const [body, setBody] = useState("");
   const [actors, setActors] = useState([]);
   const [tags, setTags] = useState([]);
 
@@ -26,6 +27,7 @@ const ScriptEditor = (props) => {
       setAuthor(item.author);
       setActors(item.actors);
       setTags(item.tags);
+      setBody(item.body);
       let date;
       date = dateFormat(item.date_created, "mmmm d, yyyy");
       if (item.date_updated !== null) {
@@ -45,6 +47,8 @@ const ScriptEditor = (props) => {
       {author}
       <br />
       {date}
+      <br />
+      {body}
     </AtlSection>
   );
 };
