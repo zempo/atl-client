@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import Modal from "../../Modals/Modal";
+import { useModal } from "../../Hooks/use-modal";
 
 export const AtlNotification = ({ type, msg, done }) => {
   const [displaying, setDisplaying] = useState(true);
@@ -63,5 +65,27 @@ export const MenuOption = ({ to, text, script }) => {
         {text}
       </Link>
     </div>
+  );
+};
+
+export const AddBtn = () => {
+  const { isShowing: isShowingAdd, toggle: toggleAdd } = useModal();
+  return (
+    <>
+      <div className="btn btn-add" onClick={toggleAdd}>
+        <i className="fas fa-plus fa-3x" title="add card" />
+      </div>
+      <Modal isShowing={isShowingAdd} hide={toggleAdd} action="add-script" />
+    </>
+  );
+};
+
+export const BackBtn = ({ history }) => {
+  return (
+    <>
+      <button className="btn btn-back" title="go back" onClick={() => history.goBack()}>
+        <span className="back-arrow">&#8592;</span>
+      </button>
+    </>
   );
 };

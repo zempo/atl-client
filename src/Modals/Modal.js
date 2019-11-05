@@ -7,7 +7,9 @@ const Modal = ({ item, payload, action, isShowing, hide }) => {
     return ReactDOM.createPortal(
       <div onClick={hide} className="Modal">
         <div onClick={(e) => e.stopPropagation()} className={`Modal__inner ${isShowing}`}>
-          {action === "copy-script"
+          {action === "add-script"
+            ? "add modal"
+            : action === "copy-script"
             ? "copy modal"
             : action === "print-script"
             ? "print modal"

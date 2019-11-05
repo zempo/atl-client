@@ -3,12 +3,17 @@ import dateFormat from "dateformat";
 import { AtlSection } from "../Utils/Utils";
 
 const ScriptEditor = (props) => {
+  // Script Data
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
   const [author, setAuthor] = useState("");
   const [date, setDate] = useState("");
   const [actors, setActors] = useState([]);
   const [tags, setTags] = useState([]);
+
+  // Layout Data
+
+  //
 
   useEffect(() => {
     window.scrollTo(0, 0);
