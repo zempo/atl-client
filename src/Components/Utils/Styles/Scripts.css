@@ -1,3 +1,36 @@
+@import url("https://fonts.googleapis.com/css?family=Cutive+Mono&display=swap");
+
+.menu-btn {
+  display: none;
+}
+
+.script-toggle:checked + .script-container .menu-btn {
+  display: inline;
+}
+
+.script {
+  /* border: 2px solid black; */
+  width: 240px;
+  height: 340px;
+  margin: 40px;
+}
+
+.script-pg {
+  margin: auto;
+  height: 300px;
+  width: 240px;
+  font-family: "Cutive Mono", monospace;
+  font-weight: bold;
+  background: white;
+  border: 1px solid #eee;
+  box-shadow: 2px 2px 1px 0px white, 3px 3px 1px 0px #eee, 4px 4px 1px 0px white, 5px 5px 1px 0px #eee,
+    6px 6px 1px 0px white;
+}
+
+.script-pg p {
+  margin-top: 20px;
+}
+
 .menu-btn img {
   width: 0.8rem;
   height: 0.8rem;

@@ -51,7 +51,7 @@ export const Required = ({ met }) => {
 
 export const MenuOption = ({ to, text, script }) => {
   return (
-    <div className="menu-option">
+    <div className="menu-btn">
       <Link
         to={{
           pathname: to,
