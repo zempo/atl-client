@@ -64,7 +64,7 @@ class App extends Component {
           <main className="atl-main">
             <ErrorPage>
               <Switch>
-                <Route exact path={"/"} component={Landing} />
+                <PublicRoute exact path={"/"} component={Landing} />
                 <AuthorizedRoute exact path={"/scripts"} component={ScriptsPage} />
                 <AuthorizedRoute exact path={"/script-editor"} component={ScriptEditor} />
                 <AuthorizedRoute exact path={"/user-guide"} component={UserGuide} />

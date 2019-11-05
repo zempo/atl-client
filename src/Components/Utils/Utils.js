@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 export const AtlNotification = ({ type, msg, done }) => {
   const [displaying, setDisplaying] = useState(true);
@@ -46,4 +47,21 @@ export const Required = ({ met }) => {
   } else {
     return <span className="met">&#10003;</span>;
   }
+};
+
+export const MenuOption = ({ to, text, script }) => {
+  return (
+    <div className="menu-option">
+      <Link
+        to={{
+          pathname: to,
+          state: {
+            item: script
+          }
+        }}
+      >
+        {text}
+      </Link>
+    </div>
+  );
 };

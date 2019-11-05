@@ -31,9 +31,25 @@ export const ScriptsContextProvider = (props) => {
     scriptsFound();
   }, []);
 
+  let indexLastScript = currentPg * scriptsPerPg;
+  let indexFirstScript = indexLastScript - scriptsPerPg;
+  let currentScripts = scripts.slice(indexFirstScript, indexLastScript);
+  let lastPg = Math.ceil(scripts.length / scriptsPerPg);
+
+  let indexLastSearch = currentSearchPg * searchScriptsPerPg;
+  let indexFirstSearch = indexLastSearch - searchScriptsPerPg;
+  let currentSearchScripts = searchScripts.slice(indexFirstSearch, indexLastSearch);
+  let lastSearchPg = Math.ceil(searchScripts.length / searchScriptsPerPg);
+
   const value = {
     scripts,
-    currentPg
+    currentPg,
+    currentScripts,
+    lastPg,
+    searchScripts,
+    currentSearchPg,
+    currentSearchScripts,
+    lastSearchPg
   };
 
   return <ScriptsContext.Provider value={{ value }}>{props.children}</ScriptsContext.Provider>;
