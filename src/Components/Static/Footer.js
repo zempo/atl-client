@@ -1,4 +1,5 @@
 import React from "react";
+import "./Styles/Static.css";
 
 const Footer = () => {
   // add a scroll to top button, additional map menu, eventual site map, and custom signature

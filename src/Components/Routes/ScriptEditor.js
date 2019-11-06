@@ -44,7 +44,7 @@ const ScriptEditor = (props) => {
     <AtlSection className="atl-page editor-pg">
       <Input />
       <Output />
-      <Sidebar />
+      <Sidebar history={props.history} />
     </AtlSection>
   );
 };
