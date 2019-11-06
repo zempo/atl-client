@@ -3,7 +3,8 @@ import { useForm } from "../../../Hooks/use-files";
 import { AuthService } from "../../../Services/Auth/auth-service";
 import { validateLogin } from "../../../Services/validation/auth-form-service";
 import { AtlNotification, Required } from "../../Utils/Utils";
-import "../css/Forms.css";
+import "../Styles/Forms.css";
+import "../Styles/Auth.css";
 
 const LoginForm = (props) => {
   // eslint-disable-next-line

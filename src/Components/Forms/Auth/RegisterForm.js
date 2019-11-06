@@ -3,8 +3,8 @@ import { validatePwd, validateUsername, validateEmail } from "../../../Services/
 import { useForm } from "../../../Hooks/use-files";
 import { AuthService } from "../../../Services/Auth/auth-service";
 import { AtlNotification, Required } from "../../Utils/Utils";
-import "../css/Forms.css";
-import "../css/Auth.css";
+import "../Styles/Forms.css";
+import "../Styles/Auth.css";
 
 const RegisterForm = (props) => {
   const { values, errors, handleChange, reset } = useForm(

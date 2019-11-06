@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import dateFormat from "dateformat";
 import { AtlSection } from "../Utils/Utils";
+import Input from "../Utils/Editor/Inputs";
+import Output from "../Utils/Editor/Outputs";
+import Sidebar from "../Utils/Editor/Sidebar";
 
 const ScriptEditor = (props) => {
   // Script Data
@@ -38,17 +41,10 @@ const ScriptEditor = (props) => {
   }, []);
 
   return (
-    <AtlSection>
-      <h1 className="animated-h1">Editor</h1>
-      {title}
-      <br />
-      {subtitle}
-      <br />
-      {author}
-      <br />
-      {date}
-      <br />
-      {body}
+    <AtlSection className="atl-page editor-pg">
+      <Input />
+      <Output />
+      <Sidebar />
     </AtlSection>
   );
 };

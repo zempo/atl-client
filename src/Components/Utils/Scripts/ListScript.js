@@ -27,7 +27,8 @@ const ListScript = ({ script }) => {
             </button>
           </div>
           <div className="script-pg">
-            <p>{script.title}</p>
+            <h3>{script.title}</h3>
+            <p>{script.subtitle}</p>
           </div>
         </label>
       </div>

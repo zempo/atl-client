@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./Components/App";
 import { UserContextProvider as UserProvider } from "./Contexts/UserContext";
 import { ScriptsContextProvider as ScriptsProvider } from "./Contexts/ScriptsContext";
+import { StyleContextProvider as StyleProvider } from "./Contexts/StyleContext";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "./index.css";
 
@@ -11,7 +12,9 @@ import * as serviceWorker from "./serviceWorker";
 ReactDOM.render(
   <UserProvider>
     <ScriptsProvider>
-      <App />
+      <StyleProvider>
+        <App />
+      </StyleProvider>
     </ScriptsProvider>
   </UserProvider>,
   document.getElementById("root")
