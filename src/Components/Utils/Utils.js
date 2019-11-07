@@ -70,6 +70,26 @@ export const MenuOption = ({ to, text, script }) => {
   );
 };
 
+export const NavMenuOption = ({ to, text, icon, payload }) => {
+  return (
+    <li className="nav-link">
+      <Link
+        to={{
+          pathname: to,
+          state: {
+            item: payload
+          }
+        }}
+      >
+        <h3>
+          {`${icon} `}
+          {text}
+        </h3>
+      </Link>
+    </li>
+  );
+};
+
 export const AddBtn = () => {
   const { isShowing: isShowingAdd, toggle: toggleAdd } = useModal();
   return (
