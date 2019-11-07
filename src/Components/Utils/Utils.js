@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Modal from "../../Modals/Modal";
 import { useModal } from "../../Hooks/use-modal";
 import "./Styles/Utils.css";
+import { UserContext } from "../../Contexts/UserContext";
 
 export const AtlNotification = ({ type, msg, done }) => {
   const [displaying, setDisplaying] = useState(true);
@@ -73,19 +74,23 @@ export const AddBtn = () => {
   const { isShowing: isShowingAdd, toggle: toggleAdd } = useModal();
   return (
     <>
-      <div className="btn btn-add" onClick={toggleAdd}>
-        <i className="fas fa-plus fa-3x" title="add card" />
-      </div>
+      <button className="btn btn-add" title="add script" onClick={toggleAdd}>
+        <i className="fas fa-plus fa-3x" />
+      </button>
       <Modal isShowing={isShowingAdd} hide={toggleAdd} action="add-script" />
     </>
   );
 };
 
 export const BackBtn = ({ history }) => {
+  const {
+    value: { userColor }
+  } = useContext(UserContext);
+  // do conditional for all colors
   return (
     <>
       <button className="btn btn-back" title="go back" onClick={() => history.goBack()}>
-        <span>&#8592;</span>
+        <i class="fas fa-arrow-left"></i>
       </button>
     </>
   );
