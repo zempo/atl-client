@@ -2,6 +2,7 @@ import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Modal from "../../Modals/Modal";
 import { useModal } from "../../Hooks/use-modal";
+import "./Styles/Utils.css";
 
 export const AtlNotification = ({ type, msg, done }) => {
   const [displaying, setDisplaying] = useState(true);
@@ -14,7 +15,7 @@ export const AtlNotification = ({ type, msg, done }) => {
 
   if (displaying) {
     return (
-      <div id={type} className="jto-notification">
+      <div id={type} className="atl-notification">
         <h3>
           <i className="fas fa-exclamation" />
           &nbsp;
@@ -84,7 +85,7 @@ export const BackBtn = ({ history }) => {
   return (
     <>
       <button className="btn btn-back" title="go back" onClick={() => history.goBack()}>
-        <span className="back-arrow">&#8592;</span>
+        <span>&#8592;</span>
       </button>
     </>
   );
