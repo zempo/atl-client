@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { ResizableBox as Box, Resizable } from "react-resizable";
 import { StyleContext } from "../../../Contexts/StyleContext";
 import "../Styles/Editor.css";
 import { BackBtn } from "../Utils";

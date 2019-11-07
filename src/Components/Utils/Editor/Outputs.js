@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ResizableBox as Box, Resizable } from "react-resizable";
+import { ResizableBox as Box } from "react-resizable";
 import { StyleContext } from "../../../Contexts/StyleContext";
 import "../Styles/Editor.css";
 
@@ -10,7 +10,7 @@ const Output = () => {
 
   return (
     <>
-      <Box className="box box-top" height={tenthHeight * 5} width={tenthWidth * 8} axis="both" resizeHandles={["s"]}>
+      <Box className="box box-top" height={tenthHeight * 5} width={tenthWidth * 7.92} axis="both" resizeHandles={["s"]}>
         <p>Output</p>
       </Box>
     </>

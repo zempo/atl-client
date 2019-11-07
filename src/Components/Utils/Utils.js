@@ -90,7 +90,7 @@ export const BackBtn = ({ history }) => {
   return (
     <>
       <button className="btn btn-back" title="go back" onClick={() => history.goBack()}>
-        <i class="fas fa-arrow-left"></i>
+        <i className="fas fa-arrow-left"></i>
       </button>
     </>
   );

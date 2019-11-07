@@ -1,3 +1,9 @@
+h1 {
+  text-align: center;
+  margin-top: 0;
+  padding-top: 1rem;
+}
+
 button:focus {
   -moz-transform: scaleX(1.05);
   -o-transform: scaleX(1.05);
@@ -40,4 +46,9 @@ button:active {
   transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
   opacity: 1;
+}
+
+.atl-footer,
+main {
+  margin: 0;
 }

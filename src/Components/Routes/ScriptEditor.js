@@ -24,7 +24,6 @@ const ScriptEditor = (props) => {
 
     if (props.location.state !== undefined) {
       const { item } = props.location.state;
-      console.log(item.id);
       setTitle(item.title);
       setSubtitle(item.subtitle);
       setAuthor(item.author);

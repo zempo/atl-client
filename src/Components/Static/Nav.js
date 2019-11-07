@@ -57,7 +57,7 @@ class Nav extends Component {
 
     return (
       <>
-        <nav className="jto-nav-menu">
+        <nav className="atl-nav-menu">
           <NavLink exact activeClassName="active" to="/scripts">
             <img
               className="logo-link"
