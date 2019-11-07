@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <footer className="atl-footer" style={{ background: `${userColor}` }}>
       <h2>Above The Line</h2>
-      <p>Created by Solomon Zelenko</p>
+      <h3>Created by Solomon Zelenko</h3>
     </footer>
   );
 };

@@ -4,6 +4,7 @@ import { UserContext } from "../../Contexts/UserContext";
 import { AtlSection, AddBtn } from "../Utils/Utils";
 import ListScript from "../Utils/Scripts/ListScript";
 import ListSearchScript from "../Utils/Scripts/ListSearchScript";
+import "./Styles/ScriptsPage.css";
 
 const ScriptsPage = () => {
   const {

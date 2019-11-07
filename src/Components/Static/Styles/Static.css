@@ -5,9 +5,21 @@ header {
   width: 100%;
   z-index: 1;
   padding-bottom: 1rem;
+  color: rgb(219, 217, 217);
+}
+
+.atl-nav-menu {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  padding-top: 1rem;
+  margin-right: 10%;
+  margin-left: 10%;
 }
 
 .atl-footer {
   padding-top: 1rem;
+  padding-bottom: 1rem;
   text-align: center;
+  color: rgb(219, 217, 217);
 }

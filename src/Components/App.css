@@ -1,10 +1,24 @@
 h1 {
   text-align: center;
   margin-top: 0;
+  font-size: 5rem;
   padding-top: 1rem;
 }
 
+h2 {
+  font-size: 3rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
 /* organize paddings by page, here */
+main {
+  margin-top: 0;
+  padding-bottom: 1rem;
+  color: rgb(49, 49, 49);
+}
 
 button:focus {
   -moz-transform: scaleX(1.05);
