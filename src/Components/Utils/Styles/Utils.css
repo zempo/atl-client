@@ -23,7 +23,7 @@
   border: 3px solid #2c3a41;
   background: #2c3a41;
   /* color: #d3e8f3; */
-  color: white;
+  color: rgb(219, 217, 217);
   border-radius: 50%;
 }
 
@@ -33,7 +33,7 @@
   left: calc(50% - 1.5rem);
   border: 3px solid #2c3a41;
   background: #2c3a41;
-  color: white;
+  color: rgb(219, 217, 217);
   border-radius: 50%;
   font-size: 3rem;
 }

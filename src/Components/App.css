@@ -31,9 +31,9 @@ button:focus {
   -webkit-transition: all 0.3s ease-out;
   opacity: 1;
   outline: none;
-  -moz-box-shadow: 0 0 3px #ccc;
-  -webkit-box-shadow: 0 0 3px #ccc;
-  box-shadow: 0 0 3px 3px #d3e8f3;
+  -moz-box-shadow: 0 0 3px rgb(219, 217, 217);
+  -webkit-box-shadow: 0 0 3px rgb(219, 217, 217);
+  box-shadow: 0 0 3px 3px rgb(219, 217, 217);
 }
 
 button {
