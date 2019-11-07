@@ -4,6 +4,8 @@ h1 {
   padding-top: 1rem;
 }
 
+/* organize paddings by page, here */
+
 button:focus {
   -moz-transform: scaleX(1.05);
   -o-transform: scaleX(1.05);
