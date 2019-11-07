@@ -32,9 +32,9 @@
   top: 5vh;
   left: calc(50% - 1.5rem);
   font-size: 3rem;
-  background: rgb(96, 125, 139);
-  border: 1px solid rgb(96, 125, 139);
-  color: white;
+  background: none;
+  border: 3px solid #2c3a41;
+  color: #2c3a41;
   border-radius: 50%;
 }
 
