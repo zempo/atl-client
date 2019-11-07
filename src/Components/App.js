@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { BrowserRouter as ROUTER, Route, Switch } from "react-router-dom";
+import { UserContext } from "../Contexts/UserContext";
 // SERVICES
 import { AuthService } from "../Services/Auth/auth-service";
 import IdleService from "../Services/Auth/idle-service";
 import TokenService from "../Services/Auth/token-service";
-// Static
+// Static Components
 import Nav from "./Static/Nav";
 import Footer from "./Static/Footer";
-
 // Routes
 import ErrorPage from "./Routes/ErrorPage";
 import Landing from "./Routes/Landing";
@@ -24,6 +24,8 @@ import "./App.css";
 
 class App extends Component {
   state = { hasError: false };
+
+  static contextType = UserContext;
 
   static getDerivedStateFromError(error) {
     console.log(error);
@@ -55,13 +57,14 @@ class App extends Component {
   };
 
   render() {
+    let { userColor } = this.context.value;
     return (
       <>
         <ROUTER>
           <header className="atl-header">
             <Nav />
           </header>
-          <main className="atl-main">
+          <main className="atl-main" style={{ background: `${userColor}b3` }}>
             <ErrorPage>
               <Switch>
                 <PublicRoute exact path={"/"} component={Landing} />
