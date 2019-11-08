@@ -31,9 +31,9 @@ button:focus {
   -webkit-transition: all 0.3s ease-out;
   opacity: 1;
   outline: none;
-  -moz-box-shadow: 0 0 3px 3px rgb(219, 217, 217);
+  /* -moz-box-shadow: 0 0 3px 3px rgb(219, 217, 217);
   -webkit-box-shadow: 0 0 3px 3px rgb(219, 217, 217);
-  box-shadow: 0 0 3px 3px rgb(219, 217, 217);
+  box-shadow: 0 0 1px 1px rgb(219, 217, 217); */
 }
 .nav-menu-btn {
   opacity: 1;

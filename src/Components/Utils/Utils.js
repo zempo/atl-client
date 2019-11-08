@@ -91,10 +91,19 @@ export const NavMenuOption = ({ to, text, icon, payload }) => {
 };
 
 export const AddBtn = () => {
+  const {
+    value: { userColor }
+  } = useContext(UserContext);
+  // do conditional for all colors
   const { isShowing: isShowingAdd, toggle: toggleAdd } = useModal();
   return (
     <>
-      <button className="btn btn-add" title="add script" onClick={toggleAdd}>
+      <button
+        style={{ background: `none`, color: userColor, border: `5px solid ${userColor}` }}
+        className="btn btn-add"
+        title="add script"
+        onClick={toggleAdd}
+      >
         <i className="fas fa-plus fa-3x" />
       </button>
       <Modal isShowing={isShowingAdd} hide={toggleAdd} action="add-script" />
@@ -109,7 +118,12 @@ export const BackBtn = ({ history }) => {
   // do conditional for all colors
   return (
     <>
-      <button className="btn btn-back" title="go back" onClick={() => history.goBack()}>
+      <button
+        style={{ background: `none`, color: userColor, border: `5px solid ${userColor}` }}
+        className="btn btn-back"
+        title="go back"
+        onClick={() => history.goBack()}
+      >
         <i className="fas fa-arrow-left"></i>
       </button>
     </>

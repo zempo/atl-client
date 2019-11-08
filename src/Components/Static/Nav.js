@@ -4,7 +4,7 @@ import TokenService from "../../Services/Auth/token-service";
 import IdleService from "../../Services/Auth/idle-service";
 import { UserContext } from "../../Contexts/UserContext";
 import { Hyph, NavMenuOption } from "../Utils/Utils";
-import { LightLogo } from "../../Images/LightLogo";
+import { LightLogo, DarkLogo } from "../../Images/LightLogo";
 
 class Nav extends Component {
   constructor() {
@@ -26,7 +26,7 @@ class Nav extends Component {
     // console.log(TokenService.getId());
     // window.location.reload();
 
-    const { user_name } = this.context.value.user;
+    const { user_name, userColor } = this.context.value.user;
     const { showing } = this.state;
 
     return (
@@ -39,7 +39,7 @@ class Nav extends Component {
             onClick={() => this.setState({ showing: !this.state.showing })}
             title="show-menu"
           >
-            &#9662;
+            {!showing ? <span>&#9662;</span> : <span>&#9652;</span>}
           </button>
         </h3>
       </div>
@@ -73,7 +73,7 @@ class Nav extends Component {
         <nav className="atl-nav-menu" style={{ background: `${userColor}` }}>
           <NavLink exact activeClassName="active" to="/scripts">
             {/* created with https://svg2jsx.com/ */}
-            <LightLogo width="120" height="90" />
+            <DarkLogo width="120" height="90" />
           </NavLink>
           <div className="nav-menu">
             {TokenService.hasAuthToken() && this.context.value.error !== 401
