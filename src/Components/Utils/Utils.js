@@ -82,7 +82,7 @@ export const NavMenuOption = ({ to, text, icon, payload }) => {
         }}
       >
         <h3>
-          {`${icon} `}
+          {icon}&nbsp;
           {text}
         </h3>
       </Link>

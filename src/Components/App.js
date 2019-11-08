@@ -61,7 +61,7 @@ class App extends Component {
     return (
       <>
         <ROUTER>
-          <header className="atl-header" style={{ background: `${userColor}` }}>
+          <header className="atl-header">
             <Nav />
           </header>
           <main className="atl-main" style={{ background: `${userColor}b3` }}>

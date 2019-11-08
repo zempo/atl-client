@@ -15,7 +15,7 @@ h3 {
 
 /* organize paddings by page, here */
 main {
-  margin-top: 0;
+  padding-top: 10rem;
   padding-bottom: 1rem;
   color: rgb(49, 49, 49);
 }
@@ -31,9 +31,32 @@ button:focus {
   -webkit-transition: all 0.3s ease-out;
   opacity: 1;
   outline: none;
-  -moz-box-shadow: 0 0 3px rgb(219, 217, 217);
-  -webkit-box-shadow: 0 0 3px rgb(219, 217, 217);
+  -moz-box-shadow: 0 0 3px 3px rgb(219, 217, 217);
+  -webkit-box-shadow: 0 0 3px 3px rgb(219, 217, 217);
   box-shadow: 0 0 3px 3px rgb(219, 217, 217);
+}
+.nav-menu-btn {
+  opacity: 1;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+.nav-menu-btn:focus,
+.nav-menu-btn:active {
+  -moz-transform: scaleX(1);
+  -o-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  transform: scaleX(1);
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  opacity: 1;
+  outline: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
 button {

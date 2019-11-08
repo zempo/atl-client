@@ -4,6 +4,7 @@ import App from "./Components/App";
 import { UserContextProvider as UserProvider } from "./Contexts/UserContext";
 import { ScriptsContextProvider as ScriptsProvider } from "./Contexts/ScriptsContext";
 import { StyleContextProvider as StyleProvider } from "./Contexts/StyleContext";
+import { EditContextProvider as EditProvider } from "./Contexts/EditContext";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "./index.css";
 
@@ -13,7 +14,9 @@ ReactDOM.render(
   <UserProvider>
     <ScriptsProvider>
       <StyleProvider>
-        <App />
+        <EditProvider>
+          <App />
+        </EditProvider>
       </StyleProvider>
     </ScriptsProvider>
   </UserProvider>,

@@ -1,12 +1,11 @@
 .editor-pg {
   position: relative;
-  border-bottom: 1px solid black;
-  outline: 1rem solid rgb(96, 125, 139);
+  top: -2.2rem;
 }
 
 .box {
-  border: 1px solid black;
-  border-bottom: none;
+  border: 5px solid #2c3a41;
+  /* border-bottom: none; */
 }
 
 .react-resizable {
@@ -14,14 +13,29 @@
 }
 .box-top {
   left: 20%;
+  border-bottom: none;
 }
 .box-bottom {
   left: 20%;
 }
+
+.box-bottom::before {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  bottom: -5px;
+  left: -50%;
+  width: 50%;
+  z-index: 2;
+  height: 5px;
+  background: #2c3a41;
+}
+
 .box-sidebar {
   position: absolute;
   top: 0;
   left: 0;
+  border-left: none;
   border-right: none;
   border-bottom: none;
 }

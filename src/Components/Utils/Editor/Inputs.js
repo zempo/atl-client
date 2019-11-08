@@ -1,23 +1,24 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ResizableBox as Box } from "react-resizable";
 import { StyleContext } from "../../../Contexts/StyleContext";
 import "../Styles/Editor.css";
+import { EditContext } from "../../../Contexts/EditContext";
 
-const Input = () => {
+const Input = ({ actors, tags }) => {
   const {
     value: { tenthHeight, tenthWidth }
   } = useContext(StyleContext);
+  const {
+    value: { currentScript }
+  } = useContext(EditContext);
 
   return (
     <>
-      <Box
-        className="box box-bottom"
-        height={tenthHeight * 5}
-        width={tenthWidth * 7.92}
-        axis="both"
-        resizeHandles={["s"]}
-      >
-        <p>Input</p>
+      <Box className="box box-top" height={tenthHeight * 5} width={tenthWidth * 7.92} axis="both" resizeHandles={["s"]}>
+        <form className="input-tags">
+          <fieldset></fieldset>
+          {currentScript.body}
+        </form>
       </Box>
     </>
   );

@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import dateFormat from "dateformat";
 import { AtlSection } from "../Utils/Utils";
 import Input from "../Utils/Editor/Inputs";
 import Output from "../Utils/Editor/Outputs";
 import Sidebar from "../Utils/Editor/Sidebar";
+import { UserContext } from "../../Contexts/UserContext";
+import { EditContext } from "../../Contexts/EditContext";
 
 const ScriptEditor = (props) => {
   // Script Data
@@ -17,7 +19,13 @@ const ScriptEditor = (props) => {
 
   // Layout Data
 
-  //
+  // Style Data
+  const {
+    value: { userColor }
+  } = useContext(UserContext);
+  const {
+    value: { updateScript }
+  } = useContext(EditContext);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -30,6 +38,7 @@ const ScriptEditor = (props) => {
       setActors(item.actors);
       setTags(item.tags);
       setBody(item.body);
+      updateScript(item);
       let date;
       date = dateFormat(item.date_created, "mmmm d, yyyy");
       if (item.date_updated !== null) {
@@ -40,7 +49,7 @@ const ScriptEditor = (props) => {
   }, []);
 
   return (
-    <AtlSection className="atl-page editor-pg">
+    <AtlSection className="atl-page editor-pg" style={{ outline: `3.5rem solid ${userColor}` }}>
       <Input />
       <Output />
       <Sidebar history={props.history} />
