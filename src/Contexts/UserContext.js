@@ -5,7 +5,7 @@ export const UserContext = createContext();
 
 export const UserContextProvider = (props) => {
   const [userName, setUserName] = useState("Error..");
-  const [userColor, setUserColor] = useState("#607d8b");
+  const [userColor, setUserColor] = useState("#263238");
   const [user, setUser] = useState({});
   const [error, setError] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -21,6 +21,7 @@ export const UserContextProvider = (props) => {
         setUser(result.data);
         setUserName(result.data.user_name);
         setUserColor(result.data.theme);
+        setUserColor("#263238");
         setError(0);
       } catch (err) {
         setError(err.response.status);
