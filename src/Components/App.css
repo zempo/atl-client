@@ -43,7 +43,11 @@ button:focus {
   -webkit-transition: all 0.3s ease-out;
 }
 .nav-menu-btn:focus,
-.nav-menu-btn:active {
+.nav-menu-btn:active,
+.append-tag:focus,
+.append-tag:active,
+.delete-tag:focus,
+.delete-tag:active {
   -moz-transform: scaleX(1);
   -o-transform: scaleX(1);
   -ms-transform: scaleX(1);
