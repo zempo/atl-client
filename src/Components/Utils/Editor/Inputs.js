@@ -39,7 +39,9 @@ const Input = ({ currentId, body }) => {
   const appendTag = (e) => {
     e.preventDefault();
     let currentTag = ` [${e.target.innerHTML}]`;
-    setCurrentBody(currentBody + currentTag);
+    let newBody = currentBody + currentTag;
+    setCurrentBody(newBody);
+    updateScriptBody(currentScript, newBody);
   };
 
   return (
