@@ -64,7 +64,7 @@ class App extends Component {
           <header className="atl-header">
             <Nav />
           </header>
-          <main className="atl-main" style={{ background: `${userColor}b3` }}>
+          <main className="atl-main" style={{ background: `${userColor}e0` }}>
             <ErrorPage>
               <Switch>
                 <PublicRoute exact path={"/"} component={Landing} />

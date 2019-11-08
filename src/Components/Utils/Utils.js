@@ -98,12 +98,7 @@ export const AddBtn = () => {
   const { isShowing: isShowingAdd, toggle: toggleAdd } = useModal();
   return (
     <>
-      <button
-        style={{ background: `none`, color: userColor, border: `5px solid ${userColor}` }}
-        className="btn btn-add"
-        title="add script"
-        onClick={toggleAdd}
-      >
+      <button style={{ background: userColor }} className="btn btn-add" title="add script" onClick={toggleAdd}>
         <i className="fas fa-plus fa-3x" />
       </button>
       <Modal isShowing={isShowingAdd} hide={toggleAdd} action="add-script" />
@@ -119,7 +114,7 @@ export const BackBtn = ({ history }) => {
   return (
     <>
       <button
-        style={{ background: `none`, color: userColor, border: `5px solid ${userColor}` }}
+        style={{ background: userColor }}
         className="btn btn-back"
         title="go back"
         onClick={() => history.goBack()}
