@@ -52,7 +52,7 @@ const ScriptEditor = (props) => {
 
   return (
     <AtlSection className="atl-page editor-pg" style={{ outline: `3.5rem solid ${userColor}` }}>
-      <Input body={props.location.state.item.body} />
+      <Input body={props.location.state.item.body} currentId={props.location.state.item.id} />
       <Output />
       <Sidebar history={props.history} />
     </AtlSection>

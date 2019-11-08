@@ -1,6 +1,6 @@
 // store meta-data in here, update script object
-import React, { createContext, useState, useEffect } from "react";
-import { readScripts } from "../Services/endpoints-service";
+import React, { createContext, useState } from "react";
+import { autoSave } from "../Services/endpoints-service";
 
 export const EditContext = createContext();
 
@@ -13,11 +13,16 @@ export const EditContextProvider = (props) => {
     setCurrentScript(newfields);
   };
 
-  const updateScriptBody = (prevFields, value) => {
+  const updateScriptBody = async (prevFields, value) => {
     let newfields = prevFields;
     newfields.body = value;
-    console.log(newfields);
     setCurrentScript(newfields);
+
+    try {
+      const result = await autoSave.patch(`${prevFields.id}`, newfields);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const value = {
