@@ -9,6 +9,7 @@ import { EditContext } from "../../Contexts/EditContext";
 
 const ScriptEditor = (props) => {
   // Script Data
+  const [currentId, setCurrentId] = useState("");
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
   const [author, setAuthor] = useState("");
@@ -32,6 +33,7 @@ const ScriptEditor = (props) => {
 
     if (props.location.state !== undefined) {
       const { item } = props.location.state;
+      setCurrentId(item.id);
       setTitle(item.title);
       setSubtitle(item.subtitle);
       setAuthor(item.author);
@@ -50,7 +52,7 @@ const ScriptEditor = (props) => {
 
   return (
     <AtlSection className="atl-page editor-pg" style={{ outline: `3.5rem solid ${userColor}` }}>
-      <Input />
+      <Input body={props.location.state.item.body} />
       <Output />
       <Sidebar history={props.history} />
     </AtlSection>

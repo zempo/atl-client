@@ -13,9 +13,17 @@ export const EditContextProvider = (props) => {
     setCurrentScript(newfields);
   };
 
+  const updateScriptBody = (prevFields, value) => {
+    let newfields = prevFields;
+    newfields.body = value;
+    console.log(newfields);
+    setCurrentScript(newfields);
+  };
+
   const value = {
     currentScript,
-    updateScript
+    updateScript,
+    updateScriptBody
   };
 
   return <EditContext.Provider value={{ value }}>{props.children}</EditContext.Provider>;
