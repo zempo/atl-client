@@ -20,10 +20,10 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  border: 3px solid rgb(49, 49, 49);
+  border: 3px solid rgb(219, 217, 217);
   background: #2c3a41;
   /* color: #d3e8f3; */
-  color: rgb(49, 49, 49);
+  color: rgb(219, 217, 217);
   border-radius: 50%;
 }
 
@@ -36,15 +36,13 @@
   position: absolute;
   top: 5vh;
   left: calc(50% - 1.5rem);
-  border: 3px solid rgb(49, 49, 49);
-  background: #2c3a41;
-  color: rgb(49, 49, 49);
+  border: 3px solid rgb(219, 217, 217);
+  color: rgb(219, 217, 217);
   border-radius: 50%;
   font-size: 3rem;
 }
 
 .btn-back:active {
-  border: 3px solid rgb(49, 49, 49);
-  background: #2c3a41;
+  border: 3px solid rgb(219, 217, 217);
   border-radius: 50%;
 }

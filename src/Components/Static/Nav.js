@@ -72,8 +72,8 @@ class Nav extends Component {
       <>
         <nav className="atl-nav-menu" style={{ background: `${userColor}` }}>
           <NavLink exact activeClassName="active" to="/scripts">
-            {/* created with https://svg2jsx.com/ */}
-            <DarkLogo width="120" height="90" />
+            {/* created with https://svg2jsx.com/, conditional dark or light logo */}
+            <LightLogo width="120" height="90" />
           </NavLink>
           <div className="nav-menu">
             {TokenService.hasAuthToken() && this.context.value.error !== 401

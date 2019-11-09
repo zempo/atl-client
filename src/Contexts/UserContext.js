@@ -21,7 +21,7 @@ export const UserContextProvider = (props) => {
         setUser(result.data);
         setUserName(result.data.user_name);
         setUserColor(result.data.theme);
-        setUserColor("#f44336");
+        setUserColor("#AD1457");
         setError(0);
       } catch (err) {
         setError(err.response.status);

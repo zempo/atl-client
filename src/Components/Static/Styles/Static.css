@@ -3,7 +3,7 @@ header {
   top: 0;
   width: 100%;
   z-index: 1;
-  color: rgb(49, 49, 49);
+  color: rgb(219, 217, 217);
 }
 
 header nav {
@@ -66,15 +66,15 @@ header nav {
   left: 8px;
   border: 1px solid rgb(219, 217, 217, 0);
   border-radius: 10px;
-  background: rgb(49, 49, 49);
-  color: #dbd9d9;
+  background: rgb(219, 217, 217);
+  color: #313131;
 }
 
 .atl-footer {
   padding-top: 1rem;
   padding-bottom: 2rem;
   text-align: center;
-  color: rgb(49, 49, 49);
+  color: rgb(219, 217, 217);
 }
 
 @-o-keyframes dash {
