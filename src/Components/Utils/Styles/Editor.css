@@ -4,7 +4,7 @@
 }
 
 .box {
-  border: 5px solid #2c3a41;
+  border: 5px solid rgb(49, 49, 49);
   /* border-bottom: none; */
 }
 
@@ -28,7 +28,7 @@
   width: 50%;
   z-index: 2;
   height: 5px;
-  background: #2c3a41;
+  background: rgb(49, 49, 49);
 }
 
 .box-sidebar {
@@ -74,6 +74,10 @@
   height: 50%;
   margin-left: 2.5%;
   padding: 0;
+}
+
+.box-top fieldset {
+  border: none;
 }
 
 .tags,
