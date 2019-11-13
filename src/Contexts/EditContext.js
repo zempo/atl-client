@@ -79,10 +79,11 @@ export const EditContextProvider = props => {
 
     setLoading(true);
     let newFields = prevFields;
-    newFields.actors = filteredActors;
+    let fieldsToUpdate = {};
+    fieldsToUpdate.actors = filteredActors;
 
     try {
-      const result = await autoSave.patch(`/${prevFields.id}`, newFields);
+      const result = await autoSave.patch(`/${prevFields.id}`, fieldsToUpdate);
       setError(false);
       setLoading(false);
       return filteredActors;
@@ -97,12 +98,12 @@ export const EditContextProvider = props => {
     setLoading(true);
 
     let newFields = prevFields;
+    let fieldsToUpdate = {};
 
     try {
       const toUpdate = await autoSave.get(`${prevFields.id}`);
-      newFields.tags = [...toUpdate.data[0].tags, newTag];
-      setCurrentScript(newFields);
-      const result = await autoSave.patch(`${prevFields.id}`, newFields);
+      fieldsToUpdate.tags = [...toUpdate.data[0].tags, newTag];
+      const result = await autoSave.patch(`${prevFields.id}`, fieldsToUpdate);
       setError(false);
       setLoading(false);
     } catch (err) {
@@ -116,11 +117,12 @@ export const EditContextProvider = props => {
     let filteredTags = prevTags.filter((tag, i) => i != target);
     setLoading(true);
     let newFields = prevFields;
-    newFields.tags = filteredTags;
+    let fieldsToUpdate = {};
+    fieldsToUpdate.tags = filteredTags;
     // console.log(newFields);
 
     try {
-      const result = await autoSave.patch(`/${prevFields.id}`, newFields);
+      const result = await autoSave.patch(`/${prevFields.id}`, fieldsToUpdate);
       setError(false);
       setLoading(false);
       return filteredTags;

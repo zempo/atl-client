@@ -5,6 +5,7 @@ import { EditContext } from "../../../Contexts/EditContext";
 import { UserContext } from "../../../Contexts/UserContext";
 import { readScripts } from "../../../Services/endpoints-service";
 import Moment from "react-moment";
+import Hotkeys from "react-hot-keys";
 import "../Styles/Editor.css";
 
 const Input = ({ currentId, body }) => {
@@ -103,7 +104,7 @@ const Input = ({ currentId, body }) => {
   };
 
   return (
-    <>
+    <Hotkeys>
       <Box
         className="box box-top"
         height={tenthHeight * 7}
@@ -204,7 +205,7 @@ const Input = ({ currentId, body }) => {
           />
         </form>
       </Box>
-    </>
+    </Hotkeys>
   );
 };
 
