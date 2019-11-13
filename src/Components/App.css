@@ -8,10 +8,12 @@ h1 {
 
 h2 {
   font-size: 3rem;
+  text-align: center;
 }
 
 h3 {
   font-size: 1.5rem;
+  text-align: center;
 }
 
 /* organize paddings by page, here */
@@ -20,11 +22,15 @@ main {
   padding-bottom: 1rem;
 }
 
+input {
+  border-radius: 3px;
+}
+
 button:focus {
-  -moz-transform: scaleX(1.05);
-  -o-transform: scaleX(1.05);
-  -ms-transform: scaleX(1.05);
-  transform: scaleX(1.05);
+  -moz-transform: scale(1.05, 1.05);
+  -o-transform: scale(1.05, 1.05);
+  -ms-transform: scale(1.05, 1.05);
+  transform: scale(1.05, 1.05);
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
@@ -69,6 +75,7 @@ button {
   transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
   opacity: 0.9;
+  border-radius: 3px;
 }
 
 button:hover {

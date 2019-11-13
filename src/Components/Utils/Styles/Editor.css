@@ -38,6 +38,7 @@
   border-left: none;
   border-right: none;
   border-bottom: none;
+  overflow-y: auto;
 }
 
 .react-resizable-handle {
@@ -74,10 +75,24 @@
   height: 50%;
   margin-left: 2.5%;
   padding: 0;
+  background: rgb(236, 235, 235);
 }
 
 .box-top fieldset {
   border: none;
+  /* padding: 0; */
+  width: 95%;
+  margin-left: 2.5%;
+}
+
+.box-top p {
+  text-align: center;
+  color: rgb(219, 217, 217);
+  font-weight: bold;
+}
+
+.input-bottom {
+  margin-bottom: 0.6rem;
 }
 
 .tags,
@@ -87,7 +102,9 @@
   flex-wrap: wrap;
   list-style-type: none;
 }
-.tag-control {
+
+.tag-control,
+.actor-control {
   margin-right: 1rem;
 }
 .append-tag {
@@ -108,4 +125,74 @@
 .append-tag:hover,
 .delete-tag:hover {
   color: white;
+}
+
+/* sidebar */
+.box-sidebar {
+  color: rgb(219, 217, 217);
+  font-weight: bold;
+}
+
+.box-sidebar input {
+  background: rgb(236, 235, 235);
+  border: 1px solid rgb(49, 49, 49);
+  padding: 0.25rem;
+}
+
+.box-sidebar label {
+  font-size: 1.5rem;
+}
+
+.sidebar-inputs {
+  width: 100%;
+  margin-top: calc(5vh + 6rem);
+  line-height: 1.75;
+  text-align: center;
+}
+
+.side-title input {
+  width: 90%;
+}
+
+.side-update-btn {
+  background: rgb(20, 20, 20, 0.3);
+  border: 2px solid rgb(219, 217, 217);
+  color: rgb(219, 217, 217);
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 5vh;
+  width: 90%;
+  padding: 0.5rem;
+  margin-bottom: 5vh;
+}
+
+.side-update-btn:hover {
+  background: rgb(219, 217, 217);
+  color: rgb(49, 49, 49);
+}
+
+.sidebar-inputs fieldset {
+  border: none;
+  border-bottom: 1px solid rgb(20, 20, 20);
+  position: relative;
+  left: -1px;
+}
+
+.side-tags {
+  padding-bottom: 5vh;
+}
+
+.side-tags input {
+  width: 82%;
+}
+
+.side-tags button {
+  color: rgb(236, 235, 235);
+  font-weight: bold;
+  border-radius: 50%;
+  border: none;
+  background: none;
+  font-size: 1.7rem;
+  position: relative;
+  top: 0.4rem;
 }

@@ -32,6 +32,10 @@ header nav {
 }
 
 .open {
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
   -webkit-animation: accordionIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   animation: accordionIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
@@ -101,6 +105,57 @@ header nav {
   }
 }
 
+@-moz-keyframes accordionIn {
+  0% {
+    -moz-transform: scaleY(0);
+    transform: scaleY(0);
+    -moz-transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
+    opacity: 1;
+  }
+  100% {
+    -moz-transform: scaleY(1);
+    transform: scaleY(1);
+    -moz-transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
+    opacity: 1;
+  }
+}
+
+@-o-keyframes accordionIn {
+  0% {
+    -o-transform: scaleY(0);
+    transform: scaleY(0);
+    -o-transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
+    opacity: 1;
+  }
+  100% {
+    -o-transform: scaleY(1);
+    transform: scaleY(1);
+    -o-transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes accordionIn {
+  0% {
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+    -webkit-transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    -webkit-transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
+    opacity: 1;
+  }
+}
+
 @keyframes accordionIn {
   0% {
     -webkit-transform: scaleY(0);
@@ -118,7 +173,7 @@ header nav {
   }
 }
 
-@keyframes accordionOut {
+/* @keyframes accordionOut {
   0% {
     -webkit-transform: scaleY(1);
     transform: scaleY(1);
@@ -133,4 +188,4 @@ header nav {
     transform-origin: 100% 0%;
     opacity: 1;
   }
-}
+} */

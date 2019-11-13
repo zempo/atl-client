@@ -1,9 +1,10 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import { ResizableBox as Box } from "react-resizable";
 import { StyleContext } from "../../../Contexts/StyleContext";
 import { EditContext } from "../../../Contexts/EditContext";
 import { UserContext } from "../../../Contexts/UserContext";
 import { readScripts } from "../../../Services/endpoints-service";
+import Moment from "react-moment";
 import "../Styles/Editor.css";
 
 const Input = ({ currentId, body }) => {
@@ -16,33 +17,57 @@ const Input = ({ currentId, body }) => {
   const {
     value: { error, loading, rmvFromActors, rmvFromTags, currentScript, updateScriptBody }
   } = useContext(EditContext);
+  const [date, setDate] = useState("");
+  const [currentBody, setCurrentBody] = useState(body);
+  const [updated, setUpdated] = useState(false);
   const [actors, setActors] = useState([]);
   const [tags, setTags] = useState([]);
-  const [currentBody, setCurrentBody] = useState(body);
+  const inputRef = useRef();
 
   useEffect(() => {
     const findScript = async () => {
+      let date;
       try {
         const result = await readScripts.get(`/${currentId}`);
         setCurrentBody(result.data[0].body);
         setActors(result.data[0].actors);
         setTags(result.data[0].tags);
+        date = result.data[0].date_created;
+        if (result.data[0].date_updated !== null) {
+          date = result.data[0].date_updated;
+        }
+        setDate(date);
       } catch (error) {
         console.log(error);
       }
     };
 
     findScript();
+    let len = inputRef.current.value.length;
+    inputRef.current.setSelectionRange(len, len);
   }, []);
 
   const handleChange = (e) => {
+    setUpdated(true);
     setCurrentBody(e.target.value);
     updateScriptBody(currentScript, e.target.value);
   };
 
+  const appendActor = (e) => {
+    e.preventDefault();
+    setUpdated(true);
+    inputRef.current.focus();
+    let currentTag = ` {${e.target.innerHTML}} `;
+    let newBody = currentBody + currentTag;
+    setCurrentBody(newBody);
+    updateScriptBody(currentScript, newBody);
+  };
+
   const appendTag = (e) => {
     e.preventDefault();
-    let currentTag = ` [${e.target.innerHTML}]`;
+    setUpdated(true);
+    inputRef.current.focus();
+    let currentTag = ` [${e.target.innerHTML}] `;
     let newBody = currentBody + currentTag;
     setCurrentBody(newBody);
     updateScriptBody(currentScript, newBody);
@@ -52,21 +77,33 @@ const Input = ({ currentId, body }) => {
     e.preventDefault();
     let actorToRmv = e.target.id;
     rmvFromActors(currentScript, actors, actorToRmv);
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   };
 
   const removeTag = (e) => {
     e.preventDefault();
     let tagToRmv = e.target.id;
     rmvFromTags(currentScript, tags, tagToRmv);
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   };
 
   return (
     <>
       <Box className="box box-top" height={tenthHeight * 5} width={tenthWidth * 7.92} axis="both" resizeHandles={["s"]}>
-        {loading ? "loading..." : "saved"}
         <form className="input-tags">
-          <fieldset>
+          {loading ? (
+            <p>Saving...</p>
+          ) : (
+            <p title={`Your changes are automatically saved.`}>
+              <u>Updated {updated ? <Moment fromNow></Moment> : <Moment fromNow>{date}</Moment>}</u>
+            </p>
+          )}{" "}
+          {error ? error : null}
+          <fieldset className="input-top">
             <ul className="actors">
               {actors.map((actor, i) => {
                 return (
@@ -74,8 +111,8 @@ const Input = ({ currentId, body }) => {
                     <button
                       className="append-tag"
                       id={i}
-                      style={{ background: userColor, border: `1px solid ${userColor}` }}
-                      onClick={appendTag}
+                      style={{ background: userColor, border: `2px solid ${userColor}` }}
+                      onClick={appendActor}
                     >
                       {actor}
                     </button>
@@ -83,7 +120,7 @@ const Input = ({ currentId, body }) => {
                       className="delete-tag"
                       id={i}
                       onClick={removeActor}
-                      style={{ background: `${userColor}b3`, border: `1px solid ${userColor}` }}
+                      style={{ background: `${userColor}b3`, border: `2px solid ${userColor}` }}
                     >
                       x
                     </button>
@@ -92,7 +129,7 @@ const Input = ({ currentId, body }) => {
               })}
             </ul>
           </fieldset>
-          <fieldset>
+          <fieldset className="input-bottom">
             <ul className="tags">
               {tags.map((tag, i) => {
                 return (
@@ -100,7 +137,7 @@ const Input = ({ currentId, body }) => {
                     <button
                       className="append-tag"
                       id={i}
-                      style={{ background: userColor, border: `1px solid ${userColor}` }}
+                      style={{ background: userColor, border: `2px solid ${userColor}` }}
                       onClick={appendTag}
                     >
                       {tag}
@@ -109,7 +146,7 @@ const Input = ({ currentId, body }) => {
                       className="delete-tag"
                       id={i}
                       onClick={removeTag}
-                      style={{ background: `${userColor}b3`, border: `1px solid ${userColor}` }}
+                      style={{ background: `${userColor}b3`, border: `2px solid ${userColor}` }}
                     >
                       x
                     </button>
@@ -118,7 +155,7 @@ const Input = ({ currentId, body }) => {
               })}
             </ul>
           </fieldset>
-          <textarea value={currentBody} onChange={handleChange} />
+          <textarea autoFocus={true} ref={inputRef} value={currentBody} onChange={handleChange} />
         </form>
       </Box>
     </>

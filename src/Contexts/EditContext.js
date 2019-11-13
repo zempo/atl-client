@@ -6,7 +6,6 @@ export const EditContext = createContext();
 
 export const EditContextProvider = (props) => {
   const [currentScript, setCurrentScript] = useState({});
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -34,20 +33,29 @@ export const EditContextProvider = (props) => {
   const addToActors = async (prevActors, newActor) => {
     console.log(prevActors, newActor);
   };
+
   const rmvFromActors = async (prevFields, prevActors, target) => {
     let filteredActors = prevActors.filter((actor, i) => i != target);
 
-    // try {
-    //   const result = await autoSave.patch(`/${}`, filteredActors)
-    //   return filteredActors;
-    // } catch (error) {
-    //   console.log(error)
-    // }
+    setLoading(true);
+    let newfields = prevFields;
+    newfields.actors = filteredActors;
+
+    try {
+      const result = await autoSave.patch(`/${prevFields.id}`, newfields);
+      setError(false);
+      setLoading(false);
+      return filteredActors;
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
   };
 
   const addToTags = async (prevTags, newTag) => {
     console.log(prevTags, newTag);
   };
+
   const rmvFromTags = async (prevFields, prevTags, target) => {
     let filteredTags = prevTags.filter((tag, i) => i != target);
     setLoading(true);

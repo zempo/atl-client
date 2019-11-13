@@ -12,7 +12,7 @@ const Output = () => {
     <>
       <Box
         className="box box-bottom"
-        height={tenthHeight * 5}
+        height={tenthHeight * 7.5}
         width={tenthWidth * 7.92}
         axis="both"
         resizeHandles={["s"]}
