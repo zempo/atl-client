@@ -4,11 +4,15 @@ import { StyleContext } from "../../../Contexts/StyleContext";
 import { EditContext } from "../../../Contexts/EditContext";
 import { UserContext } from "../../../Contexts/UserContext";
 import { readScripts } from "../../../Services/endpoints-service";
+import { useModal } from "../../../Hooks/use-modal";
+import Modal from "../../../Modals/Modal";
 import Moment from "react-moment";
 import { HotKeys } from "react-hotkeys";
 import "../Styles/Editor.css";
 
 const Input = ({ currentId, body }) => {
+  const { isShowing: isShowingCopy, toggle: toggleCopy } = useModal();
+  const { isShowing: isShowingDelete, toggle: toggleDelete } = useModal();
   const {
     value: { tenthHeight, tenthWidth }
   } = useContext(StyleContext);
@@ -19,6 +23,7 @@ const Input = ({ currentId, body }) => {
     value: {
       error,
       loading,
+      setLoading,
       rmvFromActors,
       rmvFromTags,
       currentScript,
@@ -108,10 +113,16 @@ const Input = ({ currentId, body }) => {
     bodyToUpdate = inputRef.current.value;
     fieldsToUpdate.body = bodyToUpdate;
     setUpdated(true);
+    setLoading(true);
     try {
       const result = await readScripts.patch(`/${currentId}`, fieldsToUpdate);
+
+      setTimeout(() => {
+        setLoading(false);
+      }, 300);
     } catch (err) {
       console.log(err);
+      setLoading(false);
     }
   }, []);
 
@@ -145,7 +156,25 @@ const Input = ({ currentId, body }) => {
           )}{" "}
           <div className="document-controls">
             <button className="save-btn" onClick={handleSave}>
-              Save
+              {loading ? "Saving" : "Save"}
+            </button>
+            <button
+              className="copy-btn"
+              onClick={e => {
+                e.preventDefault();
+                toggleCopy();
+              }}
+            >
+              Copy
+            </button>
+            <button
+              className="delete-btn"
+              onClick={e => {
+                e.preventDefault();
+                toggleDelete();
+              }}
+            >
+              Delete
             </button>
           </div>
           {error ? error : null}
@@ -221,6 +250,18 @@ const Input = ({ currentId, body }) => {
             onChange={handleChange}
           />
         </form>
+        <Modal
+          isShowing={isShowingCopy}
+          hide={toggleCopy}
+          item={currentId}
+          action="copy-script"
+        />
+        <Modal
+          isShowing={isShowingDelete}
+          hide={toggleDelete}
+          item={currentId}
+          action="delete-script"
+        />
       </Box>
     </HotKeys>
   );

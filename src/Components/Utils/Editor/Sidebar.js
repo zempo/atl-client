@@ -28,6 +28,7 @@ const Sidebar = ({ history, currentId }) => {
   const [currentAuthor, setCurrentAuthor] = useState("");
   const [currentSubtitle, setCurrentSubtitle] = useState("");
   const [currentBody, setCurrentBody] = useState("");
+  const [updating, setUpdating] = useState(false);
   const actorRef = useRef();
   const tagRef = useRef();
 
@@ -48,10 +49,11 @@ const Sidebar = ({ history, currentId }) => {
   const updateTitlePg = e => {
     e.preventDefault();
     const { title, author, subtitle } = values;
+    setUpdating(true);
     updateTitlePage(currentScript, title, author, subtitle);
     setTimeout(() => {
-      window.location.reload();
-    }, 1000);
+      setUpdating(false);
+    }, 300);
   };
 
   const updateActors = e => {
@@ -147,12 +149,20 @@ const Sidebar = ({ history, currentId }) => {
               onChange={handleChange}
             />
             <button className="side-update-btn" onClick={updateTitlePg}>
-              Update
+              {updating ? "Updating" : "Update"}
             </button>
           </fieldset>
         </form>
         <div className="sidebar-info">
           <h3>Hotkeys</h3>
+          <ol>
+            <li>
+              Copy | <kbd>alt</kbd> + <kbd>c</kbd>
+            </li>
+            <li>
+              Save | <kbd>alt</kbd> + <kbd>s</kbd>{" "}
+            </li>
+          </ol>
         </div>
       </div>
     </>

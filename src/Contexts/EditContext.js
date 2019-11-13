@@ -23,8 +23,11 @@ export const EditContextProvider = props => {
 
     try {
       const result = await autoSave.patch(`${prevFields.id}`, fieldsToUpdate);
-      setError(false);
-      setLoading(false);
+
+      setTimeout(() => {
+        setError(false);
+        setLoading(false);
+      }, 300);
     } catch (err) {
       console.log(err);
       setError(Object.values(err.response.data.error));
@@ -142,6 +145,7 @@ export const EditContextProvider = props => {
     addToTags,
     rmvFromTags,
     loading,
+    setLoading,
     error
   };
 

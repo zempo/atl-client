@@ -45,9 +45,18 @@ export const readScripts = axios.create({
   }
 });
 
-export const autoSave = axios.create({
+export const newScript = axios.create({
   baseURL: `${Config.API_ENDPOINT}/scripts/${TokenService.getId()}`,
   method: "POST",
+  headers: {
+    "content-type": "application/json",
+    authorization: `Bearer ${TokenService.getAuthToken()}`
+  }
+});
+
+export const autoSave = axios.create({
+  baseURL: `${Config.API_ENDPOINT}/scripts/${TokenService.getId()}`,
+  method: "PATCH",
   headers: {
     "content-type": "application/json",
     authorization: `Bearer ${TokenService.getAuthToken()}`

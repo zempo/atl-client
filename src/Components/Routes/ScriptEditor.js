@@ -31,7 +31,7 @@ const ScriptEditor = props => {
   }, []);
 
   return (
-    <HotKeys keyMap={keyMap}>
+    <HotKeys keyMap={keyMap} className="wrapper">
       <AtlSection
         className="atl-page editor-pg"
         style={{ outline: `3.5rem solid ${userColor}` }}
