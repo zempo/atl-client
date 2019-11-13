@@ -1,44 +1,57 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import { useInput } from "../../../Hooks/use-input";
+import { useForm } from "../../../Hooks/use-files";
+import { validationSpacer } from "../../../Services/validation/auth-form-service";
 import { StyleContext } from "../../../Contexts/StyleContext";
 import { EditContext } from "../../../Contexts/EditContext";
 import { UserContext } from "../../../Contexts/UserContext";
 import { BackBtn } from "../Utils";
 import "../Styles/Editor.css";
+import { readScripts } from "../../../Services/endpoints-service";
 
-const Sidebar = ({ history }) => {
-  const { value: tags, bind: bindTags, reset: resetTags } = useInput("");
-  const { value: actors, bind: bindActors, reset: resetActors } = useInput("");
-  const { value: title, bind: bindTitle, reset: resetTitle } = useInput("");
-  const { value: author, bind: bindAuthor, reset: resetAuthor } = useInput("");
+const Sidebar = ({ history, currentId }) => {
+  const { values, errors, handleChange, reset } = useForm(
+    { title: "", author: "", subtitle: "" },
+    { 1: [], 2: [], 3: [] },
+    {},
+    { 1: validationSpacer, 2: validationSpacer, 3: validationSpacer }
+  );
   const {
-    value: subtitle,
-    bind: bindSubtitle,
-    reset: resetSubtitle
-  } = useInput("");
-
+    value: { addToActors, addToTags, currentScript, updateTitlePage }
+  } = useContext(EditContext);
   const {
     value: { winHeight, tenthWidth }
   } = useContext(StyleContext);
-  const {
-    value: { userColor }
-  } = useContext(UserContext);
-  const {
-    value: {
-      error,
-      loading,
-      addToActors,
-      addToTags,
-      updateScript,
-      currentScript
-    }
-  } = useContext(EditContext);
+  const { value: tags, bind: bindTags, reset: resetTags } = useInput("");
+  const { value: actors, bind: bindActors, reset: resetActors } = useInput("");
+  const [currentTitle, setCurrentTitle] = useState("");
+  const [currentAuthor, setCurrentAuthor] = useState("");
+  const [currentSubtitle, setCurrentSubtitle] = useState("");
+  const [currentBody, setCurrentBody] = useState("");
   const actorRef = useRef();
   const tagRef = useRef();
 
-  const updateTitle = e => {
+  useEffect(() => {
+    const findScript = async () => {
+      try {
+        const result = await readScripts.get(`/${currentId}`);
+        setCurrentAuthor(result.data[0].author);
+        setCurrentSubtitle(result.data[0].subtitle);
+        setCurrentTitle(result.data[0].title);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    findScript();
+  }, []);
+
+  const updateTitlePg = e => {
     e.preventDefault();
-    console.log("title");
+    const { title, author, subtitle } = values;
+    updateTitlePage(currentScript, title, author, subtitle);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   };
 
   const updateActors = e => {
@@ -104,37 +117,42 @@ const Sidebar = ({ history }) => {
             <label htmlFor="title">Title</label>
             <br />
             <input
-              defaultValue={currentScript.title}
+              defaultValue={currentTitle}
               placeholder="amazing screenplay"
               name="title"
               type="text"
+              id={1}
+              onChange={handleChange}
             />
             <br />
             <label htmlFor="author">Author</label>
             <br />
             <input
-              defaultValue={currentScript.author}
+              defaultValue={currentAuthor}
               placeholder="Jimmy Dean"
               name="author"
               type="text"
+              id={2}
+              onChange={handleChange}
             />
             <br />
             <label htmlFor="subtitle">Subtitle</label>
             <br />
             <input
-              defaultValue={currentScript.subtitle}
+              defaultValue={currentSubtitle}
               placeholder="Based on a True Story"
               name="subtitle"
               type="text"
+              id={3}
+              onChange={handleChange}
             />
-            <button className="side-update-btn" onClick={updateTitle}>
+            <button className="side-update-btn" onClick={updateTitlePg}>
               Update
             </button>
           </fieldset>
         </form>
         <div className="sidebar-info">
           <h3>Hotkeys</h3>
-          {currentScript.title}
         </div>
       </div>
     </>

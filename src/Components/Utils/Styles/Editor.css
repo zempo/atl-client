@@ -181,6 +181,12 @@
   color: rgb(49, 49, 49);
 }
 
+.side-update-btn:active,
+.save-btn:active {
+  color: rgb(219, 217, 217);
+  background: rgb(20, 20, 20, 0.3);
+}
+
 .sidebar-inputs fieldset {
   border: none;
   border-bottom: 1px solid rgb(20, 20, 20);

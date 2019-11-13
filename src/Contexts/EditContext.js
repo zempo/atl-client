@@ -16,11 +16,35 @@ export const EditContextProvider = props => {
   const updateScriptBody = async (prevFields, value) => {
     setLoading(true);
     let newFields = prevFields;
+    let fieldsToUpdate = {};
     newFields.body = value;
+    fieldsToUpdate.body = value;
     setCurrentScript(newFields);
 
     try {
-      const result = await autoSave.patch(`${prevFields.id}`, newFields);
+      const result = await autoSave.patch(`${prevFields.id}`, fieldsToUpdate);
+      setError(false);
+      setLoading(false);
+    } catch (err) {
+      console.log(err);
+      setError(Object.values(err.response.data.error));
+      setLoading(false);
+    }
+  };
+
+  const updateTitlePage = async (prevFields, title, author, subtitle, body) => {
+    let newFields = {};
+    if (title !== "") {
+      newFields.title = title;
+    }
+    if (author !== "") {
+      newFields.author = author;
+    }
+    if (subtitle !== "") {
+      newFields.subtitle = subtitle;
+    }
+    try {
+      const result = await autoSave.patch(`/${prevFields.id}`, newFields);
       setError(false);
       setLoading(false);
     } catch (err) {
@@ -35,12 +59,12 @@ export const EditContextProvider = props => {
     setLoading(true);
 
     let newFields = prevFields;
+    let fieldsToUpdate = {};
 
     try {
       const toUpdate = await autoSave.get(`${prevFields.id}`);
-      newFields.actors = [...toUpdate.data[0].actors, newActor];
-      setCurrentScript(newFields);
-      const result = await autoSave.patch(`${prevFields.id}`, newFields);
+      fieldsToUpdate.actors = [...toUpdate.data[0].actors, newActor];
+      const result = await autoSave.patch(`${prevFields.id}`, fieldsToUpdate);
       setError(false);
       setLoading(false);
     } catch (err) {
@@ -110,6 +134,7 @@ export const EditContextProvider = props => {
     currentScript,
     updateScript,
     updateScriptBody,
+    updateTitlePage,
     addToActors,
     rmvFromActors,
     addToTags,

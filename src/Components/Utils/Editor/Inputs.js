@@ -58,6 +58,9 @@ const Input = ({ currentId, body }) => {
     e.preventDefault();
     setUpdated(true);
     updateScriptBody(currentScript, currentBody);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   };
   const handleChange = e => {
     setCurrentBody(e.target.value);

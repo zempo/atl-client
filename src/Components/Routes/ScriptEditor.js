@@ -7,7 +7,7 @@ import Sidebar from "../Utils/Editor/Sidebar";
 import { UserContext } from "../../Contexts/UserContext";
 import { EditContext } from "../../Contexts/EditContext";
 
-const ScriptEditor = (props) => {
+const ScriptEditor = props => {
   const {
     value: { userColor }
   } = useContext(UserContext);
@@ -25,10 +25,19 @@ const ScriptEditor = (props) => {
   }, []);
 
   return (
-    <AtlSection className="atl-page editor-pg" style={{ outline: `3.5rem solid ${userColor}` }}>
-      <Input body={props.location.state.item.body} currentId={props.location.state.item.id} />
+    <AtlSection
+      className="atl-page editor-pg"
+      style={{ outline: `3.5rem solid ${userColor}` }}
+    >
+      <Input
+        body={props.location.state.item.body}
+        currentId={props.location.state.item.id}
+      />
       <Output />
-      <Sidebar history={props.history} />
+      <Sidebar
+        history={props.history}
+        currentId={props.location.state.item.id}
+      />
     </AtlSection>
   );
 };
