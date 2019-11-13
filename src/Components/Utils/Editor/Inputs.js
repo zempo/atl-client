@@ -102,11 +102,17 @@ const Input = ({ currentId, body }) => {
     }, 1000);
   };
 
-  let hotSave = React.useCallback(() => {
+  let hotSave = React.useCallback(async () => {
     let bodyToUpdate;
+    let fieldsToUpdate = {};
     bodyToUpdate = inputRef.current.value;
+    fieldsToUpdate.body = bodyToUpdate;
     setUpdated(true);
-    alert(bodyToUpdate);
+    try {
+      const result = await readScripts.patch(`/${currentId}`, fieldsToUpdate);
+    } catch (err) {
+      console.log(err);
+    }
   }, []);
 
   const handlers = {
