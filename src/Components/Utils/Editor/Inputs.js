@@ -15,7 +15,14 @@ const Input = ({ currentId, body }) => {
     value: { userColor }
   } = useContext(UserContext);
   const {
-    value: { error, loading, rmvFromActors, rmvFromTags, currentScript, updateScriptBody }
+    value: {
+      error,
+      loading,
+      rmvFromActors,
+      rmvFromTags,
+      currentScript,
+      updateScriptBody
+    }
   } = useContext(EditContext);
   const [date, setDate] = useState("");
   const [currentBody, setCurrentBody] = useState(body);
@@ -47,16 +54,16 @@ const Input = ({ currentId, body }) => {
     inputRef.current.setSelectionRange(len, len);
   }, []);
 
-  const handleSave = (e) => {
+  const handleSave = e => {
     e.preventDefault();
     setUpdated(true);
     updateScriptBody(currentScript, currentBody);
   };
-  const handleChange = (e) => {
+  const handleChange = e => {
     setCurrentBody(e.target.value);
   };
 
-  const appendActor = (e) => {
+  const appendActor = e => {
     e.preventDefault();
     inputRef.current.focus();
     let currentTag = ` {${e.target.innerHTML}} `;
@@ -65,7 +72,7 @@ const Input = ({ currentId, body }) => {
     updateScriptBody(currentScript, newBody);
   };
 
-  const appendTag = (e) => {
+  const appendTag = e => {
     e.preventDefault();
     inputRef.current.focus();
     let currentTag = ` [${e.target.innerHTML}] `;
@@ -74,33 +81,46 @@ const Input = ({ currentId, body }) => {
     updateScriptBody(currentScript, newBody);
   };
 
-  const removeActor = (e) => {
+  const removeActor = e => {
     e.preventDefault();
     let actorToRmv = e.target.id;
     rmvFromActors(currentScript, actors, actorToRmv);
     setTimeout(() => {
       window.location.reload();
-    }, 500);
+    }, 1000);
   };
 
-  const removeTag = (e) => {
+  const removeTag = e => {
     e.preventDefault();
     let tagToRmv = e.target.id;
     rmvFromTags(currentScript, tags, tagToRmv);
     setTimeout(() => {
       window.location.reload();
-    }, 500);
+    }, 1000);
   };
 
   return (
     <>
-      <Box className="box box-top" height={tenthHeight * 7} width={tenthWidth * 7.92} axis="both" resizeHandles={["s"]}>
+      <Box
+        className="box box-top"
+        height={tenthHeight * 7}
+        width={tenthWidth * 7.92}
+        axis="both"
+        resizeHandles={["s"]}
+      >
         <form className="input-tags">
           {loading ? (
             <p>Saving...</p>
           ) : (
             <p title={`Your changes are automatically saved.`}>
-              <u>Updated {updated ? <Moment fromNow></Moment> : <Moment fromNow>{date}</Moment>}</u>
+              <u>
+                Updated{" "}
+                {updated ? (
+                  <Moment fromNow></Moment>
+                ) : (
+                  <Moment fromNow>{date}</Moment>
+                )}
+              </u>
             </p>
           )}{" "}
           <div className="document-controls">
@@ -117,7 +137,10 @@ const Input = ({ currentId, body }) => {
                     <button
                       className="append-tag"
                       id={i}
-                      style={{ background: userColor, border: `2px solid ${userColor}` }}
+                      style={{
+                        background: userColor,
+                        border: `2px solid ${userColor}`
+                      }}
                       onClick={appendActor}
                     >
                       {actor}
@@ -126,7 +149,10 @@ const Input = ({ currentId, body }) => {
                       className="delete-tag"
                       id={i}
                       onClick={removeActor}
-                      style={{ background: `${userColor}b3`, border: `2px solid ${userColor}` }}
+                      style={{
+                        background: `${userColor}b3`,
+                        border: `2px solid ${userColor}`
+                      }}
                     >
                       x
                     </button>
@@ -143,7 +169,10 @@ const Input = ({ currentId, body }) => {
                     <button
                       className="append-tag"
                       id={i}
-                      style={{ background: userColor, border: `2px solid ${userColor}` }}
+                      style={{
+                        background: userColor,
+                        border: `2px solid ${userColor}`
+                      }}
                       onClick={appendTag}
                     >
                       {tag}
@@ -152,7 +181,10 @@ const Input = ({ currentId, body }) => {
                       className="delete-tag"
                       id={i}
                       onClick={removeTag}
-                      style={{ background: `${userColor}b3`, border: `2px solid ${userColor}` }}
+                      style={{
+                        background: `${userColor}b3`,
+                        border: `2px solid ${userColor}`
+                      }}
                     >
                       x
                     </button>
@@ -161,7 +193,12 @@ const Input = ({ currentId, body }) => {
               })}
             </ul>
           </fieldset>
-          <textarea autoFocus={true} ref={inputRef} value={currentBody} onChange={handleChange} />
+          <textarea
+            autoFocus={true}
+            ref={inputRef}
+            value={currentBody}
+            onChange={handleChange}
+          />
         </form>
       </Box>
     </>

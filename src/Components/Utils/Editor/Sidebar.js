@@ -11,7 +11,11 @@ const Sidebar = ({ history }) => {
   const { value: actors, bind: bindActors, reset: resetActors } = useInput("");
   const { value: title, bind: bindTitle, reset: resetTitle } = useInput("");
   const { value: author, bind: bindAuthor, reset: resetAuthor } = useInput("");
-  const { value: subtitle, bind: bindSubtitle, reset: resetSubtitle } = useInput("");
+  const {
+    value: subtitle,
+    bind: bindSubtitle,
+    reset: resetSubtitle
+  } = useInput("");
 
   const {
     value: { winHeight, tenthWidth }
@@ -20,54 +24,100 @@ const Sidebar = ({ history }) => {
     value: { userColor }
   } = useContext(UserContext);
   const {
-    value: { error, loading, addToActors, addToTags, updateScript, currentScript }
+    value: {
+      error,
+      loading,
+      addToActors,
+      addToTags,
+      updateScript,
+      currentScript
+    }
   } = useContext(EditContext);
   const actorRef = useRef();
   const tagRef = useRef();
 
-  const updateTitle = (e) => {
+  const updateTitle = e => {
     e.preventDefault();
     console.log("title");
   };
 
-  const updateActors = (e) => {
+  const updateActors = e => {
     e.preventDefault();
     let newActor = actors;
-    addToActors(currentScript, currentScript.actors, newActor);
+    addToActors(currentScript, newActor);
     resetActors();
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   };
 
-  const updateTags = (e) => {
+  const updateTags = e => {
     e.preventDefault();
     let newTag = tags;
-    addToTags(currentScript.tags, newTag);
+    addToTags(currentScript, newTag);
     resetTags();
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   };
 
   return (
     <>
-      <div className="box box-sidebar" style={{ height: `${winHeight * 1.5}px`, width: `${tenthWidth * 2}px` }}>
+      <div
+        className="box box-sidebar"
+        style={{ height: `${winHeight * 1.5}px`, width: `${tenthWidth * 2}px` }}
+      >
         <BackBtn history={history} />
         <form className="sidebar-inputs">
           <fieldset className="side-tags">
             <label htmlFor="actor"></label>
-            <input ref={actorRef} placeholder="actor" type="text" name="actors" {...bindActors} />
-            <button className="side-add-btn" title="add actor" onClick={updateActors}>
+            <input
+              ref={actorRef}
+              placeholder="Anton Q."
+              type="text"
+              name="actors"
+              {...bindActors}
+            />
+            <button
+              className="side-add-btn"
+              title="add actor"
+              onClick={updateActors}
+            >
               +
             </button>
-            <input ref={tagRef} placeholder="tag" type="text" name="tags" {...bindTags} />
-            <button className="side-add-btn" title="add tag" onClick={updateTags}>
+            <input
+              ref={tagRef}
+              placeholder="FADE IN"
+              type="text"
+              name="tags"
+              {...bindTags}
+            />
+            <button
+              className="side-add-btn"
+              title="add tag"
+              onClick={updateTags}
+            >
               +
             </button>
           </fieldset>
           <fieldset className="side-title">
             <label htmlFor="title">Title</label>
             <br />
-            <input defaultValue={currentScript.title} placeholder="amazing screenplay" name="title" type="text" />
+            <input
+              defaultValue={currentScript.title}
+              placeholder="amazing screenplay"
+              name="title"
+              type="text"
+            />
             <br />
             <label htmlFor="author">Author</label>
             <br />
-            <input defaultValue={currentScript.author} placeholder="Jimmy Dean" name="author" type="text" />
+            <input
+              defaultValue={currentScript.author}
+              placeholder="Jimmy Dean"
+              name="author"
+              type="text"
+            />
             <br />
             <label htmlFor="subtitle">Subtitle</label>
             <br />
