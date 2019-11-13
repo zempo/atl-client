@@ -5,7 +5,7 @@ import { EditContext } from "../../../Contexts/EditContext";
 import { UserContext } from "../../../Contexts/UserContext";
 import { readScripts } from "../../../Services/endpoints-service";
 import Moment from "react-moment";
-import Hotkeys from "react-hot-keys";
+import { HotKeys } from "react-hotkeys";
 import "../Styles/Editor.css";
 
 const Input = ({ currentId, body }) => {
@@ -53,16 +53,15 @@ const Input = ({ currentId, body }) => {
     findScript();
     let len = inputRef.current.value.length;
     inputRef.current.setSelectionRange(len, len);
+    // inputRef.current.setAttribute("data-gramm", "false");
   }, []);
 
   const handleSave = e => {
     e.preventDefault();
     setUpdated(true);
     updateScriptBody(currentScript, currentBody);
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
   };
+
   const handleChange = e => {
     setCurrentBody(e.target.value);
   };
@@ -103,8 +102,19 @@ const Input = ({ currentId, body }) => {
     }, 1000);
   };
 
+  let hotSave = React.useCallback(() => {
+    let bodyToUpdate;
+    bodyToUpdate = inputRef.current.value;
+    setUpdated(true);
+    alert(bodyToUpdate);
+  }, []);
+
+  const handlers = {
+    HOT_SAVE: hotSave
+  };
+
   return (
-    <Hotkeys>
+    <HotKeys handlers={handlers} attach={window}>
       <Box
         className="box box-top"
         height={tenthHeight * 7}
@@ -198,6 +208,7 @@ const Input = ({ currentId, body }) => {
             </ul>
           </fieldset>
           <textarea
+            spellCheck={true}
             autoFocus={true}
             ref={inputRef}
             value={currentBody}
@@ -205,7 +216,7 @@ const Input = ({ currentId, body }) => {
           />
         </form>
       </Box>
-    </Hotkeys>
+    </HotKeys>
   );
 };
 

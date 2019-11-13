@@ -5,6 +5,13 @@ import Output from "../Utils/Editor/Outputs";
 import Sidebar from "../Utils/Editor/Sidebar";
 import { UserContext } from "../../Contexts/UserContext";
 import { EditContext } from "../../Contexts/EditContext";
+import { HotKeys } from "react-hotkeys";
+
+const keyMap = {
+  HOT_SAVE: "alt+s",
+  GRAB_CURSOR: { sequence: "SPACE_BAR", action: "keydown" },
+  DEFAULT_CURSOR: { sequence: "SPACE_BAR", action: "keyup" }
+};
 
 const ScriptEditor = props => {
   const {
@@ -24,20 +31,22 @@ const ScriptEditor = props => {
   }, []);
 
   return (
-    <AtlSection
-      className="atl-page editor-pg"
-      style={{ outline: `3.5rem solid ${userColor}` }}
-    >
-      <Input
-        body={props.location.state.item.body}
-        currentId={props.location.state.item.id}
-      />
-      <Output />
-      <Sidebar
-        history={props.history}
-        currentId={props.location.state.item.id}
-      />
-    </AtlSection>
+    <HotKeys keyMap={keyMap}>
+      <AtlSection
+        className="atl-page editor-pg"
+        style={{ outline: `3.5rem solid ${userColor}` }}
+      >
+        <Input
+          body={props.location.state.item.body}
+          currentId={props.location.state.item.id}
+        />
+        <Output />
+        <Sidebar
+          history={props.history}
+          currentId={props.location.state.item.id}
+        />
+      </AtlSection>
+    </HotKeys>
   );
 };
 

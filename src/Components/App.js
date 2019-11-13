@@ -20,6 +20,7 @@ import LoginPage from "./Routes/LoginPage";
 // Utils + Styles
 import AuthorizedRoute from "./Utils/Auth/AuthorizedRoute";
 import PublicRoute from "./Utils/Auth/PublicRoute";
+import { configure } from "react-hotkeys";
 import "./App.css";
 
 class App extends Component {
@@ -34,6 +35,12 @@ class App extends Component {
 
   componentDidMount() {
     IdleService.setIdleCallback(this.logoutFromIdle);
+    configure({
+      customKeyCodes: {
+        32: "SPACE_BAR"
+      },
+      ignoreTags: []
+    });
 
     if (TokenService.hasAuthToken()) {
       // IdleService.regiserIdleTimerResets();
@@ -68,12 +75,32 @@ class App extends Component {
             <ErrorPage>
               <Switch>
                 <PublicRoute exact path={"/"} component={Landing} />
-                <AuthorizedRoute exact path={"/scripts"} component={ScriptsPage} />
-                <AuthorizedRoute exact path={"/script-editor"} component={ScriptEditor} />
-                <AuthorizedRoute exact path={"/user-guide"} component={UserGuide} />
-                <AuthorizedRoute exact path={"/user-settings"} component={UserSettings} />
+                <AuthorizedRoute
+                  exact
+                  path={"/scripts"}
+                  component={ScriptsPage}
+                />
+                <AuthorizedRoute
+                  exact
+                  path={"/script-editor"}
+                  component={ScriptEditor}
+                />
+                <AuthorizedRoute
+                  exact
+                  path={"/user-guide"}
+                  component={UserGuide}
+                />
+                <AuthorizedRoute
+                  exact
+                  path={"/user-settings"}
+                  component={UserSettings}
+                />
                 <PublicRoute exact path={"/login"} component={LoginPage} />
-                <PublicRoute exact path={"/register"} component={RegisterPage} />
+                <PublicRoute
+                  exact
+                  path={"/register"}
+                  component={RegisterPage}
+                />
               </Switch>
             </ErrorPage>
           </main>
