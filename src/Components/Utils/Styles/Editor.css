@@ -175,7 +175,8 @@
   margin-bottom: 5vh;
 }
 
-.side-update-btn:hover {
+.side-update-btn:hover,
+.save-btn:hover {
   background: rgb(219, 217, 217);
   color: rgb(49, 49, 49);
 }

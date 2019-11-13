@@ -94,9 +94,6 @@ const Input = ({ currentId, body }) => {
   return (
     <>
       <Box className="box box-top" height={tenthHeight * 7} width={tenthWidth * 7.92} axis="both" resizeHandles={["s"]}>
-        <button className="save-btn" onClick={handleSave}>
-          Save
-        </button>
         <form className="input-tags">
           {loading ? (
             <p>Saving...</p>
@@ -105,6 +102,11 @@ const Input = ({ currentId, body }) => {
               <u>Updated {updated ? <Moment fromNow></Moment> : <Moment fromNow>{date}</Moment>}</u>
             </p>
           )}{" "}
+          <div className="document-controls">
+            <button className="save-btn" onClick={handleSave}>
+              Save
+            </button>
+          </div>
           {error ? error : null}
           <fieldset className="input-top">
             <ul className="actors">
