@@ -47,15 +47,16 @@ const Input = ({ currentId, body }) => {
     inputRef.current.setSelectionRange(len, len);
   }, []);
 
-  const handleChange = (e) => {
+  const handleSave = () => {
     setUpdated(true);
+    updateScriptBody(currentScript, currentBody);
+  };
+  const handleChange = (e) => {
     setCurrentBody(e.target.value);
-    updateScriptBody(currentScript, e.target.value);
   };
 
   const appendActor = (e) => {
     e.preventDefault();
-    setUpdated(true);
     inputRef.current.focus();
     let currentTag = ` {${e.target.innerHTML}} `;
     let newBody = currentBody + currentTag;
@@ -65,7 +66,6 @@ const Input = ({ currentId, body }) => {
 
   const appendTag = (e) => {
     e.preventDefault();
-    setUpdated(true);
     inputRef.current.focus();
     let currentTag = ` [${e.target.innerHTML}] `;
     let newBody = currentBody + currentTag;
@@ -93,7 +93,10 @@ const Input = ({ currentId, body }) => {
 
   return (
     <>
-      <Box className="box box-top" height={tenthHeight * 5} width={tenthWidth * 7.92} axis="both" resizeHandles={["s"]}>
+      <Box className="box box-top" height={tenthHeight * 7} width={tenthWidth * 7.92} axis="both" resizeHandles={["s"]}>
+        <button className="save-btn" onClick={handleSave}>
+          Save
+        </button>
         <form className="input-tags">
           {loading ? (
             <p>Saving...</p>

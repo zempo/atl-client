@@ -33,7 +33,7 @@ const Sidebar = ({ history }) => {
   const updateActors = (e) => {
     e.preventDefault();
     let newActor = actors;
-    addToActors(currentScript.actors, newActor);
+    addToActors(currentScript, currentScript.actors, newActor);
     resetActors();
   };
 

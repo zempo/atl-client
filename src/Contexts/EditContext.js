@@ -9,18 +9,18 @@ export const EditContextProvider = (props) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const updateScript = (newfields) => {
-    setCurrentScript(newfields);
+  const updateScript = (newFields) => {
+    setCurrentScript(newFields);
   };
 
   const updateScriptBody = async (prevFields, value) => {
     setLoading(true);
-    let newfields = prevFields;
-    newfields.body = value;
-    setCurrentScript(newfields);
+    let newFields = prevFields;
+    newFields.body = value;
+    setCurrentScript(newFields);
 
     try {
-      const result = await autoSave.patch(`${prevFields.id}`, newfields);
+      const result = await autoSave.patch(`${prevFields.id}`, newFields);
       setError(false);
       setLoading(false);
     } catch (err) {
@@ -30,19 +30,36 @@ export const EditContextProvider = (props) => {
     }
   };
 
-  const addToActors = async (prevActors, newActor) => {
-    console.log(prevActors, newActor);
+  const addToActors = async (prevFields, prevActors, newActor) => {
+    const newActors = prevActors;
+    newActors.push(newActor);
+    setLoading(true);
+
+    let newFields = prevFields;
+    newFields.actors = newActors;
+
+    setCurrentScript(newFields);
+
+    try {
+      const result = await autoSave.patch(`${prevFields.id}`, newFields);
+      setError(false);
+      setLoading(false);
+    } catch (err) {
+      console.log(err);
+      setError(Object.values(err.response.data.error));
+      setLoading(false);
+    }
   };
 
   const rmvFromActors = async (prevFields, prevActors, target) => {
     let filteredActors = prevActors.filter((actor, i) => i != target);
 
     setLoading(true);
-    let newfields = prevFields;
-    newfields.actors = filteredActors;
+    let newFields = prevFields;
+    newFields.actors = filteredActors;
 
     try {
-      const result = await autoSave.patch(`/${prevFields.id}`, newfields);
+      const result = await autoSave.patch(`/${prevFields.id}`, newFields);
       setError(false);
       setLoading(false);
       return filteredActors;
@@ -59,12 +76,12 @@ export const EditContextProvider = (props) => {
   const rmvFromTags = async (prevFields, prevTags, target) => {
     let filteredTags = prevTags.filter((tag, i) => i != target);
     setLoading(true);
-    let newfields = prevFields;
-    newfields.tags = filteredTags;
-    // console.log(newfields);
+    let newFields = prevFields;
+    newFields.tags = filteredTags;
+    // console.log(newFields);
 
     try {
-      const result = await autoSave.patch(`/${prevFields.id}`, newfields);
+      const result = await autoSave.patch(`/${prevFields.id}`, newFields);
       setError(false);
       setLoading(false);
       return filteredTags;
