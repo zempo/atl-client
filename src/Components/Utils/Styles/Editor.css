@@ -159,15 +159,21 @@
 .side-title input {
   width: 90%;
 }
-.save-btn {
+.document-controls {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 3vh;
+  margin-left: 5vh;
+}
+.document-controls button {
   background: rgb(20, 20, 20, 0.3);
   border: 2px solid rgb(219, 217, 217);
   color: rgb(219, 217, 217);
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: bold;
-  width: 10rem;
-  padding: 0.5rem;
-  margin-left: calc(50% - 5rem);
+  width: 6rem;
+  height: 2.5rem;
+  margin-right: 1rem;
 }
 .side-update-btn {
   background: rgb(20, 20, 20, 0.3);
@@ -182,13 +188,13 @@
 }
 
 .side-update-btn:hover,
-.save-btn:hover {
+.document-controls button:hover {
   background: rgb(219, 217, 217);
   color: rgb(49, 49, 49);
 }
 
 .side-update-btn:active,
-.save-btn:active {
+.document-controls:active {
   color: rgb(219, 217, 217);
   background: rgb(20, 20, 20, 0.3);
 }

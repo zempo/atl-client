@@ -140,20 +140,6 @@ const Input = ({ currentId, body }) => {
         resizeHandles={["s"]}
       >
         <form className="input-tags">
-          {loading ? (
-            <p>Saving...</p>
-          ) : (
-            <p title={`Your changes are automatically saved.`}>
-              <u>
-                Updated{" "}
-                {updated ? (
-                  <Moment fromNow></Moment>
-                ) : (
-                  <Moment fromNow>{date}</Moment>
-                )}
-              </u>
-            </p>
-          )}{" "}
           <div className="document-controls">
             <button className="save-btn" onClick={handleSave}>
               {loading ? "Saving" : "Save"}
@@ -176,6 +162,20 @@ const Input = ({ currentId, body }) => {
             >
               Delete
             </button>
+            {loading ? (
+              <p>Saving...</p>
+            ) : (
+              <p title={`Your changes are automatically saved.`}>
+                <u>
+                  Updated{" "}
+                  {updated ? (
+                    <Moment fromNow></Moment>
+                  ) : (
+                    <Moment fromNow>{date}</Moment>
+                  )}
+                </u>
+              </p>
+            )}{" "}
           </div>
           {error ? error : null}
           <fieldset className="input-top">
