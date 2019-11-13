@@ -47,7 +47,8 @@ const Input = ({ currentId, body }) => {
     inputRef.current.setSelectionRange(len, len);
   }, []);
 
-  const handleSave = () => {
+  const handleSave = (e) => {
+    e.preventDefault();
     setUpdated(true);
     updateScriptBody(currentScript, currentBody);
   };
