@@ -9,6 +9,8 @@ import { HotKeys } from "react-hotkeys";
 
 const keyMap = {
   HOT_SAVE: "alt+s",
+  HOT_COPY: "alt+c",
+  HOT_DELETE: "alt+d",
   GRAB_CURSOR: { sequence: "SPACE_BAR", action: "keydown" },
   DEFAULT_CURSOR: { sequence: "SPACE_BAR", action: "keyup" }
 };

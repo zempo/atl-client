@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AtlNotification } from "../../Utils/Utils";
-import { readScripts } from "../../../Services/endpoints-service";
+import { readScripts, newScript } from "../../../Services/endpoints-service";
 
 const CopyScript = ({ item, cancel }) => {
   const [resMsg, setResMsg] = useState("");
@@ -10,13 +10,26 @@ const CopyScript = ({ item, cancel }) => {
     e.preventDefault();
     setResStatus(0);
     setResMsg("");
+    let scriptToCopy = {};
 
     try {
-      const scriptToCopy = await readScripts.get(`/${item}`);
+      const getScript = await readScripts.get(`/${item}`);
+      scriptToCopy.title = getScript.data[0].title + " Copy";
+      scriptToCopy.author = getScript.data[0].author;
+      scriptToCopy.subtitle = getScript.data[0].subtitle;
+      scriptToCopy.body = getScript.data[0].body;
+      scriptToCopy.actors = getScript.data[0].actors;
+      scriptToCopy.tags = getScript.data[0].tags;
+      const copyScipt = await newScript.post("/", scriptToCopy);
 
-      console.log(scriptToCopy.data[0]);
       setResStatus(200);
       setResMsg("Copied Script");
+
+      setTimeout(() => {
+        setResStatus(0);
+        cancel();
+        window.location.reload();
+      }, 500);
     } catch (error) {
       setResStatus(error.response.status);
       setResMsg(Object.values(error.response.data.error));

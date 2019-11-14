@@ -157,10 +157,13 @@ const Sidebar = ({ history, currentId }) => {
           <h3>Hotkeys</h3>
           <ol>
             <li>
+              Save | <kbd>alt</kbd> + <kbd>s</kbd>{" "}
+            </li>
+            <li>
               Copy | <kbd>alt</kbd> + <kbd>c</kbd>
             </li>
             <li>
-              Save | <kbd>alt</kbd> + <kbd>s</kbd>{" "}
+              Delete | <kbd>alt</kbd> + <kbd>d</kbd>
             </li>
           </ol>
         </div>

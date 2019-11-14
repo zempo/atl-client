@@ -126,8 +126,18 @@ const Input = ({ currentId, body }) => {
     }
   }, []);
 
+  let hotCopy = React.useCallback(() => {
+    toggleCopy();
+  }, []);
+
+  let hotDelete = React.useCallback(() => {
+    toggleDelete();
+  }, []);
+
   const handlers = {
-    HOT_SAVE: hotSave
+    HOT_SAVE: hotSave,
+    HOT_COPY: hotCopy,
+    HOT_DELETE: hotDelete
   };
 
   return (
