@@ -1,8 +1,9 @@
 import React from "react";
 
-const DeleteScript = ({ item, cancel }) => {
-  const handleCopy = e => {
+const DeleteScript = ({ item, history, cancel }) => {
+  const handleDelete = e => {
     e.preventDefault();
+    history.goBack();
   };
   return (
     <div className="modal-action copy-script">
@@ -10,7 +11,7 @@ const DeleteScript = ({ item, cancel }) => {
       <button className="modal-btn" onClick={cancel}>
         Cancel
       </button>
-      <button className="modal-btn action" onClick={handleCopy}>
+      <button className="modal-btn action" onClick={handleDelete}>
         Delete
       </button>
       <button className="close-modal" onClick={cancel}>

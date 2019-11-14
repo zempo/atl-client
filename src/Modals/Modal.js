@@ -5,7 +5,7 @@ import AddScript from "../Components/Forms/ModalForms/AddScript";
 import CopyScript from "../Components/Forms/ModalForms/CopyScript";
 import DeleteScript from "../Components/Forms/ModalForms/DeleteScript";
 
-const Modal = ({ item, payload, action, isShowing, hide }) => {
+const Modal = ({ item, history, action, isShowing, hide }) => {
   if (isShowing) {
     return ReactDOM.createPortal(
       <div onClick={hide} className="Modal">
@@ -20,7 +20,7 @@ const Modal = ({ item, payload, action, isShowing, hide }) => {
           ) : action === "print-script" ? (
             "print modal"
           ) : action === "delete-script" ? (
-            <DeleteScript item={item} cancel={hide} />
+            <DeleteScript item={item} history={history} cancel={hide} />
           ) : (
             "other modal"
           )}

@@ -10,7 +10,7 @@ import Moment from "react-moment";
 import { HotKeys } from "react-hotkeys";
 import "../Styles/Editor.css";
 
-const Input = ({ currentId, body }) => {
+const Input = ({ currentId, body, history }) => {
   const { isShowing: isShowingCopy, toggle: toggleCopy } = useModal();
   const { isShowing: isShowingDelete, toggle: toggleDelete } = useModal();
   const {
@@ -270,6 +270,7 @@ const Input = ({ currentId, body }) => {
           isShowing={isShowingDelete}
           hide={toggleDelete}
           item={currentId}
+          history={history}
           action="delete-script"
         />
       </Box>

@@ -41,6 +41,7 @@ const ScriptEditor = props => {
         <Input
           body={props.location.state.item.body}
           currentId={props.location.state.item.id}
+          history={props.history}
         />
         <Output />
         <Sidebar
