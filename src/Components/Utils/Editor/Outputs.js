@@ -2,11 +2,15 @@ import React, { useContext } from "react";
 import { ResizableBox as Box } from "react-resizable";
 import { StyleContext } from "../../../Contexts/StyleContext";
 import "../Styles/Editor.css";
+import { UserContext } from "../../../Contexts/UserContext";
 
 const Output = () => {
   const {
     value: { tenthHeight, tenthWidth }
   } = useContext(StyleContext);
+  const {
+    value: { userColor }
+  } = useContext(UserContext);
 
   return (
     <>

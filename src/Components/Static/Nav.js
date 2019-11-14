@@ -33,7 +33,9 @@ class Nav extends Component {
       <div className="logged-in auth-link">
         <h3>
           <i className="far fa-user-circle"></i> &nbsp;
-          {user_name && user_name.length > 15 ? `${user_name.slice(0, 15)}... ` : `${user_name} `}
+          {user_name && user_name.length > 15
+            ? `${user_name.slice(0, 15)}... `
+            : `${user_name} `}
           <button
             className="nav-menu-btn"
             onClick={() => this.setState({ showing: !this.state.showing })}
@@ -81,11 +83,26 @@ class Nav extends Component {
               : this.renderLoginLink()}
           </div>
         </nav>
-        <div className={`accordion-menu ${this.state.showing ? "open" : "closed"}`}>
+        <div
+          className={`accordion-menu ${this.state.showing ? "open" : "closed"}`}
+          style={{ background: `${userColor}` }}
+        >
           <ul onClick={() => this.setState({ showing: !this.state.showing })}>
-            <NavMenuOption to="/scripts" icon={<i className="fas fa-scroll"></i>} text="My Projects" />
-            <NavMenuOption to="/user-guide" icon={<i className="far fa-question-circle"></i>} text="User Guide" />
-            <NavMenuOption to="/user-settings" icon={<i className="fas fa-sliders-h"></i>} text="Settings" />
+            <NavMenuOption
+              to="/scripts"
+              icon={<i className="fas fa-scroll"></i>}
+              text="My Projects"
+            />
+            <NavMenuOption
+              to="/user-guide"
+              icon={<i className="far fa-question-circle"></i>}
+              text="User Guide"
+            />
+            <NavMenuOption
+              to="/user-settings"
+              icon={<i className="fas fa-sliders-h"></i>}
+              text="Settings"
+            />
             <li>
               <Link onClick={this.handleLogoutClick} to="/">
                 <h3>

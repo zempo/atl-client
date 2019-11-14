@@ -3,9 +3,9 @@ import { readUser } from "../Services/endpoints-service";
 
 export const UserContext = createContext();
 
-export const UserContextProvider = (props) => {
+export const UserContextProvider = props => {
   const [userName, setUserName] = useState("Error..");
-  const [userColor, setUserColor] = useState("#37474F");
+  const [userColor, setUserColor] = useState("#455A64");
   const [user, setUser] = useState({});
   const [error, setError] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -38,5 +38,9 @@ export const UserContextProvider = (props) => {
     loading
   };
 
-  return <UserContext.Provider value={{ value }}>{props.children}</UserContext.Provider>;
+  return (
+    <UserContext.Provider value={{ value }}>
+      {props.children}
+    </UserContext.Provider>
+  );
 };
