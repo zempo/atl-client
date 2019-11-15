@@ -62,3 +62,11 @@ export const autoSave = axios.create({
     authorization: `Bearer ${TokenService.getAuthToken()}`
   }
 });
+
+export const deleteScript = axios.create({
+  baseURL: `${Config.API_ENDPOINT}/scripts/${TokenService.getId()}`,
+  method: "DELETE",
+  headers: {
+    authorization: `Bearer ${TokenService.getAuthToken()}`
+  }
+});

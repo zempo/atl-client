@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import { deleteScript } from "../../../Services/endpoints-service";
 import { AtlNotification } from "../../Utils/Utils";
 
-const DeleteScript = ({ item, history, cancel }) => {
+const DeleteListScript = ({ item, cancel }) => {
   const [resMsg, setResMsg] = useState("");
   const [resStatus, setResStatus] = useState(0);
 
   const handleDelete = async e => {
     let scriptToDelete = item;
     e.preventDefault();
-    history.goBack();
 
     try {
       const deleted = await deleteScript.delete(`/${scriptToDelete}`);
@@ -18,6 +17,7 @@ const DeleteScript = ({ item, history, cancel }) => {
       setResMsg("Script Deleted");
       setTimeout(() => {
         setResStatus(0);
+        cancel();
         window.location.reload();
       }, 300);
     } catch (error) {
@@ -46,4 +46,4 @@ const DeleteScript = ({ item, history, cancel }) => {
   );
 };
 
-export default DeleteScript;
+export default DeleteListScript;

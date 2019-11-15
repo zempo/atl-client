@@ -12,10 +12,22 @@ const ListScript = ({ script }) => {
   return (
     <>
       <div className="script">
-        <input type="checkbox" id={`script-toggle-${script.id}`} className="script-toggle" value="selected" />
-        <label className="script-container" htmlFor={`script-toggle-${script.id}`}>
+        <input
+          type="checkbox"
+          id={`script-toggle-${script.id}`}
+          className="script-toggle"
+          value="selected"
+        />
+        <label
+          className="script-container"
+          htmlFor={`script-toggle-${script.id}`}
+        >
           <div className="script-menu">
-            <MenuOption to="/script-editor" text={<i className="fas fa-pencil-alt" title="edit" />} script={script} />
+            <MenuOption
+              to="/script-editor"
+              text={<i className="fas fa-pencil-alt" title="edit" />}
+              script={script}
+            />
             <button className="menu-btn" title="copy" onClick={toggleCopy}>
               <img src="https://cdn4.iconfinder.com/data/icons/feather/24/copy-512.png" />
             </button>
@@ -32,9 +44,26 @@ const ListScript = ({ script }) => {
           </div>
         </label>
       </div>
-      <Modal isShowing={isShowingCopy} hide={toggleCopy} item={script.id} action="copy-script" />
-      <Modal isShowing={isShowingPrint} hide={togglePrint} item={script.id} payload={script} action="print-script" />
-      <Modal isShowing={isShowingDelete} hide={toggleDelete} item={script.id} payload={script} action="delete-script" />
+      <Modal
+        isShowing={isShowingCopy}
+        hide={toggleCopy}
+        item={script.id}
+        action="copy-script"
+      />
+      <Modal
+        isShowing={isShowingPrint}
+        hide={togglePrint}
+        item={script.id}
+        payload={script}
+        action="print-script"
+      />
+      <Modal
+        isShowing={isShowingDelete}
+        hide={toggleDelete}
+        item={script.id}
+        payload={script}
+        action="delete-list-script"
+      />
     </>
   );
 };

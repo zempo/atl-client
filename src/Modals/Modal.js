@@ -4,6 +4,7 @@ import "./css/Modals.css";
 import AddScript from "../Components/Forms/ModalForms/AddScript";
 import CopyScript from "../Components/Forms/ModalForms/CopyScript";
 import DeleteScript from "../Components/Forms/ModalForms/DeleteScript";
+import DeleteListScript from "../Components/Forms/ModalForms/DeleteListScript";
 
 const Modal = ({ item, history, action, isShowing, hide }) => {
   if (isShowing) {
@@ -21,6 +22,8 @@ const Modal = ({ item, history, action, isShowing, hide }) => {
             "print modal"
           ) : action === "delete-script" ? (
             <DeleteScript item={item} history={history} cancel={hide} />
+          ) : action === "delete-list-script" ? (
+            <DeleteListScript item={item} cancel={hide} />
           ) : (
             "other modal"
           )}
