@@ -46,19 +46,18 @@ const UserSettings = () => {
     setUserColor(value);
   };
 
-  const handleChange = e => {
-    const { value } = e.target;
-    setUsr({
-      currentColor: selectedColor,
-      currentName: value
-    });
-  };
+  // const handleChange = e => {
+  //   const { value } = e.target;
+  //   setUsr({
+  //     currentColor: selectedColor,
+  //     currentName: value
+  //   });
+  // };
 
   const updateUser = async e => {
     e.preventDefault();
 
     let userToPatch = {};
-    userToPatch.user_name = usr.currentName;
     userToPatch.theme = selectedColor;
 
     try {
@@ -72,7 +71,7 @@ const UserSettings = () => {
     <AtlSection className="atl-pg settings-pg">
       <h1 className="animated-h1">Update My Settings</h1>
       <form className="atl-form user-edit-form">
-        <fieldset className="user-account">
+        {/* <fieldset className="user-account">
           <label htmlFor="username">Edit Username?</label>
           <input
             type="text"
@@ -80,7 +79,10 @@ const UserSettings = () => {
             defaultValue={usr.currentName}
             onChange={handleChange}
           />
-        </fieldset>
+        </fieldset> */}
+        <button className="theme-update-btn" onClick={updateUser}>
+          Apply
+        </button>
         <fieldset className="user-appearance">
           {colors.map((c, i) => {
             return (
@@ -96,7 +98,6 @@ const UserSettings = () => {
             );
           })}
         </fieldset>
-        <button onClick={updateUser}>Apply</button>
       </form>
     </AtlSection>
   );
