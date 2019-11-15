@@ -29,7 +29,7 @@ const DeleteScript = ({ item, history, cancel }) => {
     }
   };
   return (
-    <div className="modal-action copy-script">
+    <div className="modal-action delete-script">
       {resStatus === 0 ? null : (
         <AtlNotification type={resStatus} msg={resMsg} />
       )}

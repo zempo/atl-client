@@ -55,7 +55,7 @@ const ListScript = ({ script }) => {
         hide={togglePrint}
         item={script.id}
         payload={script}
-        action="print-script"
+        action="print-list-script"
       />
       <Modal
         isShowing={isShowingDelete}

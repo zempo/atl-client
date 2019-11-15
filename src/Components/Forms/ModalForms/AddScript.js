@@ -5,7 +5,7 @@ const AddScript = ({ cancel }) => {
     e.preventDefault();
   };
   return (
-    <div className="modal-action copy-script">
+    <div className="modal-action add-script">
       <button className="modal-btn" onClick={cancel}>
         Cancel
       </button>
