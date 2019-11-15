@@ -33,6 +33,7 @@ export const UserContextProvider = props => {
   const value = {
     user,
     userColor,
+    setUserColor,
     userName,
     error,
     loading

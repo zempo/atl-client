@@ -149,7 +149,7 @@ const Input = ({ currentId, body, history }) => {
         axis="both"
         resizeHandles={["s"]}
       >
-        <form className="input-tags">
+        <form className="alt-form editor-form">
           <div className="document-controls">
             <button className="save-btn" onClick={handleSave}>
               {loading ? "Saving" : "Save"}

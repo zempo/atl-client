@@ -28,6 +28,14 @@ export const refresh = axios.create({
 });
 
 // USERS
+export const readThemes = axios.create({
+  baseURL: `${Config.API_ENDPOINT}/users/themes`,
+  method: "GET",
+  headers: {
+    authorization: `Bearer ${TokenService.getAuthToken()}`
+  }
+});
+
 export const readUser = axios.create({
   baseURL: `${Config.API_ENDPOINT}/users/${TokenService.getId()}`,
   method: "GET",

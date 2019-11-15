@@ -36,4 +36,18 @@ body {
   max-width: 80%;
   max-height: 80%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  animation: modalEnter 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+/* stick with this animation. it's clean and simple! */
+@keyframes modalEnter {
+  0% {
+    -webkit-transform: translateZ(-1400px);
+    transform: translateZ(-1400px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
+  }
 }

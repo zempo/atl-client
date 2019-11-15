@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-export const useRadio = (initialRadios) => {
+export const useRadio = initialRadios => {
   const [radios, setRadios] = useState(initialRadios);
 
   return {
     radios,
-    handleChange: (e) => {
+    handleChange: e => {
       setRadios({
         ...radios,
         [e.target.name]: e.target.value
