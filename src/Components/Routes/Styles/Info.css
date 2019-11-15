@@ -7,7 +7,8 @@
 }
 
 .user-appearance {
-  padding: 1rem;
+  width: 1080px;
+  margin-left: calc(50% - 510px);
 }
 
 .user-appearance input {
@@ -49,4 +50,39 @@
 .theme-update-btn:active {
   color: rgb(219, 217, 217);
   background: rgb(20, 20, 20, 0.3);
+}
+
+@media screen and (max-width: 1200px) {
+  .user-appearance {
+    width: 840px;
+    margin-left: calc(50% - 390px);
+  }
+}
+
+@media screen and (max-width: 910px) {
+  .user-appearance {
+    width: 540px;
+    margin-left: calc(50% - 270px);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .user-appearance {
+    display: flex;
+    margin-left: calc(50% - 130px);
+  }
+  .user-appearance input {
+    /* border: 1px solid pink; */
+    width: 200px;
+    height: 100px;
+  }
+
+  .user-appearance label {
+    height: 100px;
+    width: 200px;
+    border-radius: 0%;
+  }
+  .user-appearance {
+    /* margin-left: calc(50% - 0px); */
+  }
 }
