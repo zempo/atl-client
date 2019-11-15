@@ -1,62 +1,87 @@
 import React, { useState, useEffect, useRef } from "react";
-import { validatePwd, validateUsername, validateEmail } from "../../../Services/validation/auth-form-service";
+import {
+  validatePwd,
+  validateUsername,
+  validateEmail
+} from "../../../Services/validation/auth-form-service";
 import { useForm } from "../../../Hooks/use-files";
 import { AuthService } from "../../../Services/Auth/auth-service";
 import { AtlNotification, Required } from "../../Utils/Utils";
 import "../Styles/Forms.css";
 import "../Styles/Auth.css";
 
-const RegisterForm = (props) => {
+const RegisterForm = props => {
   const { values, errors, handleChange, reset } = useForm(
     { username: "", email: "", password: "" },
     { 1: [], 2: [], 3: [] },
     {},
     { 1: validateUsername, 2: validateEmail, 3: validatePwd }
   );
+  const [err, setErr] = useState({
+    resMsg: "",
+    resStatus: 0
+  });
+  const [validReq, setValidReq] = useState(false);
   const usernameRef = useRef();
   const emailRef = useRef();
   const pwdRef = useRef();
-  const [validReq, setValidReq] = useState(false);
-  const [resMsg, setResMsg] = useState("");
-  const [resStatus, setResStatus] = useState(0);
 
   useEffect(() => {
-    if (errors["1"].length > 0 || errors["2"].length > 0 || errors["3"].length > 0) {
+    if (
+      errors["1"].length > 0 ||
+      errors["2"].length > 0 ||
+      errors["3"].length > 0
+    ) {
       return setValidReq(false);
     } else {
       return setValidReq(true);
     }
   }, [errors]);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async event => {
     event.preventDefault();
     const { password, email, username } = values;
     let newUser = { password, email };
     newUser.user_name = username;
 
-    setResStatus(0);
-    setResMsg("");
+    setErr({
+      resMsg: "",
+      resStatus: 0
+    });
     try {
       const createdUser = await AuthService.postUser(newUser);
 
-      setResStatus(createdUser.status);
-      setResMsg("Account Sucessfully Created!");
+      setErr({
+        resMsg: "Sign Up Successful!",
+        resStatus: 200
+      });
       setValidReq(false);
       props.onRegistrationSuccess(email, password);
       reset();
     } catch (error) {
-      setResStatus(error.response.status);
-      setResMsg(Object.values(error.response.data.error));
+      setErr({
+        resStatus: error.response.status,
+        resMsg: Object.values(error.response.data.error)
+      });
       setTimeout(() => {
-        setResStatus(0);
+        setErr({
+          resMsg: "",
+          resStatus: 0
+        });
       }, 5000);
     }
   };
 
   return (
     <>
-      <form className="atl-form register-form" onSubmit={handleSubmit} autoComplete="off">
-        {resStatus === 0 ? null : <AtlNotification type={resStatus} msg={resMsg} />}
+      <form
+        className="atl-form register-form"
+        onSubmit={handleSubmit}
+        autoComplete="off"
+      >
+        {err.resStatus === 0 ? null : (
+          <AtlNotification type={err.resStatus} msg={err.resMsg} />
+        )}
         <fieldset>
           <ul>
             {errors["1"].map((err, i) => (

@@ -6,7 +6,11 @@ import { AtlNotification, Required } from "../../Utils/Utils";
 import "../Styles/Forms.css";
 import "../Styles/Auth.css";
 
-const LoginForm = (props) => {
+const LoginForm = props => {
+  const [err, setErr] = useState({
+    resMsg: "",
+    resStatus: 0
+  });
   // eslint-disable-next-line
   const { values, errors, handleChange, reset } = useForm(
     { email: "", password: "" },
@@ -14,17 +18,19 @@ const LoginForm = (props) => {
     {},
     { 1: validateLogin, 2: validateLogin }
   );
-  const [resMsg, setResMsg] = useState("");
-  const [resStatus, setResStatus] = useState(0);
   const emailRef = useRef();
   const pwdRef = useRef();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
     const { email, password } = values;
-    setResStatus(0);
-    setResMsg("");
+
+    setErr({
+      resMsg: "",
+      resStatus: 0
+    });
+
     try {
       const validLogin = await AuthService.postLogin({
         email,
@@ -35,23 +41,36 @@ const LoginForm = (props) => {
         console.log("Failed Login");
       }
 
-      setResStatus(200);
-      setResMsg("Successful Login");
+      setErr({
+        resMsg: "Successful Login!",
+        resStatus: 200
+      });
       reset();
       props.onLoginSuccess();
       console.clear();
     } catch (error) {
-      setResStatus(error.response.status);
-      setResMsg(Object.values(error.response.data.error));
+      setErr({
+        resStatus: error.response.status,
+        resMsg: Object.values(error.response.data.error)
+      });
       setTimeout(() => {
-        setResStatus(0);
+        setErr({
+          resMsg: "",
+          resStatus: 0
+        });
       }, 5000);
     }
   };
 
   return (
-    <form className="atl-form login-form" onSubmit={handleSubmit} autoComplete="dumb">
-      {resStatus === 0 ? null : <AtlNotification type={resStatus} msg={resMsg} />}
+    <form
+      className="atl-form login-form"
+      onSubmit={handleSubmit}
+      autoComplete="dumb"
+    >
+      {err.resStatus === 0 ? null : (
+        <AtlNotification type={err.resStatus} msg={err.resMsg} />
+      )}
       <fieldset>
         <br />
         <label htmlFor="email">
@@ -84,7 +103,10 @@ const LoginForm = (props) => {
           onChange={handleChange}
         />
       </fieldset>
-      <button className="action" disabled={values.email.length === 0 || values.password.length === 0}>
+      <button
+        className="action"
+        disabled={values.email.length === 0 || values.password.length === 0}
+      >
         Login
       </button>
     </form>

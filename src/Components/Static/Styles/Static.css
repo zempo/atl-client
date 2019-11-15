@@ -69,9 +69,16 @@ header nav {
   top: -3px;
   left: 8px;
   border: 1px solid rgb(219, 217, 217, 0);
-  border-radius: 10px;
+  border-radius: 50%;
   background: rgb(219, 217, 217);
-  color: #313131;
+  width: 24px;
+  height: 23.5px;
+  /* color: #313131; */
+}
+
+.nav-menu-btn p {
+  margin: 0;
+  font-size: 1rem;
 }
 
 .atl-footer {

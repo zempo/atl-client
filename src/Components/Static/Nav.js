@@ -26,7 +26,7 @@ class Nav extends Component {
     // console.log(TokenService.getId());
     // window.location.reload();
 
-    const { user_name, userColor } = this.context.value.user;
+    const { user_name } = this.context.value.user;
     const { showing } = this.state;
 
     return (
@@ -41,7 +41,7 @@ class Nav extends Component {
             onClick={() => this.setState({ showing: !this.state.showing })}
             title="show-menu"
           >
-            {!showing ? <span>&#9662;</span> : <span>&#9652;</span>}
+            {!showing ? <p>&#9662;</p> : <p>&#9652;</p>}
           </button>
         </h3>
       </div>

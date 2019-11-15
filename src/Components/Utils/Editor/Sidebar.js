@@ -27,7 +27,6 @@ const Sidebar = ({ history, currentId }) => {
   const [currentTitle, setCurrentTitle] = useState("");
   const [currentAuthor, setCurrentAuthor] = useState("");
   const [currentSubtitle, setCurrentSubtitle] = useState("");
-  const [currentBody, setCurrentBody] = useState("");
   const [updating, setUpdating] = useState(false);
   const actorRef = useRef();
   const tagRef = useRef();
