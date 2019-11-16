@@ -3,7 +3,7 @@ header {
   top: 0;
   width: 100%;
   z-index: 1;
-  color: rgb(219, 217, 217);
+  color: rgb(230, 230, 230);
 }
 
 header nav {
@@ -56,21 +56,29 @@ header nav {
 
 .accordion-menu ul a {
   text-decoration: none;
-  color: rgb(219, 217, 217);
+  color: rgb(230, 230, 230, 0.8);
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
 }
 
 .accordion-menu ul a:hover {
   text-decoration: none;
   color: white;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
 }
 
 .nav-menu-btn {
   position: relative;
   top: -3px;
   left: 8px;
-  border: 1px solid rgb(219, 217, 217, 0);
+  border: 1px solid rgb(230, 230, 230, 0);
   border-radius: 50%;
-  background: rgb(219, 217, 217);
+  background: rgb(230, 230, 230);
   width: 24px;
   height: 23.5px;
   /* color: #313131; */
@@ -85,7 +93,7 @@ header nav {
   padding-top: 1rem;
   padding-bottom: 2rem;
   text-align: center;
-  color: rgb(219, 217, 217);
+  color: rgb(230, 230, 230);
 }
 
 @-o-keyframes dash {

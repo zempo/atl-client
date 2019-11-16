@@ -93,7 +93,7 @@
 
 .box-top p {
   text-align: center;
-  color: rgb(219, 217, 217);
+  color: rgb(230, 230, 230);
   font-weight: bold;
 }
 
@@ -115,14 +115,14 @@
 }
 .append-tag {
   border-radius: 10px 0 0 10px;
-  color: rgb(219, 217, 217);
+  color: rgb(230, 230, 230);
   font-weight: bold;
   padding: 0.25rem 0.5rem;
   opacity: 0.95;
 }
 .delete-tag {
   border-radius: 0 10px 10px 0;
-  color: rgb(219, 217, 217);
+  color: rgb(230, 230, 230);
   font-weight: bold;
   padding: 0.25rem 0.5rem;
   opacity: 0.95;
@@ -135,7 +135,7 @@
 
 /* sidebar */
 .box-sidebar {
-  color: rgb(219, 217, 217);
+  color: rgb(230, 230, 230);
   font-weight: bold;
 }
 
@@ -167,8 +167,8 @@
 }
 .document-controls button {
   background: rgb(20, 20, 20, 0.3);
-  border: 2px solid rgb(219, 217, 217);
-  color: rgb(219, 217, 217);
+  border: 2px solid rgb(230, 230, 230);
+  color: rgb(230, 230, 230);
   font-size: 1rem;
   font-weight: bold;
   width: 6rem;
@@ -177,8 +177,8 @@
 }
 .side-update-btn {
   background: rgb(20, 20, 20, 0.3);
-  border: 2px solid rgb(219, 217, 217);
-  color: rgb(219, 217, 217);
+  border: 2px solid rgb(230, 230, 230);
+  color: rgb(230, 230, 230);
   font-size: 1.5rem;
   font-weight: bold;
   margin-top: 5vh;
@@ -189,13 +189,13 @@
 
 .side-update-btn:hover,
 .document-controls button:hover {
-  background: rgb(219, 217, 217);
+  background: rgb(230, 230, 230);
   color: rgb(20, 20, 20);
 }
 
 .side-update-btn:active,
 .document-controls button:active {
-  color: rgb(219, 217, 217);
+  color: rgb(230, 230, 230);
   background: rgb(20, 20, 20, 0.3);
 }
 

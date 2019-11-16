@@ -3,6 +3,7 @@ import Modal from "../../../Modals/Modal";
 import { useModal } from "../../../Hooks/use-modal";
 import { MenuOption } from "../Utils";
 import "../Styles/Scripts.css";
+import "../../Routes/Styles/ScriptsPage.css";
 
 const ListScript = ({ script }) => {
   const { isShowing: isShowingCopy, toggle: toggleCopy } = useModal();

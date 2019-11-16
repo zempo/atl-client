@@ -36,7 +36,8 @@ export const UserContextProvider = props => {
     setUserColor,
     userName,
     error,
-    loading
+    loading,
+    setLoading
   };
 
   return (

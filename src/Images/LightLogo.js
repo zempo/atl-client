@@ -13,7 +13,7 @@ export const LightLogo = ({ width, height }) => {
     >
       <g
         fill="none"
-        stroke="#dbd9d9"
+        stroke="#e6e6e6"
         strokeDasharray="none"
         strokeLinecap="round"
         strokeMiterlimit="4"

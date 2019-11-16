@@ -21,8 +21,9 @@
 }
 
 .user-appearance label {
+  opacity: 0.8;
   display: inline-block;
-  border: 4px solid rgb(219, 217, 217);
+  border: 10px solid rgb(230, 230, 230);
   border-radius: 50%;
   margin: 10px;
   height: 100px;
@@ -31,24 +32,29 @@
 
 .theme-update-btn {
   background: rgb(20, 20, 20, 0.3);
-  border: 2px solid rgb(219, 217, 217);
-  color: rgb(219, 217, 217);
+  border: 2px solid rgb(230, 230, 230);
+  color: rgb(230, 230, 230);
   font-size: 3rem;
   font-weight: bold;
   margin-top: 5vh;
   margin-left: calc(50% - 5rem);
-  width: 10rem;
+  width: 20rem;
   padding: 0.5rem;
   margin-bottom: 5vh;
 }
 
 .theme-update-btn:hover {
-  background: rgb(219, 217, 217);
+  background: rgb(230, 230, 230);
   color: rgb(20, 20, 20);
 }
 
-.theme-update-btn:active {
-  color: rgb(219, 217, 217);
+.settings-pg .theme-update-btn:active,
+.settings-pg .theme-update-btn:focus {
+  -moz-transform: scaleX(1);
+  -o-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  transform: scaleX(1);
+  color: rgb(230, 230, 230);
   background: rgb(20, 20, 20, 0.3);
 }
 

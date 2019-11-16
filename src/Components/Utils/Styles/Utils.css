@@ -20,10 +20,10 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  border: 3px solid rgb(219, 217, 217);
+  border: 3px solid rgb(230, 230, 230);
   background: #2c3a41;
   /* color: #d3e8f3; */
-  color: rgb(219, 217, 217);
+  color: rgb(230, 230, 230);
   border-radius: 50%;
 }
 
@@ -36,14 +36,14 @@
   position: absolute;
   top: 5vh;
   left: calc(50% - 31.5px);
-  border: 3px solid rgb(219, 217, 217);
-  color: rgb(219, 217, 217);
+  border: 3px solid rgb(230, 230, 230);
+  color: rgb(230, 230, 230);
   border-radius: 50%;
   font-size: 3rem;
 }
 
 .btn-back:active {
-  border: 3px solid rgb(219, 217, 217);
+  border: 3px solid rgb(230, 230, 230);
   border-radius: 50%;
 }
 
@@ -59,9 +59,9 @@
   width: 10rem;
   height: 10rem;
   background: none;
-  border: 1.3rem solid;
-  border-color: rgb(219, 217, 217, 0.8) transparent transparent
-    rgb(219, 217, 217, 0.8);
+  border: 2rem solid;
+  border-color: rgb(230, 230, 230, 0.8) transparent transparent
+    rgb(230, 230, 230, 0.8);
   transform: rotate(-45deg);
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
@@ -97,8 +97,8 @@
   width: 10rem;
   height: 10rem;
   background: none;
-  border: 1.3rem solid;
-  border-color: rgba(219, 217, 217, 0.8) rgb(219, 217, 217, 0.8) transparent
+  border: 2rem solid;
+  border-color: rgba(230, 230, 230, 0.8) rgb(230, 230, 230, 0.8) transparent
     transparent;
   transform: rotate(45deg);
   -moz-transition: all 0.3s ease-out;
@@ -110,7 +110,7 @@
 .pagination-counter {
   font-size: 3rem;
   text-align: center;
-  color: rgb(219, 217, 217);
+  color: rgb(230, 230, 230);
 }
 
 @media screen and (max-width: 1600px) {

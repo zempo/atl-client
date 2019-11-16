@@ -8,7 +8,7 @@ import "./Styles/Info.css";
 
 const UserSettings = () => {
   const {
-    value: { userColor, userName, setUserColor }
+    value: { userColor, userName, setUserColor, loading, setLoading }
   } = useContext(UserContext);
   const [selectedColor, setSelectedColor] = useState(userColor);
   const [colors, setColors] = useState([]);
@@ -59,11 +59,15 @@ const UserSettings = () => {
 
     let userToPatch = {};
     userToPatch.theme = selectedColor;
-
+    setLoading(true);
     try {
       const updatedUser = await readUser.patch(`/`, userToPatch);
+      setTimeout(() => {
+        setLoading(false);
+      }, 500);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -71,22 +75,24 @@ const UserSettings = () => {
     <AtlSection className="atl-pg settings-pg">
       <h1 className="animated-h1">Update My Settings</h1>
       <form className="atl-form user-edit-form">
-        {/* <fieldset className="user-account">
-          <label htmlFor="username">Edit Username?</label>
-          <input
-            type="text"
-            name="username"
-            defaultValue={usr.currentName}
-            onChange={handleChange}
-          />
-        </fieldset> */}
         <button className="theme-update-btn" onClick={updateUser}>
-          Apply
+          {loading ? "Painting..." : "Apply"}
         </button>
         <fieldset className="user-appearance">
           {colors.map((c, i) => {
             return (
-              <label htmlFor="selectedColor" key={i} style={{ background: c }}>
+              <label
+                htmlFor="selectedColor"
+                key={i}
+                style={{
+                  background: c,
+                  opacity: selectedColor === c ? 1 : 0.7,
+                  borderColor:
+                    selectedColor === c
+                      ? "rgb(219,217,217)"
+                      : "rgba(49,49,49, 0.2)"
+                }}
+              >
                 <input
                   type="radio"
                   name="selectedColor"

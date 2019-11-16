@@ -24,4 +24,39 @@
     width: 300px;
     margin-left: calc(50% - 150px);
   }
+  .script {
+    -moz-transform: scale(0.9);
+    -o-transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .script {
+    -moz-transform: scale(0.7);
+    -o-transform: scale(0.7);
+    -webkit-transform: scale(0.7);
+    transform: scale(0.7);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .script {
+    -moz-transform: scale(0.6);
+    -o-transform: scale(0.6);
+    -webkit-transform: scale(0.6);
+    transform: scale(0.6);
+  }
+  #prev,
+  #next {
+    width: 4rem;
+    height: 4rem;
+  }
+  #prev {
+    left: 8%;
+  }
+  #next {
+    right: 8%;
+  }
 }
