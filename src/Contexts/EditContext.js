@@ -35,17 +35,11 @@ export const EditContextProvider = props => {
     }
   };
 
-  const updateTitlePage = async (prevFields, title, author, subtitle, body) => {
+  const updateTitlePage = async (prevFields, title, author, subtitle) => {
     let newFields = {};
-    if (title !== "") {
-      newFields.title = title;
-    }
-    if (author !== "") {
-      newFields.author = author;
-    }
-    if (subtitle !== "") {
-      newFields.subtitle = subtitle;
-    }
+    newFields.title = title;
+    newFields.author = author;
+    newFields.subtitle = subtitle;
     try {
       const result = await autoSave.patch(`/${prevFields.id}`, newFields);
       setError(false);

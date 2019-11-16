@@ -1,14 +1,28 @@
 import React, { useEffect, useContext } from "react";
 import { ScriptsContext } from "../../Contexts/ScriptsContext";
 import { UserContext } from "../../Contexts/UserContext";
-import { AtlSection, AddBtn } from "../Utils/Utils";
+import { AtlSection, AddBtn, PaginateScripts } from "../Utils/Utils";
 import ListScript from "../Utils/Scripts/ListScript";
 import ListSearchScript from "../Utils/Scripts/ListSearchScript";
 import "./Styles/ScriptsPage.css";
 
 const ScriptsPage = () => {
   const {
-    value: { currentScripts, currentSearchScripts, searching }
+    value: {
+      scripts,
+      scriptsPerPg,
+      currentScripts,
+      currentSearchScripts,
+      searchScripts,
+      searchScriptsPerPg,
+      searching,
+      currentPg,
+      currentSearchPg,
+      paginate,
+      paginateSearch,
+      lastPg,
+      lastSearchPg
+    }
   } = useContext(ScriptsContext);
   const {
     value: { userName }
@@ -38,6 +52,21 @@ const ScriptsPage = () => {
               );
             })}
       </div>
+      {scripts.length > scriptsPerPg && !searching ? (
+        <PaginateScripts
+          currentScripts={currentScripts}
+          currentPg={currentPg}
+          lastPg={lastPg}
+          paginate={paginate}
+        />
+      ) : searchScripts.length > searchScriptsPerPg && searching ? (
+        <PaginateScripts
+          currentScripts={currentSearchScripts}
+          currentPg={currentSearchPg}
+          lastPg={lastSearchPg}
+          paginate={paginateSearch}
+        />
+      ) : null}
     </AtlSection>
   );
 };

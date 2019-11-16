@@ -40,7 +40,11 @@ const ListScript = ({ script }) => {
           </div>
           <div className="script-pg">
             <h3>{script.title}</h3>
-            <p>{script.subtitle}</p>
+            {script.subtitle !== "" || script.subtitle !== " " ? (
+              <p>{script.subtitle}</p>
+            ) : null}
+            <p>By</p>
+            <p>{script.author}</p>
           </div>
         </label>
       </div>

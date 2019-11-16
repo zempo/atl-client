@@ -8,7 +8,7 @@ import { UserContext } from "../../Contexts/UserContext";
 export const AtlNotification = ({ type, msg, done }) => {
   const [displaying, setDisplaying] = useState(true);
 
-  const handleClick = (e) => {
+  const handleClick = e => {
     e.preventDefault();
     setDisplaying(false);
     // console.clear();
@@ -37,7 +37,9 @@ export const Loader = ({ loading, status }) => {
 };
 
 export function AtlSection({ className, list, ...props }) {
-  const classes = ["Section", list && "Section--list", className].filter(Boolean).join(" ");
+  const classes = ["Section", list && "Section--list", className]
+    .filter(Boolean)
+    .join(" ");
   return <section className={classes} {...props} />;
 }
 
@@ -98,7 +100,12 @@ export const AddBtn = () => {
   const { isShowing: isShowingAdd, toggle: toggleAdd } = useModal();
   return (
     <>
-      <button style={{ background: userColor }} className="btn btn-add" title="add script" onClick={toggleAdd}>
+      <button
+        style={{ background: userColor }}
+        className="btn btn-add"
+        title="add script"
+        onClick={toggleAdd}
+      >
         <i className="fas fa-plus fa-3x" />
       </button>
       <Modal isShowing={isShowingAdd} hide={toggleAdd} action="add-script" />
@@ -122,5 +129,42 @@ export const BackBtn = ({ history }) => {
         <i className="fas fa-arrow-left"></i>
       </button>
     </>
+  );
+};
+
+export const PaginateScripts = ({
+  currentScripts,
+  paginate,
+  currentPg,
+  lastPg
+}) => {
+  return (
+    <AtlSection className="paginate-scripts">
+      <ul className="pagination-controls">
+        <li className="pagination-item">
+          <button
+            id="prev"
+            disabled={!currentScripts || currentPg === 1}
+            className="page-btn"
+            onClick={e => paginate(e)}
+          >
+            &#60;
+          </button>
+        </li>
+        <li className="pagination-counter">
+          Page {Number(currentPg)} of {Number(lastPg)}
+        </li>
+        <li className="pagination-item">
+          <button
+            id="next"
+            disabled={!currentScripts || currentPg === lastPg}
+            className="page-btn"
+            onClick={e => paginate(e)}
+          >
+            &#62;
+          </button>
+        </li>
+      </ul>
+    </AtlSection>
   );
 };
