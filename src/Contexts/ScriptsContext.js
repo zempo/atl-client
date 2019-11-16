@@ -11,6 +11,7 @@ export const ScriptsContextProvider = props => {
   const [searchScripts, setSearchScripts] = useState([]);
   const [currentSearchPg, setCurrentSearchPg] = useState(1);
   const [searchScriptsPerPg, setSearchScriptsPerPg] = useState(6);
+  const [direction, setDirection] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -46,25 +47,35 @@ export const ScriptsContextProvider = props => {
 
   const paginate = e => {
     const { id } = e.target;
-
+    setDirection("");
     if (id === "prev") {
       setCurrentPg(currentPg - 1);
+      setTimeout(() => {
+        setDirection("l");
+      }, 30);
     } else if (id === "next") {
       setCurrentPg(currentPg + 1);
+      setTimeout(() => {
+        setDirection("r");
+      }, 30);
     }
   };
 
   const paginateSearch = e => {
     const { id } = e.target;
-
+    setDirection("");
     if (id === "prev") {
+      setDirection("l");
       setCurrentSearchPg(currentSearchPg - 1);
     } else if (id === "next") {
+      setDirection("r");
       setCurrentSearchPg(currentSearchPg + 1);
     }
   };
 
   const value = {
+    direction,
+    setDirection,
     searching,
     scripts,
     scriptsPerPg,

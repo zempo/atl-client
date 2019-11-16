@@ -91,17 +91,17 @@ class Nav extends Component {
             <NavMenuOption
               to="/scripts"
               icon={<i className="fas fa-scroll"></i>}
-              text="My Projects"
+              text="My Works"
             />
             <NavMenuOption
               to="/user-guide"
               icon={<i className="far fa-question-circle"></i>}
-              text="User Guide"
+              text="Get Started"
             />
             <NavMenuOption
               to="/user-settings"
               icon={<i className="fas fa-sliders-h"></i>}
-              text="Settings"
+              text="Appearance"
             />
             <li>
               <Link onClick={this.handleLogoutClick} to="/">

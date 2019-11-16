@@ -46,3 +46,97 @@
   border: 3px solid rgb(219, 217, 217);
   border-radius: 50%;
 }
+
+.paginate-scripts ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#prev {
+  position: fixed;
+  left: 10%;
+  top: calc(50%);
+  width: 10rem;
+  height: 10rem;
+  background: none;
+  border: 1.3rem solid;
+  border-color: rgb(219, 217, 217, 0.8) transparent transparent
+    rgb(219, 217, 217, 0.8);
+  transform: rotate(-45deg);
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
+#prev:hover {
+  border-color: rgb(253, 253, 253) transparent transparent rgb(253, 253, 253);
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
+#prev:disabled,
+#next:disabled {
+  opacity: 0;
+}
+
+#next:hover {
+  border-color: rgb(253, 253, 253) rgb(253, 253, 253) transparent transparent;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
+#next {
+  position: fixed;
+  right: 10%;
+  top: calc(50%);
+  width: 10rem;
+  height: 10rem;
+  background: none;
+  border: 1.3rem solid;
+  border-color: rgba(219, 217, 217, 0.8) rgb(219, 217, 217, 0.8) transparent
+    transparent;
+  transform: rotate(45deg);
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
+.pagination-counter {
+  font-size: 3rem;
+  text-align: center;
+  color: rgb(219, 217, 217);
+}
+
+/* <AtlSection className="paginate-scripts">
+<ul className="pagination-controls">
+  <li className="pagination-item">
+    <button
+      id="prev"
+      disabled={!currentScripts || currentPg === 1}
+      className="page-btn"
+      onClick={e => paginate(e)}
+    >
+      &#60;
+    </button>
+  </li>
+  <li className="pagination-counter">
+    Page {Number(currentPg)} of {Number(lastPg)}
+  </li>
+  <li className="pagination-item">
+    <button
+      id="next"
+      disabled={!currentScripts || currentPg === lastPg}
+      className="page-btn"
+      onClick={e => paginate(e)}
+    >
+      &#62;
+    </button>
+  </li>
+</ul>
+</AtlSection> */

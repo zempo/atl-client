@@ -21,7 +21,9 @@ const ScriptsPage = () => {
       paginate,
       paginateSearch,
       lastPg,
-      lastSearchPg
+      lastSearchPg,
+      direction,
+      setDirection
     }
   } = useContext(ScriptsContext);
   const {
@@ -29,25 +31,26 @@ const ScriptsPage = () => {
   } = useContext(UserContext);
   useEffect(() => {
     window.scrollTo(0, 0);
+    setDirection("");
   }, []);
 
   return (
     <AtlSection className="atl-pg scripts-pg">
       <h1 className="animated-h1">My Works</h1>
       <AddBtn />
-      <div className="scripts-container">
+      <div className={`scripts-container ${direction}`}>
         {!searching
           ? currentScripts.map((script, i) => {
               return (
                 <div key={i}>
-                  <ListScript script={script} />
+                  <ListScript direction={direction} script={script} />
                 </div>
               );
             })
           : currentSearchScripts.map((script, i) => {
               return (
                 <div key={i}>
-                  <ListSearchScript script={script} />
+                  <ListSearchScript direction={direction} script={script} />
                 </div>
               );
             })}

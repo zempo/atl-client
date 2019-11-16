@@ -147,9 +147,7 @@ export const PaginateScripts = ({
             disabled={!currentScripts || currentPg === 1}
             className="page-btn"
             onClick={e => paginate(e)}
-          >
-            &#60;
-          </button>
+          ></button>
         </li>
         <li className="pagination-counter">
           Page {Number(currentPg)} of {Number(lastPg)}
@@ -160,9 +158,7 @@ export const PaginateScripts = ({
             disabled={!currentScripts || currentPg === lastPg}
             className="page-btn"
             onClick={e => paginate(e)}
-          >
-            &#62;
-          </button>
+          ></button>
         </li>
       </ul>
     </AtlSection>

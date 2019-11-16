@@ -1,6 +1,9 @@
 .scripts-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
   min-height: 80vh;
+  width: 1000px;
+  margin-left: calc(50% - 500px);
+  padding-bottom: 5rem;
 }
