@@ -113,30 +113,39 @@
   color: rgb(219, 217, 217);
 }
 
-/* <AtlSection className="paginate-scripts">
-<ul className="pagination-controls">
-  <li className="pagination-item">
-    <button
-      id="prev"
-      disabled={!currentScripts || currentPg === 1}
-      className="page-btn"
-      onClick={e => paginate(e)}
-    >
-      &#60;
-    </button>
-  </li>
-  <li className="pagination-counter">
-    Page {Number(currentPg)} of {Number(lastPg)}
-  </li>
-  <li className="pagination-item">
-    <button
-      id="next"
-      disabled={!currentScripts || currentPg === lastPg}
-      className="page-btn"
-      onClick={e => paginate(e)}
-    >
-      &#62;
-    </button>
-  </li>
-</ul>
-</AtlSection> */
+@media screen and (max-width: 1600px) {
+  #prev,
+  #next {
+    width: 7rem;
+    height: 7rem;
+  }
+  #prev {
+    left: 5%;
+  }
+  #next {
+    right: 5%;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  #prev,
+  #next {
+    width: 5rem;
+    height: 5rem;
+  }
+  #prev {
+    left: 5%;
+  }
+  #next {
+    right: 5%;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  #prev {
+    left: 10%;
+  }
+  #next {
+    right: 10%;
+  }
+}
