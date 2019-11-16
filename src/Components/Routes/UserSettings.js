@@ -73,7 +73,7 @@ const UserSettings = () => {
 
   return (
     <AtlSection className="atl-pg settings-pg">
-      <h1 className="animated-h1">Update My Settings</h1>
+      <h1 className="animated-h1">Appearance</h1>
       <form className="atl-form user-edit-form">
         <button className="theme-update-btn" onClick={updateUser}>
           {loading ? "Painting..." : "Apply"}

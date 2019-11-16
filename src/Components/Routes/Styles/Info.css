@@ -7,8 +7,8 @@
 }
 
 .user-appearance {
-  width: 1080px;
-  margin-left: calc(50% - 510px);
+  width: 1120px;
+  margin-left: calc(50% - 560px);
 }
 
 .user-appearance input {
@@ -37,7 +37,7 @@
   font-size: 3rem;
   font-weight: bold;
   margin-top: 5vh;
-  margin-left: calc(50% - 5rem);
+  margin-left: calc(50% - 10rem);
   width: 20rem;
   padding: 0.5rem;
   margin-bottom: 5vh;
@@ -61,34 +61,32 @@
 @media screen and (max-width: 1200px) {
   .user-appearance {
     width: 840px;
-    margin-left: calc(50% - 390px);
+    margin-left: calc(50% - 420px);
   }
 }
 
-@media screen and (max-width: 910px) {
+@media screen and (max-width: 950px) {
   .user-appearance {
-    width: 540px;
-    margin-left: calc(50% - 270px);
+    width: 600px;
+    margin-left: calc(50% - 300px);
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
   .user-appearance {
     display: flex;
-    margin-left: calc(50% - 130px);
+    width: 80%;
+    margin-left: 10%;
   }
   .user-appearance input {
     /* border: 1px solid pink; */
-    width: 200px;
+    width: 80%;
     height: 100px;
   }
 
   .user-appearance label {
     height: 100px;
-    width: 200px;
+    width: 80%;
     border-radius: 0%;
-  }
-  .user-appearance {
-    /* margin-left: calc(50% - 0px); */
   }
 }
