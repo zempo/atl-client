@@ -19,7 +19,7 @@ body {
   z-index: 0;
   margin: auto;
   overflow-y: auto;
-  background-color: #f3f3f3;
+  background-color: rgb(243, 243, 243);
   position: fixed;
   top: 0;
   left: 0;

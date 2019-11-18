@@ -89,7 +89,7 @@ const UserSettings = () => {
                   opacity: selectedColor === c ? 1 : 0.7,
                   borderColor:
                     selectedColor === c
-                      ? "rgb(219,217,217)"
+                      ? "rgb(243,243,243)"
                       : "rgba(49,49,49, 0.2)"
                 }}
               >
@@ -99,6 +99,7 @@ const UserSettings = () => {
                   value={c}
                   checked={selectedColor === c}
                   onChange={handleColor}
+                  tabIndex="0"
                 />
               </label>
             );

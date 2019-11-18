@@ -4,7 +4,7 @@ import TokenService from "../../Services/Auth/token-service";
 import IdleService from "../../Services/Auth/idle-service";
 import { UserContext } from "../../Contexts/UserContext";
 import { Hyph, NavMenuOption } from "../Utils/Utils";
-import { LightLogo, DarkLogo } from "../../Images/LightLogo";
+import { LightLogo } from "../../Images/SVGS";
 
 class Nav extends Component {
   constructor() {
