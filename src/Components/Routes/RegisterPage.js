@@ -24,9 +24,6 @@ const RegistrationPage = props => {
         console.log("Failed Login");
       }
 
-      console.log(validLogin);
-      const created = await newScript.post(`/`, sampleScript);
-
       const { history } = props;
       history.push("/scripts");
     } catch (error) {

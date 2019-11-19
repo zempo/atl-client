@@ -29,6 +29,7 @@ const ScriptsPage = () => {
   const {
     value: { userName }
   } = useContext(UserContext);
+
   useEffect(() => {
     window.scrollTo(0, 0);
     setDirection("");

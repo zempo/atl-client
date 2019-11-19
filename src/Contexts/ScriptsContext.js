@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import { readScripts } from "../Services/endpoints-service";
+import { readScripts, newScript } from "../Services/endpoints-service";
 
 export const ScriptsContext = createContext();
 
@@ -24,6 +24,20 @@ export const ScriptsContextProvider = props => {
         setLoading(false);
         setScripts(result.data);
       } catch (error) {
+        console.log(error.response);
+        if (
+          error.response.data.error === "This user has no scripts at the moment"
+        ) {
+          const sampleScript = {
+            title: "Getting Started",
+            author: "Mindy Mills",
+            subtitle: "An Original Screenplay",
+            body:
+              " [Int] The Script Editor [Description] Two extras from downtown LA glance down at their scripts. A web developer eagerly nods at a sound engineer. And the two actors --John and Jane begin their demo voiceover. {Jane} Click on the tags to add a speaker or direction to the scene. You can keep on typing after you click! {John} No need to add and format quotes, here!  {Jane} The script generator will take care of that for you! {John} But make sure to save your work! [Line-break] Use the sidebar controls to add new actors and scene directions!   [Line-break] {John} Once you're ready to download your script, click the generate button below!"
+          };
+          newScript.post("/", sampleScript);
+          window.location.reload();
+        }
         setLoading(false);
         setError(true);
       }
