@@ -47,6 +47,77 @@
   animation: fromRight 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
+.script-toggle:not(:checked) + .script-container .script-menu {
+  display: none;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
+.script-toggle:checked + .script-container .script-menu {
+  display: flex;
+  justify-content: space-evenly;
+  animation: cardMenu 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.script-menu {
+  margin: 0.5rem;
+  padding: 0.3rem;
+  background: rgb(49, 49, 49);
+  border: 1px solid rgb(49, 49, 49, 0);
+  border-radius: 5px;
+}
+
+.script-menu button {
+  background: none;
+  border: none;
+  appearance: none;
+}
+
+.fa-pencil-alt,
+.copy-b,
+.print-b {
+  font-size: 1rem;
+  color: rgb(243, 243, 243, 0.9);
+  cursor: pointer;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
+.del-b {
+  font-size: 1rem;
+  color: rgb(211, 44, 38, 0.9);
+  cursor: pointer;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
+.fa-pencil-alt:hover,
+.copy-b:hover,
+.print-b:hover {
+  color: rgb(253, 253, 253);
+  font-weight: bold;
+  cursor: pointer;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
+.del-b:hover {
+  color: rgb(228, 65, 59);
+  cursor: pointer;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
 @keyframes fromRight {
   0% {
     -webkit-transform: translateX(300px);
@@ -69,6 +140,19 @@
   100% {
     -webkit-transform: translateX(0);
     transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes cardMenu {
+  0% {
+    -webkit-transform: translateY(50px);
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
     opacity: 1;
   }
 }

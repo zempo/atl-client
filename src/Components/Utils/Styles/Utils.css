@@ -131,24 +131,6 @@
   color: rgb(243, 243, 243);
 }
 
-.script-menu {
-  margin: 0.5rem;
-  padding: 0.3rem;
-  background: rgb(49, 49, 49);
-  border: 1px solid rgb(49, 49, 49, 0);
-  border-radius: 5px;
-}
-
-.script-menu button {
-  background: none;
-  border: none;
-  appearance: none;
-}
-
-.fa-pencil-alt {
-  color: rgb(253, 253, 253);
-}
-
 @media screen and (max-width: 1600px) {
   #prev,
   #next {
