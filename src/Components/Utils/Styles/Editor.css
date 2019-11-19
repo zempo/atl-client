@@ -111,8 +111,10 @@
 
 .tag-control,
 .actor-control {
+  margin: 0.5rem;
   margin-right: 1rem;
 }
+
 .append-tag {
   border-radius: 10px 0 0 10px;
   color: rgb(243, 243, 243);

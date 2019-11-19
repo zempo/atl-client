@@ -28,19 +28,35 @@ const ListSearchScript = ({ script }) => {
               text={<i className="fas fa-pencil-alt" title="edit" />}
               script={script}
             />
-            <button className="menu-btn" title="copy" onClick={toggleCopy}>
-              <img src="https://cdn4.iconfinder.com/data/icons/feather/24/copy-512.png" />
+            <button
+              className="menu-btn copy-b"
+              title="copy"
+              onClick={toggleCopy}
+            >
+              <i class="far fa-copy"></i>
             </button>
-            <button className="menu-btn" title="print" onClick={togglePrint}>
-              <img src="http://cdn.onlinewebfonts.com/svg/img_533275.png" />
+            <button
+              className="menu-btn print-b"
+              title="print"
+              onClick={togglePrint}
+            >
+              <i class="fas fa-print"></i>
             </button>
-            <button className="menu-btn" title="delete" onClick={toggleDelete}>
-              <img src="http://cdn.onlinewebfonts.com/svg/img_275205.png" />
+            <button
+              className="menu-btn del-b"
+              title="delete"
+              onClick={toggleDelete}
+            >
+              <i class="fas fa-minus-circle"></i>
             </button>
           </div>
           <div className="script-pg">
             <h3>{script.title}</h3>
-            <p>{script.subtitle}</p>
+            {script.subtitle !== "" || script.subtitle !== " " ? (
+              <p>{script.subtitle}</p>
+            ) : null}
+            <p>By</p>
+            <p>{script.author}</p>
           </div>
         </label>
       </div>

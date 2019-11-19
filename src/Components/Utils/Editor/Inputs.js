@@ -73,6 +73,7 @@ const Input = ({ currentId, body, history }) => {
 
   const appendActor = e => {
     e.preventDefault();
+    setUpdated(true);
     inputRef.current.focus();
     let currentTag = ` {${e.target.innerHTML}} `;
     let newBody = currentBody + currentTag;
@@ -82,6 +83,7 @@ const Input = ({ currentId, body, history }) => {
 
   const appendTag = e => {
     e.preventDefault();
+    setUpdated(true);
     inputRef.current.focus();
     let currentTag = ` [${e.target.innerHTML}] `;
     let newBody = currentBody + currentTag;
@@ -144,7 +146,7 @@ const Input = ({ currentId, body, history }) => {
     <HotKeys handlers={handlers} attach={window}>
       <Box
         className="box box-top"
-        height={tenthHeight * 7}
+        height={tenthHeight * 10}
         width={tenthWidth * 7.92}
         axis="both"
         resizeHandles={["s"]}

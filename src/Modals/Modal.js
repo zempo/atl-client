@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./css/Modals.css";
+import "./Styles/Modals.css";
 import AddScript from "../Components/Forms/ModalForms/AddScript";
 import CopyScript from "../Components/Forms/ModalForms/CopyScript";
 import DeleteScript from "../Components/Forms/ModalForms/DeleteScript";

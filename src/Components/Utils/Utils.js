@@ -74,7 +74,7 @@ export const MenuOption = ({ to, text, script }) => {
 
 export const NavMenuOption = ({ to, text, icon, payload }) => {
   return (
-    <li className="nav-link">
+    <li className="nav-link" tabIndex="0">
       <Link
         to={{
           pathname: to,
