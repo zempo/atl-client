@@ -34,21 +34,21 @@ const ListScript = ({ script }) => {
               title="copy"
               onClick={toggleCopy}
             >
-              <i class="far fa-copy"></i>
+              <i className="far fa-copy"></i>
             </button>
             <button
               className="menu-btn print-b"
               title="print"
               onClick={togglePrint}
             >
-              <i class="fas fa-print"></i>
+              <i className="fas fa-print"></i>
             </button>
             <button
               className="menu-btn del-b"
               title="delete"
               onClick={toggleDelete}
             >
-              <i class="fas fa-minus-circle"></i>
+              <i className="fas fa-minus-circle"></i>
             </button>
           </div>
           <div className="script-pg">

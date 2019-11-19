@@ -126,6 +126,41 @@
   -webkit-transition: all 0.3s ease-out;
 }
 
+/* ^original styles  */
+.loader-item {
+  background: rgb(139, 139, 139);
+  height: 15px;
+  margin: 50px auto;
+  border-radius: 5px;
+  animation: loading 2.3s infinite both;
+}
+
+.loader-title {
+  width: 200px;
+  height: 20px;
+  margin-top: 20px;
+}
+
+.loader-author {
+  width: 80px;
+}
+
+.loader-subtitle {
+  width: 150px
+}
+
+@keyframes loading {
+    0% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+
 @keyframes fromRight {
   0% {
     -webkit-transform: translateX(300px);

@@ -5,6 +5,7 @@ import { AtlSection, AddBtn, PaginateScripts } from "../Utils/Utils";
 import ListScript from "../Utils/Scripts/ListScript";
 import ListSearchScript from "../Utils/Scripts/ListSearchScript";
 import "./Styles/ScriptsPage.css";
+import { SkeletonLoaderScripts } from "../Utils/Scripts/SkeletonScripts";
 
 const ScriptsPage = () => {
   const {
@@ -23,7 +24,8 @@ const ScriptsPage = () => {
       lastPg,
       lastSearchPg,
       direction,
-      setDirection
+      setDirection,
+      loading
     }
   } = useContext(ScriptsContext);
   const {
@@ -40,6 +42,7 @@ const ScriptsPage = () => {
       <h1 className="animated-h1">My Works</h1>
       <AddBtn />
       <div className={`scripts-container ${direction}`}>
+        {loading ? <SkeletonLoaderScripts/>: null}
         {!searching
           ? currentScripts.map((script, i) => {
               return (

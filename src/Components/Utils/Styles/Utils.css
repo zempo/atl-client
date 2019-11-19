@@ -131,6 +131,10 @@
   color: rgb(243, 243, 243);
 }
 
+#prev, #next {
+  border-radius: 10x;
+}
+
 @media screen and (max-width: 1600px) {
   #prev,
   #next {
