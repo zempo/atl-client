@@ -40,6 +40,9 @@ export const EditContextProvider = props => {
     newFields.title = title;
     newFields.author = author;
     newFields.subtitle = subtitle;
+    if (title === "") {
+      newFields.title = "UNTITLED PROJECT";
+    }
     try {
       const result = await autoSave.patch(`/${prevFields.id}`, newFields);
       setError(false);
