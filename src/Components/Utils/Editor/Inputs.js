@@ -3,6 +3,7 @@ import { ResizableBox as Box } from "react-resizable";
 import { StyleContext } from "../../../Contexts/StyleContext";
 import { EditContext } from "../../../Contexts/EditContext";
 import { UserContext } from "../../../Contexts/UserContext";
+import { ScriptsContext } from "../../../Contexts/ScriptsContext";
 import { readScripts } from "../../../Services/endpoints-service";
 import { useModal } from "../../../Hooks/use-modal";
 import Modal from "../../../Modals/Modal";
@@ -11,6 +12,7 @@ import { HotKeys } from "react-hotkeys";
 import "../Styles/Editor.css";
 
 const Input = ({ currentId, body, history }) => {
+  const {value: {editScripts, scripts, searchScripts}} = useContext(ScriptsContext)
   const { isShowing: isShowingCopy, toggle: toggleCopy } = useModal();
   const { isShowing: isShowingDelete, toggle: toggleDelete } = useModal();
   const {
@@ -65,6 +67,7 @@ const Input = ({ currentId, body, history }) => {
     e.preventDefault();
     setUpdated(true);
     updateScriptBody(currentScript, currentBody);
+    // modify state, maybe in the sidebar?
   };
 
   const handleChange = e => {

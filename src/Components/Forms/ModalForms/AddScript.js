@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useInput } from "../../../Hooks/use-input";
 import { AtlNotification } from "../../Utils/Utils";
 import { newScript } from "../../../Services/endpoints-service";
+import {ScriptsContext} from '../../../Contexts/ScriptsContext';
 
 const AddScript = ({ cancel }) => {
+  const {value: {addToScripts, scripts, searchScripts}} = useContext(ScriptsContext)
   const { value: title, bind: bindTitle } = useInput("");
   const { value: author, bind: bindAuthor } = useInput("");
   const { value: subtitle, bind: bindSubtitle } = useInput("");
@@ -12,7 +14,7 @@ const AddScript = ({ cancel }) => {
     resStatus: 0
   });
 
-  const addToScripts = async e => {
+  const postNewScript = async e => {
     e.preventDefault();
     let scriptToPost = {};
     if (title !== "") {
@@ -32,6 +34,7 @@ const AddScript = ({ cancel }) => {
 
     try {
       const created = newScript.post(`/`, scriptToPost);
+      let addedToScripts = await addToScripts(scripts, searchScripts, created.data) 
 
       setTimeout(() => {
         setErr({
@@ -39,7 +42,7 @@ const AddScript = ({ cancel }) => {
           resStatus: 201
         });
         cancel();
-        window.location.reload();
+        // window.location.reload();
       }, 300);
     } catch (error) {
       setErr({
@@ -48,7 +51,7 @@ const AddScript = ({ cancel }) => {
       });
       setTimeout(() => {
         setErr({
-          resMsg: "",
+          resMsg: "", 
           resStatus: 0
         });
       }, 5000);
@@ -79,7 +82,7 @@ const AddScript = ({ cancel }) => {
       <button className="modal-btn" onClick={cancel}>
         Cancel
       </button>
-      <button className="modal-btn action" onClick={addToScripts}>
+      <button className="modal-btn action" onClick={postNewScript}>
         Add
       </button>
       <button className="close-modal" onClick={cancel}>
