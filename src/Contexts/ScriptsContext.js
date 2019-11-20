@@ -87,7 +87,7 @@ export const ScriptsContextProvider = props => {
     }
   };
 
-  const addToScripts = (currentScripts, scriptToAdd) => {
+  const addToScripts = (currentScripts, currentSearchScripts, scriptToAdd) => {
     setScripts([...currentScripts, scriptToAdd])
     setSearchScripts([...currentSearchScripts, scriptToAdd])
   } 

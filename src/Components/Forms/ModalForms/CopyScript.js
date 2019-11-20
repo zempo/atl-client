@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { AtlNotification } from "../../Utils/Utils";
 import { readScripts, newScript } from "../../../Services/endpoints-service";
 import {ScriptsContext} from '../../../Contexts/ScriptsContext';

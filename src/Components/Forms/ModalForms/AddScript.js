@@ -33,9 +33,10 @@ const AddScript = ({ cancel }) => {
     });
 
     try {
-      const created = newScript.post(`/`, scriptToPost);
-      let addedToScripts = await addToScripts(scripts, searchScripts, created.data) 
-
+      const result = await newScript.post(`/`, scriptToPost); 
+      console.log(result.data)  
+      let addedToScripts = await addToScripts(scripts, searchScripts, result.data) 
+      console.log(addedToScripts)  
       setTimeout(() => {
         setErr({
           resMsg: "Created Script",
@@ -43,7 +44,7 @@ const AddScript = ({ cancel }) => {
         });
         cancel();
         // window.location.reload();
-      }, 300);
+      }, 500);
     } catch (error) {
       setErr({
         resStatus: error.response.status,
