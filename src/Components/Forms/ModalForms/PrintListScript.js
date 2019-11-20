@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { readScripts } from "../../../Services/endpoints-service";
+import { sortScriptSentences } from "../../../Services/algos-service";
 
 const PrintListScript = ({ item, cancel }) => {
   const [titlePg, setTitlePg] = useState({
@@ -19,6 +20,9 @@ const PrintListScript = ({ item, cancel }) => {
           author: result.data[0].author,
           subtitle: result.data[0].subtitle
         });
+        console.log(
+          sortScriptSentences(result.data[0].body)
+        )
       } catch (error) {
         console.log(error);
       }
