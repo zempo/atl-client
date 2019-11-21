@@ -243,6 +243,8 @@ const Input = ({ currentId, body, history }) => {
                     </button>
                     <button
                       className="delete-tag"
+                      // these tags can't be removed!
+                      disabled={tag === 'Heading' || tag === 'Action'} 
                       id={i}
                       onClick={removeTag}
                       style={{

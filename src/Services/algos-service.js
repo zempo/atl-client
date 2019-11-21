@@ -4,9 +4,7 @@ export const splitColorData = dataStr => {
   return str;
 };
 
-const splitByTags = (str) => {
-  let tagSegments = []
-
+export const splitByTags = (str) => { 
   let chars = str.split('')
   chars.forEach((char, i, text) => {
       if (char === '[' || char === '{') {
@@ -16,30 +14,57 @@ const splitByTags = (str) => {
   })
 
   chars = chars.join('').split('||')
-
+ 
   return chars
 }
 
-export const sortScriptSentences = (str, fn = splitByTags) => {
+export const sortScriptSentences = (str, callback = splitByTags) => {
   let scriptBody = []
-  let splitStr = fn(str)
+  let splitStr = callback(str)
   splitStr.forEach((el, i) => {
-      let line = {}
+      let para = {lines: null, tag: null, actor: null} 
       if (el.includes('[')) {
-          let midpoint = el.indexOf(']')
-          line.tag = el.slice(0, midpoint + 1)
-          line.text = el.slice(midpoint + 1)
-          scriptBody.push(line)
+          let midpoint = el.indexOf(']') + 1
+          if (el.includes('((')) {
+              midpoint = el.indexOf('))') + 2
+          }
+          para.tag = el.slice(1, midpoint - 1)
+          let sortLn = el.slice(midpoint).split('')
+          sortLn.forEach((char, i, chars) => {
+              if (char === '.' || char === '?' || char === '!' || char === ')'){
+                  chars[i] = `${char}||`
+              }
+              if (char === '(') {
+                  chars[i] = `||${char}`
+              }
+          })
+          sortLn = sortLn.join('').split('||')
+          sortLn = sortLn.filter((l) => l !== ' ')
+          para.lines = sortLn  
+          scriptBody.push(para)
       }
       if (el.includes('{')) {
-          let midpoint = el.indexOf('}')
-          line.tag = el.slice(0, midpoint + 1)
-          line.text = el.slice(midpoint + 1)
-          scriptBody.push(line)
-
-      }
+          let midpoint = el.indexOf('}') + 1
+          if (el.includes('((')) {
+              midpoint = el.indexOf('))') + 2
+          }
+          para.actor = el.slice(0, midpoint).replace('{', '').replace('}', '').replace('(', '').replace(')', '')
+          let sortLn = el.slice(midpoint).split('')
+          sortLn.forEach((char, i, chars) => {
+              if (char === '.' || char === '?' || char === '!' || char === ')'){
+                  chars[i] = `${char}||`
+              }
+              if (char === '(') {
+                  chars[i] = `||${char}`
+              }
+          })
+          sortLn = sortLn.join('').split('||')
+          sortLn = sortLn.filter((l) => l !== ' ')
+          para.lines = sortLn  
+          scriptBody.push(para)
+      } 
 
       // scriptBody.push(line)
   })
   return scriptBody 
-}  
+} 

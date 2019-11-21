@@ -130,6 +130,10 @@
   opacity: 0.95;
 }
 
+.delete-tag:disabled {
+  color: rgb(243, 243, 243, 0);  
+}
+
 .append-tag:hover,
 .delete-tag:hover {
   color: white;

@@ -12,7 +12,7 @@ export const AtlNotification = ({ type, msg, done }) => {
     e.preventDefault();
     setDisplaying(false);
     // console.clear();
-  };
+  }; 
 
   if (displaying) {
     return (

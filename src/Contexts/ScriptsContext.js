@@ -32,8 +32,8 @@ export const ScriptsContextProvider = props => {
             title: "Getting Started",
             author: "Mindy Mills",
             subtitle: "An Original Screenplay",
-            body:
-              " [Int] The Script Editor [Description] Two extras from downtown LA glance down at their scripts. A web developer eagerly nods at a sound engineer. And the two actors --John and Jane begin their demo voiceover. {Jane} Click on the tags to add a speaker or direction to the scene. You can keep on typing after you click! {John} No need to add and format quotes, here!  {Jane} The script generator will take care of that for you! {John} But make sure to save your work! [Line-break] Use the sidebar controls to add new actors and scene directions!   [Line-break] {John} Once you're ready to download your script, click the generate button below!"
+            body: " [Header] Int. Above the Line HQ [Action] Two folks from downtown LA glance down at their scripts. An exec nods at a sound engineer. And the two actors --John and Jane begin their demo voiceover. {Jane} ((V.O.)) Click on the tags to add a speaker or direction to the scene. Just like that! (Beat) And, guess what? You can keep on typing after you click! {John} ((Also V.O.)) No need to keep googling those script indentations! {Jane} The script generator will take care of that for you! {John} But make sure to save your work! Use the sidebar to add new actors and scene directions! {Jane} Once you're ready to download your script, click the generate button below! [Fade out]"
+          
           };
           newScript.post("/", sampleScript);
           window.location.reload();

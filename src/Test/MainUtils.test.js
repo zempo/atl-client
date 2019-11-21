@@ -130,6 +130,6 @@ it("renders SkeletonLoaderScripts.js without crashing", () => {
     let exists = skeletonLoader.exists()
     console.log(exists) 
 });
-  
+   
   })
  
