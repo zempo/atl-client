@@ -7,6 +7,7 @@ import { StyleContextProvider as StyleProvider } from "./Contexts/StyleContext";
 import { EditContextProvider as EditProvider } from "./Contexts/EditContext";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "./index.css";
+import 'typeface-courier-prime'
 
 import * as serviceWorker from "./serviceWorker";
 

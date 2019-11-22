@@ -1,22 +1,30 @@
 import React from "react";
 import {
   Page,
-  Text,
+  Text, 
   View,
   Document,
-  StyleSheet
+  StyleSheet,
+  Font
 } from "@react-pdf/renderer";
+import CourierPrime from '../../../Services/Font/Courier Prime/CourierPrime.ttf' 
+
+Font.register({family: 'courier-prime', src: CourierPrime})
 
 const styles = StyleSheet.create({
     page: {
-        backgroundColor: '#ffffff'
+        backgroundColor: '#ffffff',
+        fontFamily: 'courier-prime',
+        margin: '96px',
+        marginLeft: '144px'
     }
 })
-
+ 
 export const ScriptDoc = ({titlePg, scriptTxt}) => {
+    console.log(CourierPrime)
     return (
         <Document>
-            <Page wrap="false">
+            <Page wrap="false" style={styles.page}>
                 <View>
                     <Text>
                         {titlePg.title}
@@ -29,7 +37,7 @@ export const ScriptDoc = ({titlePg, scriptTxt}) => {
                     </Text>
                 </View>
             </Page>
-            <Page>
+            <Page style={styles.page}>
             {scriptTxt.length > 0 ? scriptTxt.map((para, i) => {
                 if (para.tag === 'Header') {
                  return (<View key={i}>

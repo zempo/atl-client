@@ -58,7 +58,7 @@ const ListSearchScript = ({ script }) => {
           <p>By</p>
           <p>{script.author}</p>
         </div>
-      </label>
+      </label> 
     </div>
     <Modal
       isShowing={isShowingCopy}

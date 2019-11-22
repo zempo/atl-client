@@ -22,7 +22,8 @@
     "react-moment": "^0.9.6",
     "react-resizable": "^1.9.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "typeface-courier-prime": "0.0.59"
   },
   "scripts": {
     "start": "react-scripts start",

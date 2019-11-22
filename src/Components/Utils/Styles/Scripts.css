@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Cutive+Mono&display=swap");
+/* @import url("https://fonts.googleapis.com/css?family=Cutive+Mono&display=swap"); */
 
 .menu-btn {
   display: none;
@@ -29,8 +29,11 @@
   cursor: pointer;
   height: 300px;
   width: 240px;
-  font-family: "Cutive Mono", monospace;
-  font-weight: bold;
+  padding: 10px;
+  padding-left: 15px;
+  font-family: courier-prime, monospace;
+  font-weight: 400;  
+  font-style: normal;
   background: rgb(243, 243, 243);
   border: 1px solid rgb(199, 197, 197);
   box-shadow: 2px 2px 1px 0px rgb(243, 243, 243),
@@ -38,7 +41,13 @@
     5px 5px 1px 0px rgb(199, 197, 197), 6px 6px 1px 0px rgb(243, 243, 243);
 }
 
-.script-pg p {
+.script-pg h3 {
+  font-family: courier-prime, monospace;
+  font-weight: 550;  
+  font-style: normal;
+}
+
+.script-pg p { 
   margin-top: 20px;
 }
 
