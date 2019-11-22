@@ -4,10 +4,8 @@ import {
   Text,
   View,
   Document,
-  StyleSheet,
-  Image
+  StyleSheet
 } from "@react-pdf/renderer";
-import moment from "moment";
 
 const styles = StyleSheet.create({
     page: {
@@ -15,10 +13,31 @@ const styles = StyleSheet.create({
     }
 })
 
-export const ScriptDoc = () => {
+export const ScriptDoc = ({titlePg, scriptTxt}) => {
     return (
-        <div>
-            
-        </div>
+        <Document>
+            <Page wrap="false">
+                <View>
+                    <Text>
+                        {titlePg.title}
+                    </Text>
+                    <Text>
+                        {titlePg.author}
+                    </Text>
+                    <Text>
+                        {titlePg.subtitle}
+                    </Text>
+                </View>
+            </Page>
+            <Page>
+            {scriptTxt.length > 0 ? scriptTxt.map((para, i) => {
+                return (<View key={i}>
+                    {para.lines.map((line, i) => {
+                        return <Text key={i}>{line}</Text>
+                    })}
+                </View>)
+            }): ""}
+            </Page> 
+        </Document>
     )
 }

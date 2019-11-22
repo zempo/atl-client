@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { readScripts } from "../../../Services/endpoints-service";
 import { sortScriptSentences } from "../../../Services/algos-service";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import {ScriptDoc} from '../../Utils/Scripts/ScriptDoc'
 
 const PrintListScript = ({ item, cancel }) => {
   const [titlePg, setTitlePg] = useState({
@@ -8,7 +10,8 @@ const PrintListScript = ({ item, cancel }) => {
     author: "",
     subtitle: ""
   });
-  const [scriptTxt, setScriptTxt] = useState({});
+  const [scriptTxt, setScriptTxt] = useState([]);
+  const [show, setShow] = useState(false)
 
   useEffect(() => {
     const findScript = async () => {
@@ -22,6 +25,7 @@ const PrintListScript = ({ item, cancel }) => {
           subtitle: result.data[0].subtitle
         });
         setScriptTxt(sort)
+        setShow(true)
       } catch (error) {
         console.log(error);
       }
@@ -31,8 +35,11 @@ const PrintListScript = ({ item, cancel }) => {
   }, []);
 
   return (
-    <div className="modal-action print-script">
-      {titlePg.title} {titlePg.author}  
+    <div className="modal-action print-script"> 
+{show && scriptTxt.length > 0 ? <PDFDownloadLink document={<ScriptDoc titlePg={titlePg} scriptTxt={scriptTxt}/>} fileName="script.pdf"
+ >
+      Download Script
+      </PDFDownloadLink>: "Loading Script..."}
       <button className="modal-btn" onClick={cancel}>
         Cancel
       </button>

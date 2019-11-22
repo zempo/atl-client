@@ -31,10 +31,9 @@ export const sortScriptSentences = (str, callback = splitByTags) => {
           para.tag = el.slice(1, midpoint - 1)
 
           let sortLn = el.slice(midpoint)
-          if (!el.includes('[Header]')) { 
             sortLn = el.slice(midpoint).split('')
             sortLn.forEach((char, i, chars) => {
-              if (char === '.' || char === '?' || char === '!' || char === ')'){
+              if ((char === '.' || char === '?' || char === '!' || char === ')') && para.tag !== 'Header'){
                 chars[i] = `${char}||`
               }
               if (char === '(') {
@@ -43,7 +42,6 @@ export const sortScriptSentences = (str, callback = splitByTags) => {
             })
             sortLn = sortLn.join('').split('||')
             sortLn = sortLn.filter((l) => l !== ' ')
-          }
           para.lines = sortLn  
           scriptBody.push(para)
       }
