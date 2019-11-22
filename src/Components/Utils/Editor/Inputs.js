@@ -67,6 +67,7 @@ const Input = ({ currentId, body, history }) => {
     e.preventDefault();
     setUpdated(true);
     updateScriptBody(currentScript, currentBody);
+    // editScripts()
     // modify state, maybe in the sidebar?
   };
 

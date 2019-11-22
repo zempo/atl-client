@@ -101,7 +101,7 @@ export const ScriptsContextProvider = props => {
     
     setScripts(editedScripts)
     setSearchScripts(editedSearchScripts)
-
+ 
     let isIE = false;
     let ua = window.navigator.userAgent
     let old_ie = ua.indexOf("MSIE")
