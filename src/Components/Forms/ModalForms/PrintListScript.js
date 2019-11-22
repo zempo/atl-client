@@ -8,21 +8,20 @@ const PrintListScript = ({ item, cancel }) => {
     author: "",
     subtitle: ""
   });
+  const [scriptTxt, setScriptTxt] = useState({});
 
-  const [outputBody, setOutputBody] = useState([]);
   useEffect(() => {
     const findScript = async () => {
       try {
         const result = await readScripts.get(`/${item}`);
+        const sort = await sortScriptSentences(result.data[0].body)
 
         setTitlePg({
           title: result.data[0].title,
           author: result.data[0].author,
           subtitle: result.data[0].subtitle
         });
-        console.log(
-          sortScriptSentences(result.data[0].body)
-        )
+        setScriptTxt(sort)
       } catch (error) {
         console.log(error);
       }
@@ -33,7 +32,7 @@ const PrintListScript = ({ item, cancel }) => {
 
   return (
     <div className="modal-action print-script">
-      {titlePg.title} {titlePg.author}
+      {titlePg.title} {titlePg.author}  
       <button className="modal-btn" onClick={cancel}>
         Cancel
       </button>

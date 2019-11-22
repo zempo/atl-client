@@ -29,17 +29,21 @@ export const sortScriptSentences = (str, callback = splitByTags) => {
               midpoint = el.indexOf('))') + 2
           }
           para.tag = el.slice(1, midpoint - 1)
-          let sortLn = el.slice(midpoint).split('')
-          sortLn.forEach((char, i, chars) => {
+
+          let sortLn = el.slice(midpoint)
+          if (!el.includes('[Header]')) { 
+            sortLn = el.slice(midpoint).split('')
+            sortLn.forEach((char, i, chars) => {
               if (char === '.' || char === '?' || char === '!' || char === ')'){
-                  chars[i] = `${char}||`
+                chars[i] = `${char}||`
               }
               if (char === '(') {
-                  chars[i] = `||${char}`
+                chars[i] = `||${char}`
               }
-          })
-          sortLn = sortLn.join('').split('||')
-          sortLn = sortLn.filter((l) => l !== ' ')
+            })
+            sortLn = sortLn.join('').split('||')
+            sortLn = sortLn.filter((l) => l !== ' ')
+          }
           para.lines = sortLn  
           scriptBody.push(para)
       }
