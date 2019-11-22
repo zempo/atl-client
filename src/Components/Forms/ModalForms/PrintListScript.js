@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { readScripts } from "../../../Services/endpoints-service";
 import { sortScriptSentences } from "../../../Services/algos-service";
-import { PDFDownloadLink } from "@react-pdf/renderer";
+import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import {ScriptDoc} from '../../Utils/Scripts/ScriptDoc'
 
 const PrintListScript = ({ item, cancel }) => {
@@ -10,7 +10,7 @@ const PrintListScript = ({ item, cancel }) => {
     author: "",
     subtitle: ""
   });
-  const [scriptTxt, setScriptTxt] = useState([]);
+  const [scriptTxt, setScriptTxt] = useState([{tag: "", actor: "", lines: [""]}]);
   const [show, setShow] = useState(false)
 
   useEffect(() => {
@@ -24,7 +24,10 @@ const PrintListScript = ({ item, cancel }) => {
           author: result.data[0].author,
           subtitle: result.data[0].subtitle
         });
-        setScriptTxt(sort)
+        console.log(sort)
+        if (sort.length !== 0) { 
+          setScriptTxt(sort)
+        }
         setShow(true)
       } catch (error) {
         console.log(error);
@@ -36,14 +39,14 @@ const PrintListScript = ({ item, cancel }) => {
 
   return (
     <div className="modal-action print-script"> 
-{show && scriptTxt.length > 0 ? <PDFDownloadLink document={<ScriptDoc titlePg={titlePg} scriptTxt={scriptTxt}/>} fileName="script.pdf"
- >
-      Download Script
-      </PDFDownloadLink>: "Loading Script..."}
+      {show && scriptTxt.length > 0 ? <PDFViewer width="100%" height="500"><ScriptDoc titlePg={titlePg} scriptTxt={scriptTxt}/></PDFViewer>: "Loading Script..."}
       <button className="modal-btn" onClick={cancel}>
         Cancel
       </button>
-      <button className="modal-btn action">Print</button>
+{show && scriptTxt.length > 0 ? <PDFDownloadLink document={<ScriptDoc titlePg={titlePg} scriptTxt={scriptTxt}/>} fileName="script.pdf"
+ >
+      Download
+      </PDFDownloadLink>: "Loading Script..."}
       <button className="close-modal" onClick={cancel}>
         X
       </button>
