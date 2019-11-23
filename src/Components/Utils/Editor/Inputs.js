@@ -57,7 +57,7 @@ const Input = ({ currentId, body, history }) => {
       }
     };
 
-    findScript();
+    findScript(); 
     let len = inputRef.current.value.length;
     inputRef.current.setSelectionRange(len, len);
     // inputRef.current.setAttribute("data-gramm", "false");

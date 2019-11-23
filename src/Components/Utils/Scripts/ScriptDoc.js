@@ -17,6 +17,9 @@ const styles = StyleSheet.create({
         fontFamily: 'courier-prime',
         margin: '96px',
         marginLeft: '144px'
+    },
+    line: {
+        width: '336px'
     }
 })
  
@@ -24,7 +27,7 @@ export const ScriptDoc = ({titlePg, scriptTxt}) => {
     console.log(CourierPrime)
     return (
         <Document>
-            <Page wrap="false" style={styles.page}>
+            <Page wrap="false" style={styles.page} size="letter">
                 <View>
                     <Text>
                         {titlePg.title}
@@ -37,7 +40,7 @@ export const ScriptDoc = ({titlePg, scriptTxt}) => {
                     </Text>
                 </View>
             </Page>
-            <Page style={styles.page}>
+            <Page style={styles.page} size="letter">
             {scriptTxt.length > 0 ? scriptTxt.map((para, i) => {
                 if (para.tag === 'Header') {
                  return (<View key={i}>
@@ -48,7 +51,7 @@ export const ScriptDoc = ({titlePg, scriptTxt}) => {
                     return (<View key={i}>
                     <Text>{para.actor}</Text>                        
                     {para.lines.map((line, i) => {
-                        return <Text key={i}>{line}</Text>
+                        return <Text key={i} style={styles.line}>{line}</Text>
                     })}
                 </View>)
                 }
