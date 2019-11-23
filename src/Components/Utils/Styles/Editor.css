@@ -139,6 +139,11 @@
   color: white;
 }
 
+.delete-tag:disabled:hover {
+  color: rgb(243, 243, 243, 0);  
+}
+
+
 /* sidebar */
 .box-sidebar {
   color: rgb(243, 243, 243);

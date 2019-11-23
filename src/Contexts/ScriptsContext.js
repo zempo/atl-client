@@ -98,10 +98,10 @@ export const ScriptsContextProvider = props => {
     let searchScriptsToEdit = currentSearchScripts
     let editedScripts = scriptsToEdit.map((obj) => scriptToEdit.find((o) => o.id === obj.id) || obj)
     let editedSearchScripts = searchScriptsToEdit.map((obj) => scriptToEdit.find((o) => o.id === obj.id) || obj)
-    
+     
     setScripts(editedScripts)
     setSearchScripts(editedSearchScripts)
- 
+
     let isIE = false;
     let ua = window.navigator.userAgent
     let old_ie = ua.indexOf("MSIE")

@@ -23,11 +23,14 @@ export const EditContextProvider = props => {
 
     try {
       const result = await autoSave.patch(`${prevFields.id}`, fieldsToUpdate);
+      const scriptDidUpdate = await autoSave.get(`${prevFields.id}`)
 
       setTimeout(() => {
         setError(false);
         setLoading(false);
       }, 300);
+
+      return scriptDidUpdate.data
     } catch (err) {
       console.log(err);
       setError(Object.values(err.response.data.error));
@@ -37,11 +40,16 @@ export const EditContextProvider = props => {
 
   const updateTitlePage = async (prevFields, title, author, subtitle) => {
     let newFields = {};
-    newFields.title = title;
-    newFields.author = author;
-    newFields.subtitle = subtitle;
-    if (title === "") {
-      newFields.title = "UNTITLED PROJECT";
+    // newFields.title = title;
+    // newFields.author = author;
+    if (title !== "") {
+      newFields.title = title;
+    }
+    if (author !== '') {
+      newFields.author = author;
+    }
+    if (subtitle !== '') {
+      newFields.subtitle = subtitle;
     }
     try {
       const result = await autoSave.patch(`/${prevFields.id}`, newFields);
@@ -52,7 +60,7 @@ export const EditContextProvider = props => {
       setError(Object.values(err.response.data.error));
       setLoading(false);
     }
-  };
+  }; 
 
   const addToActors = async (prevFields, newActor) => {
     let actorToAdd = newActor;

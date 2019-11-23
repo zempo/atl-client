@@ -23,8 +23,7 @@ const styles = StyleSheet.create({
     }
 })
  
-export const ScriptDoc = ({titlePg, scriptTxt}) => {
-    console.log(CourierPrime)
+export const ScriptDoc = ({titlePg, scriptTxt}) => { 
     return (
         <Document>
             <Page wrap="false" style={styles.page} size="letter">
@@ -40,7 +39,7 @@ export const ScriptDoc = ({titlePg, scriptTxt}) => {
                     </Text>
                 </View>
             </Page>
-            <Page style={styles.page} size="letter">
+            <Page style={styles.page} size="letter" wrap="true">
             {scriptTxt.length > 0 ? scriptTxt.map((para, i) => {
                 if (para.tag === 'Header') {
                  return (<View key={i}>

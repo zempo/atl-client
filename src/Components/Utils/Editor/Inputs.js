@@ -63,11 +63,17 @@ const Input = ({ currentId, body, history }) => {
     // inputRef.current.setAttribute("data-gramm", "false");
   }, []);
 
-  const handleSave = e => {
+  const handleSave = async e => {
     e.preventDefault();
     setUpdated(true);
-    updateScriptBody(currentScript, currentBody);
-    // editScripts()
+
+    try {
+      const scriptDidUpdate = await updateScriptBody(currentScript, currentBody);
+      // console.log(scriptDidUpdate)
+      editScripts(scripts, searchScripts, scriptDidUpdate[0])
+    } catch (err) {
+      console.log(err)
+    }
     // modify state, maybe in the sidebar?
   };
 
@@ -95,22 +101,32 @@ const Input = ({ currentId, body, history }) => {
     updateScriptBody(currentScript, newBody);
   };
 
-  const removeActor = e => {
+  const removeActor = async e => {
     e.preventDefault();
     let actorToRmv = e.target.id;
-    rmvFromActors(currentScript, actors, actorToRmv);
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
+    try {
+      const removed = await rmvFromActors(currentScript, actors, actorToRmv);
+      
+      setTimeout(() => {
+        window.location.reload();
+      }, 300);
+    } catch (err) {
+      console.log(err)
+    }
   };
 
-  const removeTag = e => {
+  const removeTag = async e => {
     e.preventDefault();
     let tagToRmv = e.target.id;
-    rmvFromTags(currentScript, tags, tagToRmv);
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
+    try {
+      const removed = await rmvFromTags(currentScript, tags, tagToRmv);
+      
+      setTimeout(() => {
+        window.location.reload();
+      }, 300);
+    } catch (err) {
+      console.log(err)
+    }
   };
 
   let hotSave = React.useCallback(async () => {
@@ -245,7 +261,7 @@ const Input = ({ currentId, body, history }) => {
                     <button
                       className="delete-tag"
                       // these tags can't be removed!
-                      disabled={tag === 'Heading' || tag === 'Action'} 
+                      disabled={tag === 'Header' || tag === 'Action'} 
                       id={i}
                       onClick={removeTag}
                       style={{

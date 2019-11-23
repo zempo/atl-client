@@ -45,35 +45,50 @@ const Sidebar = ({ history, currentId }) => {
     findScript();
   }, []);
 
-  const updateTitlePg = e => {
+  const updateTitlePg = async e => {
     e.preventDefault();
     const { title, author, subtitle } = values;
     setUpdating(true);
-    updateTitlePage(currentScript, title, author, subtitle);
-    setTimeout(() => {
-      setUpdating(false);
-    }, 300);
+    try {
+      
+      const hasUpdated = await updateTitlePage(currentScript, title, author, subtitle);
+
+      setTimeout(() => {
+        setUpdating(false);
+      }, 300);
+    } catch (err) {
+      console.log(err)
+    }
   };
 
-  const updateActors = e => {
+  const updateActors = async e => {
     e.preventDefault();
     let newActor = actors;
-    addToActors(currentScript, newActor);
     resetActors();
+    try {
+    const actorsUpdated = await addToActors(currentScript, newActor);
     setTimeout(() => {
       window.location.reload();
-    }, 1000);
+    }, 300);
+      
+    } catch (err) {
+      console.log(err)
+    }
   };
 
-  const updateTags = e => {
+  const updateTags = async e => {
     e.preventDefault();
     let newTag = tags;
-    addToTags(currentScript, newTag);
+    try {
+    const tagsUpdated = await addToTags(currentScript, newTag);
     resetTags();
     setTimeout(() => {
       window.location.reload();
-    }, 1000);
-  };
+    }, 300);
+    } catch (err) {
+      console.log(err)
+    }
+  }; 
 
   return (
     <>

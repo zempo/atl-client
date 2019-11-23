@@ -33,8 +33,11 @@ export const sortScriptSentences = (str, callback = splitByTags) => {
           let sortLn = el.slice(midpoint)
             sortLn = el.slice(midpoint).split('')
             sortLn.forEach((char, i, chars) => {
-              if ((char === '.' || char === '?' || char === '!' || char === ')') && para.tag !== 'Header'){
-                chars[i] = `${char}||`
+              if (el.includes('...') && (char === '.') && ((chars[i - 1] !== char && chars[i + 1] !== char) || (chars[i - 1] === char && chars[i + 1] !== char))) {
+                chars[i] = `${char}||`  
+              }
+              if ((char === '?' || char === '!' || char === ')') && para.tag !== 'Header'){
+                chars[i] = `${char}||` 
               }
               if (char === '(') {
                 chars[i] = `||${char}`
@@ -53,12 +56,15 @@ export const sortScriptSentences = (str, callback = splitByTags) => {
           para.actor = el.slice(0, midpoint).replace('{', '').replace('}', '').replace('(', '').replace(')', '')
           let sortLn = el.slice(midpoint).split('')
           sortLn.forEach((char, i, chars) => {
-              if (char === '.' || char === '?' || char === '!' || char === ')'){
-                  chars[i] = `${char}||`
-              }
-              if (char === '(') {
-                  chars[i] = `||${char}`
-              }
+            if (el.includes('...') && (char === '.') && ((chars[i - 1] !== char && chars[i + 1] !== char) || (chars[i - 1] === char && chars[i + 1] !== char))) {
+              chars[i] = `${char}||`  
+            }
+            if ((char === '?' || char === '!' || char === ')') && para.tag !== 'Header'){
+              chars[i] = `${char}||` 
+            }
+            if (char === '(') {
+              chars[i] = `||${char}`
+            }
           })
           sortLn = sortLn.join('').split('||')
           sortLn = sortLn.filter((l) => l !== ' ')
