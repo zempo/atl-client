@@ -53,8 +53,10 @@ export const EditContextProvider = props => {
     }
     try {
       const result = await autoSave.patch(`/${prevFields.id}`, newFields);
+      const didUpdateTitlePg = await autoSave.get(`/${prevFields.id}`);
       setError(false);
       setLoading(false);
+      return didUpdateTitlePg.data[0]
     } catch (err) {
       console.log(err);
       setError(Object.values(err.response.data.error));

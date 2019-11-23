@@ -4,7 +4,8 @@ import { useForm } from "../../../Hooks/use-files";
 import { validationSpacer } from "../../../Services/validation/auth-form-service";
 import { StyleContext } from "../../../Contexts/StyleContext";
 import { EditContext } from "../../../Contexts/EditContext";
-import { UserContext } from "../../../Contexts/UserContext";
+// import { UserContext } from "../../../Contexts/UserContext";
+import { ScriptsContext } from "../../../Contexts/ScriptsContext";
 import { BackBtn } from "../Utils";
 import "../Styles/Editor.css";
 import { readScripts } from "../../../Services/endpoints-service";
@@ -22,6 +23,7 @@ const Sidebar = ({ history, currentId }) => {
   const {
     value: { winHeight, tenthWidth }
   } = useContext(StyleContext);
+  const {value: {editScripts, scripts, searchScripts}} = useContext(ScriptsContext)
   const { value: tags, bind: bindTags, reset: resetTags } = useInput("");
   const { value: actors, bind: bindActors, reset: resetActors } = useInput("");
   const [currentTitle, setCurrentTitle] = useState("");
@@ -53,6 +55,7 @@ const Sidebar = ({ history, currentId }) => {
       
       const hasUpdated = await updateTitlePage(currentScript, title, author, subtitle);
 
+      editScripts(scripts, searchScripts, hasUpdated) 
       setTimeout(() => {
         setUpdating(false);
       }, 300);

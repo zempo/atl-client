@@ -173,7 +173,7 @@ const Input = ({ currentId, body, history }) => {
     HOT_COPY: hotCopy,
     HOT_DELETE: hotDelete
   };
-
+ 
   return (
     <HotKeys handlers={handlers} attach={window}>
       <Box
