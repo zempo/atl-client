@@ -101,21 +101,20 @@ export const ScriptsContextProvider = props => {
      
     setScripts(editedScripts)
     setSearchScripts(editedSearchScripts)
+    // let isIE = false;
+    // let ua = window.navigator.userAgent
+    // let old_ie = ua.indexOf("MSIE")
+    // let new_ie = ua.indexOf("Trident/")
+    // let edge = ua.toLowerCase().indexOf("")
 
-    let isIE = false;
-    let ua = window.navigator.userAgent
-    let old_ie = ua.indexOf("MSIE")
-    let new_ie = ua.indexOf("Trident/")
-    let edge = ua.toLowerCase().indexOf("")
+    // if (old_ie > -1 || new_ie > -1 || edge > -1) {
+    //   isIE = true
+    // }
 
-    if (old_ie > -1 || new_ie > -1 || edge > -1) {
-      isIE = true
-    }
-
-    if (isIE) {
-      window.location.reload()
-    }
-  }
+    // if (isIE) {
+    //   window.location.reload()
+    // }
+  } 
  
   const value = {
     addToScripts,

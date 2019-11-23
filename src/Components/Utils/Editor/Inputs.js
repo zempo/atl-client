@@ -69,36 +69,44 @@ const Input = ({ currentId, body, history }) => {
 
     try {
       const scriptDidUpdate = await updateScriptBody(currentScript, currentBody);
-      // console.log(scriptDidUpdate)
       editScripts(scripts, searchScripts, scriptDidUpdate[0])
     } catch (err) {
       console.log(err)
-    }
-    // modify state, maybe in the sidebar?
+    } 
   };
 
   const handleChange = e => {
     setCurrentBody(e.target.value);
   };
 
-  const appendActor = e => {
+  const appendActor = async e => {
     e.preventDefault();
     setUpdated(true);
     inputRef.current.focus();
     let currentTag = ` {${e.target.innerHTML}} `;
     let newBody = currentBody + currentTag;
     setCurrentBody(newBody);
-    updateScriptBody(currentScript, newBody);
+    try {
+    const scriptDidUpdate = await updateScriptBody(currentScript, newBody);
+    editScripts(scripts, searchScripts, scriptDidUpdate[0])
+    } catch (err) {
+      console.log(err)
+    }
   };
 
-  const appendTag = e => {
+  const appendTag = async e => {
     e.preventDefault();
     setUpdated(true);
     inputRef.current.focus();
     let currentTag = ` [${e.target.innerHTML}] `;
     let newBody = currentBody + currentTag;
     setCurrentBody(newBody);
-    updateScriptBody(currentScript, newBody);
+    try {
+      const scriptDidUpdate = await updateScriptBody(currentScript, newBody);
+      editScripts(scripts, searchScripts, scriptDidUpdate[0])
+      } catch (err) {
+        console.log(err)
+      }
   };
 
   const removeActor = async e => {
@@ -138,10 +146,14 @@ const Input = ({ currentId, body, history }) => {
     setLoading(true);
     try {
       const result = await readScripts.patch(`/${currentId}`, fieldsToUpdate);
-
+      const scriptDidUpdate = await readScripts.get(`${currentId}`)
+      const regularScripts = await readScripts.get("/");
+ 
+      editScripts(regularScripts.data, regularScripts.data, scriptDidUpdate.data[0]) 
       setTimeout(() => {
         setLoading(false);
       }, 300);
+
     } catch (err) {
       console.log(err);
       setLoading(false);
