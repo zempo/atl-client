@@ -32,8 +32,287 @@ export const AtlNotification = ({ type, msg, done }) => {
   }
 };
 
-export const Loader = ({ loading, status }) => {
-  // little spinner for editor on "save"
+export const SkeletonTags = () => {
+  const {
+    value: { userColor }
+  } = useContext(UserContext);
+
+  return (<>
+    <li className="tag-control skeleton-tag">
+    <button
+      className="append-tag"
+      style={{
+        background: userColor,
+        border: `2px solid ${userColor}`
+      }}
+    > 
+    Loading
+    </button>
+    <button
+      className="delete-tag"
+      disabled={true}
+      style={{ 
+        background: `${userColor}b3`,
+        border: `2px solid ${userColor}`
+      }}
+    >
+      x
+    </button>
+  </li> 
+      <li className="tag-control skeleton-tag">
+      <button
+        className="append-tag"
+        style={{
+          background: userColor,
+          border: `2px solid ${userColor}`
+        }}
+      > 
+      Load
+      </button>
+      <button
+        className="delete-tag"
+        disabled={true}
+        style={{ 
+          background: `${userColor}b3`,
+          border: `2px solid ${userColor}`
+        }}
+      >
+        x
+      </button>
+    </li>
+    <li className="tag-control skeleton-tag">
+    <button
+      className="append-tag"
+      style={{
+        background: userColor,
+        border: `2px solid ${userColor}`
+      }}
+    > 
+    Loader
+    </button>
+    <button
+      className="delete-tag"
+      disabled={true}
+      style={{ 
+        background: `${userColor}b3`,
+        border: `2px solid ${userColor}`
+      }}
+    >
+      x
+    </button>
+  </li>
+  <li className="tag-control skeleton-tag">
+    <button
+      className="append-tag"
+      style={{
+        background: userColor,
+        border: `2px solid ${userColor}`
+      }}
+    > 
+    Loa
+    </button>
+    <button
+      className="delete-tag"
+      disabled={true}
+      style={{ 
+        background: `${userColor}b3`,
+        border: `2px solid ${userColor}`
+      }}
+    >
+      x
+    </button>
+  </li>
+  <li className="tag-control skeleton-tag">
+    <button
+      className="append-tag"
+      style={{
+        background: userColor,
+        border: `2px solid ${userColor}`
+      }}
+    > 
+    Loader
+    </button>
+    <button
+      className="delete-tag"
+      disabled={true}
+      style={{ 
+        background: `${userColor}b3`,
+        border: `2px solid ${userColor}`
+      }}
+    >
+      x
+    </button>
+  </li>
+  <li className="tag-control skeleton-tag">
+    <button
+      className="append-tag"
+      style={{
+        background: userColor,
+        border: `2px solid ${userColor}`
+      }}
+    > 
+    Loadin
+    </button>
+    <button
+      className="delete-tag"
+      disabled={true}
+      style={{ 
+        background: `${userColor}b3`,
+        border: `2px solid ${userColor}`
+      }}
+    >
+      x
+    </button>
+  </li>
+  <li className="tag-control skeleton-tag">
+    <button
+      className="append-tag"
+      style={{
+        background: userColor,
+        border: `2px solid ${userColor}`
+      }}
+    > 
+    Loading
+    </button>
+    <button
+      className="delete-tag"
+      disabled={true}
+      style={{ 
+        background: `${userColor}b3`,
+        border: `2px solid ${userColor}`
+      }}
+    >
+      x
+    </button>
+  </li>
+  <li className="tag-control skeleton-tag">
+    <button
+      className="append-tag"
+      style={{
+        background: userColor,
+        border: `2px solid ${userColor}`
+      }}
+    > 
+    Loaded
+    </button>
+    <button
+      className="delete-tag"
+      disabled={true}
+      style={{ 
+        background: `${userColor}b3`,
+        border: `2px solid ${userColor}`
+      }}
+    >
+      x
+    </button>
+  </li>
+  <li className="tag-control skeleton-tag">
+    <button
+      className="append-tag"
+      style={{
+        background: userColor,
+        border: `2px solid ${userColor}`
+      }}
+    > 
+    Lo
+    </button>
+    <button
+      className="delete-tag"
+      disabled={true}
+      style={{ 
+        background: `${userColor}b3`,
+        border: `2px solid ${userColor}`
+      }}
+    >
+      x
+    </button>
+  </li>
+  <li className="tag-control skeleton-tag">
+    <button
+      className="append-tag"
+      style={{
+        background: userColor,
+        border: `2px solid ${userColor}`
+      }}
+    > 
+    Loaded
+    </button>
+    <button
+      className="delete-tag"
+      disabled={true}
+      style={{ 
+        background: `${userColor}b3`,
+        border: `2px solid ${userColor}`
+      }}
+    >
+      x
+    </button>
+  </li>
+  <li className="tag-control skeleton-tag">
+    <button
+      className="append-tag"
+      style={{
+        background: userColor,
+        border: `2px solid ${userColor}`
+      }}
+    > 
+    Lo
+    </button>
+    <button
+      className="delete-tag"
+      disabled={true}
+      style={{ 
+        background: `${userColor}b3`,
+        border: `2px solid ${userColor}`
+      }}
+    >
+      x
+    </button>
+  </li>
+  <li className="tag-control skeleton-tag">
+    <button
+      className="append-tag"
+      style={{
+        background: userColor,
+        border: `2px solid ${userColor}`
+      }}
+    > 
+    Loaded
+    </button>
+    <button
+      className="delete-tag"
+      disabled={true}
+      style={{ 
+        background: `${userColor}b3`,
+        border: `2px solid ${userColor}`
+      }}
+    >
+      x
+    </button>
+  </li>
+  <li className="tag-control skeleton-tag">
+    <button
+      className="append-tag"
+      style={{
+        background: userColor,
+        border: `2px solid ${userColor}`
+      }}
+    > 
+    Lo
+    </button>
+    <button
+      className="delete-tag"
+      disabled={true}
+      style={{ 
+        background: `${userColor}b3`,
+        border: `2px solid ${userColor}`
+      }}
+    >
+      x
+    </button>
+  </li>
+    </>
+  )
 };
 
 export function AtlSection({ className, list, ...props }) {

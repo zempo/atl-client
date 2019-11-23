@@ -9,6 +9,7 @@ import { useModal } from "../../../Hooks/use-modal";
 import Modal from "../../../Modals/Modal";
 import Moment from "react-moment";
 import { HotKeys } from "react-hotkeys";
+import {SkeletonTags} from '../Utils'
 import "../Styles/Editor.css";
 
 const Input = ({ currentId, body, history }) => {
@@ -37,6 +38,7 @@ const Input = ({ currentId, body, history }) => {
   const [updated, setUpdated] = useState(false);
   const [actors, setActors] = useState([]);
   const [tags, setTags] = useState([]);
+  const [tagsLoading, setTagsLoading] = useState(true)
   const inputRef = useRef();
 
   useEffect(() => {
@@ -45,6 +47,7 @@ const Input = ({ currentId, body, history }) => {
       try {
         const result = await readScripts.get(`/${currentId}`);
         setCurrentBody(result.data[0].body);
+        setTagsLoading(false)
         setActors(result.data[0].actors);
         setTags(result.data[0].tags);
         date = result.data[0].date_created;
@@ -52,7 +55,7 @@ const Input = ({ currentId, body, history }) => {
           date = result.data[0].date_updated;
         }
         setDate(date);
-      } catch (error) {
+      } catch (error) { 
         console.log(error);
       }
     };
@@ -60,7 +63,6 @@ const Input = ({ currentId, body, history }) => {
     findScript(); 
     let len = inputRef.current.value.length;
     inputRef.current.setSelectionRange(len, len);
-    // inputRef.current.setAttribute("data-gramm", "false");
   }, []);
 
   const handleSave = async e => {
@@ -224,7 +226,7 @@ const Input = ({ currentId, body, history }) => {
           {error ? error : null}
           <fieldset className="input-top">
             <ul className="actors">
-              {actors.map((actor, i) => {
+              {!tagsLoading ? actors.map((actor, i) => {
                 return (
                   <li key={i} className="actor-control">
                     <button
@@ -248,15 +250,15 @@ const Input = ({ currentId, body, history }) => {
                       }}
                     >
                       x
-                    </button>
+                    </button> 
                   </li>
                 );
-              })}
+              }): <SkeletonTags/>}
             </ul>
           </fieldset>
           <fieldset className="input-bottom">
             <ul className="tags">
-              {tags.map((tag, i) => {
+              {!tagsLoading ? tags.map((tag, i) => {
                 return (
                   <li key={i} className="tag-control">
                     <button
@@ -285,7 +287,7 @@ const Input = ({ currentId, body, history }) => {
                     </button>
                   </li>
                 );
-              })}
+              }): <SkeletonTags/>}
             </ul>
           </fieldset>
           <textarea
