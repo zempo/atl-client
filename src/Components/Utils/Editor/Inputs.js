@@ -30,7 +30,8 @@ const Input = ({ currentId, body, history }) => {
       rmvFromActors,
       rmvFromTags,
       currentScript,
-      updateScriptBody
+      updateScriptBody,
+      updateScript
     }
   } = useContext(EditContext);
   const [date, setDate] = useState("");
@@ -72,6 +73,7 @@ const Input = ({ currentId, body, history }) => {
     try {
       const scriptDidUpdate = await updateScriptBody(currentScript, currentBody);
       editScripts(scripts, searchScripts, scriptDidUpdate[0])
+      updateScript(scriptDidUpdate[0]) 
     } catch (err) {
       console.log(err)
     } 
@@ -91,6 +93,7 @@ const Input = ({ currentId, body, history }) => {
     try {
     const scriptDidUpdate = await updateScriptBody(currentScript, newBody);
     editScripts(scripts, searchScripts, scriptDidUpdate[0])
+    updateScript(scriptDidUpdate[0]) 
     } catch (err) {
       console.log(err)
     }
@@ -106,6 +109,7 @@ const Input = ({ currentId, body, history }) => {
     try {
       const scriptDidUpdate = await updateScriptBody(currentScript, newBody);
       editScripts(scripts, searchScripts, scriptDidUpdate[0])
+      updateScript(scriptDidUpdate[0]) 
       } catch (err) {
         console.log(err)
       }
@@ -138,7 +142,7 @@ const Input = ({ currentId, body, history }) => {
       console.log(err)
     }
   };
-
+ 
   let hotSave = React.useCallback(async () => {
     let bodyToUpdate;
     let fieldsToUpdate = {};
@@ -152,6 +156,7 @@ const Input = ({ currentId, body, history }) => {
       const regularScripts = await readScripts.get("/");
  
       editScripts(regularScripts.data, regularScripts.data, scriptDidUpdate.data[0]) 
+      updateScript(scriptDidUpdate.data[0])
       setTimeout(() => {
         setLoading(false);
       }, 300);
@@ -253,7 +258,7 @@ const Input = ({ currentId, body, history }) => {
                     </button> 
                   </li>
                 );
-              }): <SkeletonTags/>}
+              }): <SkeletonTags/>} 
             </ul>
           </fieldset>
           <fieldset className="input-bottom">

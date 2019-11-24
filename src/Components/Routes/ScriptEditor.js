@@ -21,7 +21,7 @@ const ScriptEditor = props => {
   } = useContext(UserContext);
   const {
     value: { updateScript }
-  } = useContext(EditContext);
+  } = useContext(EditContext); 
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -43,7 +43,7 @@ const ScriptEditor = props => {
           currentId={props.location.state.item.id}
           history={props.history}
         />
-        <Output />
+        <Output currentId={props.location.state.item.id} />
         <Sidebar
           history={props.history}
           currentId={props.location.state.item.id}

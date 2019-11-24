@@ -17,7 +17,7 @@ const Sidebar = ({ history, currentId }) => {
     {},
     { 1: validationSpacer, 2: validationSpacer, 3: validationSpacer }
   );
-  const {
+  const { 
     value: { addToActors, addToTags, currentScript, updateTitlePage }
   } = useContext(EditContext);
   const {

@@ -1,0 +1,29 @@
+.script-viewer-output {
+    border: none; 
+}
+
+.output-controls {
+    height: 10%;
+}
+.output-update-btn {
+    background: rgb(20, 20, 20, 0.3);
+    color: rgb(243, 243, 243);
+    border: 2px solid rgb(243, 243, 243);
+    font-size: 1.5rem;
+    height: 60%; 
+    width: 15rem;
+    margin: 1rem;
+    margin-left: calc(50% - 7.5rem);
+    /* margin-top: 5%; */
+    font-weight: bold;
+}
+  
+.output-update-btn:hover {
+    background: rgb(243, 243, 243);
+    color: rgb(20, 20, 20);
+}
+  
+  .output-update-btn:active { 
+    color: rgb(243, 243, 243);
+    background: rgb(20, 20, 20, 0.3);
+  }
