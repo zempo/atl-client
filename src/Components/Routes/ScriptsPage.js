@@ -6,6 +6,7 @@ import ListScript from "../Utils/Scripts/ListScript";
 import ListSearchScript from "../Utils/Scripts/ListSearchScript";
 import "./Styles/ScriptsPage.css";
 import { SkeletonLoaderScripts } from "../Utils/Scripts/SkeletonScripts";
+import ScriptsSearch from "../Forms/Search/ScriptsSearch";
 
 const ScriptsPage = () => {
   const {
@@ -39,6 +40,7 @@ const ScriptsPage = () => {
 
   return (
     <AtlSection className="atl-pg scripts-pg">
+      <ScriptsSearch />
       <h1 className="animated-h1">My Works</h1>
       <AddBtn />
       <div className={`scripts-container ${direction}`}>
