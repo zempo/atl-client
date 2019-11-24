@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     },
     scriptTag: {
         marginLeft: 476,
-        width: 100
+        width: 200
     }, 
     pageNumber: {
         position: 'absolute',
@@ -98,7 +98,7 @@ export const ScriptDoc = ({titlePg, scriptTxt}) => {
                 <View style={styles.titleSection}>
                     <Text style={styles.scriptTitle}>
                         {titlePg.title}
-                    </Text>
+                    </Text> 
                     <Text style={styles.scriptAuthor}>
                         written by
                     </Text>
@@ -119,21 +119,13 @@ export const ScriptDoc = ({titlePg, scriptTxt}) => {
                     if (para.tag === 'Header') {
                         return (<Text key={i} style={styles.header}>{para.lines[0].toUpperCase()}</Text>)   
                     } else if (para.tag === 'Action') {
-                        console.log('fuck', para.lines)
-                        // {para.lines.map((line, i) => {
-                        // })}   
                         return <Text key={i} style={styles.action}>{para.lines[0]}</Text> 
                     } else {
                         return ( 
                             <Text style={styles.scriptTag} key={i}>{para.tag.toUpperCase()}</Text>
                             )
                     }
-                }
-                // if (para.tag === 'Action') { 
-                //     {para.lines.map((line, i) => {
-                //         return <Text key={i} style={styles.action}>{line}</Text> 
-                //     })} 
-                // }
+                } 
                 if (para.actor !== null) {   
                     return (
                     <View key={i}>

@@ -3,17 +3,20 @@
 }
 
 .output-controls {
-    height: 10%;
+    height: 20%;
+    color: rgb(243, 243, 243);
+    text-align: center;
+    font-weight: bold;
 }
 .output-update-btn {
     background: rgb(20, 20, 20, 0.3);
     color: rgb(243, 243, 243);
     border: 2px solid rgb(243, 243, 243);
     font-size: 1.5rem;
-    height: 60%; 
+    height: 4rem; 
     width: 15rem;
-    margin: 1rem;
-    margin-left: calc(50% - 7.5rem);
+    margin: .8rem;
+    /* margin-left: calc(50% - 7.5rem); */
     /* margin-top: 5%; */
     font-weight: bold;
 }

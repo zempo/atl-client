@@ -34,7 +34,7 @@
 
 .btn-back {
   position: absolute;
-  top: 5vh;
+  top: 2vh;
   left: calc(50% - 31.5px);
   border: 3px solid rgb(243, 243, 243);
   color: rgb(243, 243, 243);

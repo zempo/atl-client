@@ -171,6 +171,34 @@ const Sidebar = ({ history, currentId }) => {
           </fieldset>
         </form>
         <div className="sidebar-info">
+
+          <h3>[Header]</h3>
+          <ol>
+            <li>At the top of your scene</li>
+            <li>Describes setting in 1 line</li>
+            <li>'[Header] Int Home - Night'</li>
+          </ol>
+
+          <h3>[Action]</h3>
+          <ol>
+            <li>Below the header</li>
+            <li>Or above relevant dialogue</li>
+            <li>Events that can only be seen/heard</li>
+            <li>Present Tense</li>
+            <li>'[Action] He slumps into his chair'</li>
+          </ol>
+
+          <h3>[Other Tags]</h3>
+            <ol>
+              <li>Also known as Transitions</li>
+              <li>Only appear in shooting script</li>
+              <li>It is convention to rarely use these</li>
+            </ol>
+          <h3>(Parentheticals)</h3>
+          <ol>
+  <li>Extension: {`'{Matt} ((V.O.))'`} <br/> Use the double parentheses, after actor </li>
+<li>Descriptive: {`'(Breathing heavily)'`} <br/> Use single parentheses </li>
+          </ol>
           <h3>Hotkeys</h3>
           <ol>
             <li>

@@ -404,7 +404,7 @@ export const BackBtn = ({ history }) => {
         style={{ background: userColor }}
         className="btn btn-back"
         title="go back"
-        onClick={() => history.goBack()}
+        onClick={() => window.scrollTo(0,0)}
       >
         <i className="fas fa-arrow-left"></i>
       </Link>

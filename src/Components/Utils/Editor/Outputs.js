@@ -25,6 +25,7 @@ const Output = ({currentId}) => {
   });
   const [scriptTxt, setScriptTxt] = useState([{tag: "", actor: "", lines: [""]}]);
   const [show, setShow] = useState(false)
+  const [load, setLoad] = useState(false)
 
   useEffect(() => {
     const findScript = async () => {
@@ -51,7 +52,7 @@ const Output = ({currentId}) => {
 
   const updateOutput = async e => {
     e.preventDefault()
-
+setLoad(true)
     try {
       const result = await readScripts.get(`/${currentId}`);
       const sort = await sortScriptSentences(result.data[0].body)
@@ -65,8 +66,11 @@ const Output = ({currentId}) => {
         setScriptTxt(sort)
       }
       setShow(true)
+      setLoad(false)
+      window.location.reload()
     } catch (err) {
       console.log(err)
+      setLoad(false)
     }
   }
  
@@ -80,9 +84,10 @@ const Output = ({currentId}) => {
         resizeHandles={["s"]}
       >
         <div className="output-controls">
-          <button className="output-update-btn" onClick={updateOutput}>Update</button>
+          <button className="output-update-btn" onClick={updateOutput}>{!load ? 'Format Your Scene':'Writing...'}</button>
+          <p>*Select 'Fit to Page' when printing*</p> 
         </div>
-      {show && scriptTxt.length > 0 ? <PDFViewer width="100%" height="90%" className="script-viewer-output"><ScriptDoc titlePg={titlePg} scriptTxt={scriptTxt}/></PDFViewer>: "Loading Script..."}
+      {show && scriptTxt.length > 0 ? <PDFViewer width="100%" height="80%" className="script-viewer-output"><ScriptDoc titlePg={titlePg} scriptTxt={scriptTxt}/></PDFViewer>: "Loading Script..."}
       </Box>
     </>
   );
