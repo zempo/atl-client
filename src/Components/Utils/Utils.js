@@ -399,14 +399,15 @@ export const BackBtn = ({ history }) => {
   // do conditional for all colors
   return (
     <>
-      <button
+      <Link
+        to="/scripts"
         style={{ background: userColor }}
         className="btn btn-back"
         title="go back"
         onClick={() => history.goBack()}
       >
         <i className="fas fa-arrow-left"></i>
-      </button>
+      </Link>
     </>
   );
 };

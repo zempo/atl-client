@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         marginLeft: '144px'
     },
     titleSection: {
-        marginTop: 336,
+        marginTop: 200,
         // marginRight: '96px',
         marginBottom: 96,
         // marginLeft: '144px'
@@ -40,9 +40,10 @@ const styles = StyleSheet.create({
     scriptAuthor: {
         width: 336,
         textAlign: 'center',
-        marginLeft: 96
+        marginLeft: 96,
     },
     scriptSubtitle: {
+        marginTop: 200,
         width: 336,
         textAlign: 'center',
         marginLeft: 96
@@ -55,14 +56,13 @@ const styles = StyleSheet.create({
         width: '100px',
         height: '96px'
     },
-    title: {
-        fontSize: 20
-    },
     header: {
-        width: '576px'
+        width: '576px',
+        marginBottom: '16px',
     },
     action: {
-        width: '576px'
+        width: '576px',
+        marginBottom: '16px' 
     },
     actor: {
         marginTop: '8px',
@@ -79,6 +79,10 @@ const styles = StyleSheet.create({
         width: '236px',
         textAlign: 'left'
     },
+    scriptTag: {
+        marginLeft: 476,
+        width: 100
+    }, 
     pageNumber: {
         position: 'absolute',
         fontSize: 16,
@@ -107,21 +111,32 @@ export const ScriptDoc = ({titlePg, scriptTxt}) => {
                 </View>
                 <View break style={styles.section}>
                 <Text style={styles.top} fixed></Text>
-                <Text style={styles.pageNumber} render={({ pageNumber }) => (
+                <Text style={styles.pageNumber} render={({ pageNumber, totalPages }) => (
         `${pageNumber}`
       )} fixed />
             {scriptTxt.length > 0 ? scriptTxt.map((para, i) => {
-                if (para.tag === 'Header') {
-                    return (<Text key={i} style={styles.header}>{para.lines[0].toUpperCase()}</Text>)   
-                } 
-                if (para.tag === 'Action') { 
-                    {para.lines.map((line, i) => {
-                        return <Text key={i} style={styles.action}>{line}</Text> 
-                    })}   
+                if (para.tag !== null) {
+                    if (para.tag === 'Header') {
+                        return (<Text key={i} style={styles.header}>{para.lines[0].toUpperCase()}</Text>)   
+                    } else if (para.tag === 'Action') {
+                        console.log('fuck', para.lines)
+                        // {para.lines.map((line, i) => {
+                        // })}   
+                        return <Text key={i} style={styles.action}>{para.lines[0]}</Text> 
+                    } else {
+                        return ( 
+                            <Text style={styles.scriptTag} key={i}>{para.tag.toUpperCase()}</Text>
+                            )
+                    }
                 }
+                // if (para.tag === 'Action') { 
+                //     {para.lines.map((line, i) => {
+                //         return <Text key={i} style={styles.action}>{line}</Text> 
+                //     })} 
+                // }
                 if (para.actor !== null) {   
                     return (
-                    <>
+                    <View key={i}>
                     <Text style={styles.actor}>{para.actor.toUpperCase()}</Text>
                         {para.lines.map((line, i) => {
                             if (line.includes('(') && line.includes(')')) {
@@ -129,7 +144,7 @@ export const ScriptDoc = ({titlePg, scriptTxt}) => {
                             }
                             return (<Text key={i} style={styles.line}>{line}</Text>)
                         })} 
-                        </>
+                        </View>
                     )                        
                 }
             }): ""}

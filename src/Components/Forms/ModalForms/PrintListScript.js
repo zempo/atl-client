@@ -40,9 +40,9 @@ const PrintListScript = ({ item, cancel }) => {
   return (
     <div className="modal-action print-script"> 
       {show && scriptTxt.length > 0 ? <PDFViewer width="100%" height="600" className="script-viewer"><ScriptDoc titlePg={titlePg} scriptTxt={scriptTxt}/></PDFViewer>: "Loading Script..."}
-      <button className="modal-btn" onClick={cancel}>
+      {/* <button className="modal-btn" onClick={cancel}>
         Cancel 
-      </button>
+      </button> */}
       <button className="close-modal" onClick={cancel}>
         X
       </button>
