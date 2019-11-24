@@ -15,19 +15,37 @@ const styles = StyleSheet.create({
     page: {
         backgroundColor: '#ffffff',
         fontFamily: 'courier-prime',
-        margin: '96px',
+        fontSize: 16
+    },
+    titleSection: {
+        marginTop: '96px',
+        marginRight: '96px',
+        marginBottom: '96px',
+        marginLeft: '144px'
+    },
+    section: {
+        marginRight: '96px',
+        // marginBottom: '96px',
         marginLeft: '144px'
     },
     line: {
         width: '336px'
+    },
+    top: {
+        width: '100px',
+        height: '96px'
+    },
+    bottom: {
+        width: '100px',
+        height: '96px'
     }
 })
  
 export const ScriptDoc = ({titlePg, scriptTxt}) => { 
     return (
         <Document>
-            <Page wrap="false" style={styles.page} size="letter">
-                <View>
+            <Page style={styles.page} size="letter" wrap>
+                <View style={styles.titleSection}>
                     <Text>
                         {titlePg.title}
                     </Text>
@@ -38,23 +56,27 @@ export const ScriptDoc = ({titlePg, scriptTxt}) => {
                         {titlePg.subtitle}
                     </Text>
                 </View>
-            </Page>
-            <Page style={styles.page} size="letter" wrap="true">
+                <View break style={styles.section}>
+                    <Text style={styles.top} fixed></Text>
             {scriptTxt.length > 0 ? scriptTxt.map((para, i) => {
                 if (para.tag === 'Header') {
-                 return (<View key={i}>
-                <Text>{para.lines[0]}</Text>
-                 </View>)   
+                    return (<Text key={i}>{para.lines[0]}</Text>)   
                 } 
-                if (para.actor !== null) {   
-                    return (<View key={i}>
-                    <Text>{para.actor}</Text>                        
+                if (para.tag === 'Action') { 
                     {para.lines.map((line, i) => {
                         return <Text key={i} style={styles.line}>{line}</Text>
-                    })}
-                </View>)
+                    })}   
+                }
+                if (para.actor !== null) {   
+                    return (<><Text>{para.actor}</Text>
+                        {para.lines.map((line, i) => {
+                            return <Text key={i} wrap style={styles.line}>{line}</Text>
+                        })}</>
+                        )                        
                 }
             }): ""}
+                <Text style={styles.bottom} fixed></Text> 
+            </View>
             </Page> 
         </Document>
     )

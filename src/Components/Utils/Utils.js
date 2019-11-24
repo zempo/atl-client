@@ -314,7 +314,7 @@ export const SkeletonTags = () => {
     </>
   )
 };
-
+ 
 export function AtlSection({ className, list, ...props }) {
   const classes = ["Section", list && "Section--list", className]
     .filter(Boolean)
