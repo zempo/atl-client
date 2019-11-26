@@ -136,6 +136,7 @@ export const ScriptsContextProvider = props => {
     paginateSearch,
     lastSearchPg,
     setSearching,
+    setSearchScripts,
     setScriptsPerPg,
     setSearchScriptsPerPg,
     loading,

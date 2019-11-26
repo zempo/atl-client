@@ -2,17 +2,29 @@ import React, {useContext, useRef, useState} from 'react'
 import { useInput } from '../../../Hooks/use-input';
 import MagGlass from '../../../Images/mGlass.svg.png'
 import { ScriptsContext } from '../../../Contexts/ScriptsContext';
+import { readScripts } from '../../../Services/endpoints-service';
+import { sortByKeyword } from '../../../Services/algos-service';
 
 export const ScriptsSearch = () => {
     const { value: keyword, bind: bindKeyword, reset: resetKeyword } = useInput("");
     const [sortDirection, setSortDirection] = useState('desc') 
-    const {value: {scripts, searchScripts, setSearching}} = useContext(ScriptsContext)
+    const {value: {setSearchScripts, setSearching}} = useContext(ScriptsContext)
 
     const handleKeywordSearch = async e => {
         e.preventDefault()
 
-        console.log(keyword)
-        resetKeyword()
+        // console.log(keyword)
+        setSearching(true)
+        try {
+            const resetScripts = await readScripts.get('/')
+            const keywordSearch = await sortByKeyword(resetScripts.data, keyword)
+            
+            // console.log(keywordSearch)
+            setSearchScripts(keywordSearch)
+            resetKeyword()
+        } catch (err) {
+            console.log(err)
+        }
     }
     const handleSort = async e => {
         e.preventDefault()
