@@ -140,6 +140,7 @@ export const ScriptsContextProvider = props => {
     setScriptsPerPg,
     setSearchScriptsPerPg,
     loading,
+    setLoading,
     error
   };
 

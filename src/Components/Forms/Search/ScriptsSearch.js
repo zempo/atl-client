@@ -10,19 +10,21 @@ export const ScriptsSearch = () => {
     const { value: keyword, bind: bindKeyword, reset: resetKeyword } = useInput("");
     const [sortDirection, setSortDirection] = useState('desc') 
     const [sortVal, setSortVal] = useState('abc') 
-    const {value: {setSearchScripts, setSearching}} = useContext(ScriptsContext)
+    const {value: {setSearchScripts, setSearching, setLoading}} = useContext(ScriptsContext)
 
     const handleKeywordSearch = async e => {
         e.preventDefault()
-
-        setSearching(true)
+        setLoading(true)
         try {
             const resetScripts = await readScripts.get('/')
+            setLoading(false)
             const keywordSearch = await sortByKeyword(resetScripts.data, keyword)
-            
+
             setSearchScripts(keywordSearch)
+            setSearching(true)
             resetKeyword()
         } catch (err) {
+            setLoading(false)
             console.log(err)
         }
     }
@@ -30,37 +32,46 @@ export const ScriptsSearch = () => {
         e.preventDefault()
         let sortBy = e.target.value
         setSortVal(sortBy)
-        setSearching(true)
+        setLoading(true)
         try {
-        const resetScripts = await readScripts.get('/')
-        const sortSearch = await sortBySelection(resetScripts.data, sortBy, sortDirection)
- 
-        setSearchScripts(sortSearch)
+            const resetScripts = await readScripts.get('/')
+            setLoading(false)
+            const sortSearch = await sortBySelection(resetScripts.data, sortBy, sortDirection)
+            
+            setSearchScripts(sortSearch)
+            setSearching(true)
         } catch (err) {
+            setLoading(false)
             console.log(err)
         }
     }
     const toggleSortDirection = async e => {
         e.preventDefault()
-        setSearching(true)
+        setLoading(true)
         if (sortDirection === 'desc') {
             setSortDirection('asc')
             try {
                 const resetScripts = await readScripts.get('/')
+                setLoading(false)
                 const sortSearch = await sortBySelection(resetScripts.data, sortVal, sortDirection)
-            setSearchScripts(sortSearch)
+                setSearchScripts(sortSearch)
+                setSearching(true)
             } catch (err) {
+                setLoading(false)
                 console.log(err)
             }
         } else {
             setSortDirection('desc')
             try {
                 const resetScripts = await readScripts.get('/')
+                setLoading(false)
                 const sortSearch = await sortBySelection(resetScripts.data, sortVal, sortDirection)
-        setSearchScripts(sortSearch)    
+                setSearchScripts(sortSearch)
+                setSearching(true)
             } catch (err) {
+                setLoading(false)
                 console.log(err)
-            }
+            } 
         }
     }
     return (
