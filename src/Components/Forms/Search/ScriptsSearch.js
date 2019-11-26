@@ -3,7 +3,7 @@ import { useInput } from '../../../Hooks/use-input';
 import MagGlass from '../../../Images/mGlass.svg.png'
 import { ScriptsContext } from '../../../Contexts/ScriptsContext';
 import { readScripts } from '../../../Services/endpoints-service';
-import { sortByKeyword } from '../../../Services/algos-service';
+import { sortByKeyword, sortBySelection } from '../../../Services/algos-service';
 import '../Styles/Forms.css'
 
 export const ScriptsSearch = () => {
@@ -28,7 +28,16 @@ export const ScriptsSearch = () => {
     const handleSort = async e => {
         e.preventDefault()
         let sortBy = e.target.value
-        console.log(sortBy) 
+
+        try {
+        const resetScripts = await readScripts.get('/')
+        const sortSearch = await sortBySelection(resetScripts.data, sortBy, sortDirection)
+
+        console.log(sortSearch)
+        setSearchScripts(sortSearch)
+        } catch (err) {
+            console.log(err)
+        }
     }
     const toggleSortDirection = e => {
         e.preventDefault()

@@ -78,8 +78,14 @@ export const sortScriptSentences = (str, callback = splitByTags) => {
 } 
 
 export const compareDatesAsc = (a, b) => {
-  const dateA = Date.parse(a.date_created);
-  const dateB = Date.parse(b.date_created);
+  let dateA = Date.parse(a.date_created);
+  if (a.date_updated !== null) {
+    dateA = Date.parse(a.date_updated)
+  }
+  let dateB = Date.parse(b.date_created);
+  if (b.date_updated !== null) { 
+    dateB = Date.parse(b.date_updated)
+  } 
   let comparison = 0;
   if (dateA > dateB) {
     comparison = 1;
@@ -88,9 +94,16 @@ export const compareDatesAsc = (a, b) => {
   }
   return comparison;
 };
+
 export const compareDatesDesc = (a, b) => {
-  const dateA = Date.parse(a.date_created);
-  const dateB = Date.parse(b.date_created);
+  let dateA = Date.parse(a.date_created);
+  if (a.date_updated !== null) {
+    dateA = Date.parse(a.date_updated)
+  }
+  let dateB = Date.parse(b.date_created);
+  if (b.date_updated !== null) { 
+    dateB = Date.parse(b.date_updated)
+  } 
   let comparison = 0;
   if (dateA > dateB) {
     comparison = 1;
@@ -98,6 +111,54 @@ export const compareDatesDesc = (a, b) => {
     comparison = -1;
   }
   return comparison * -1;
+};
+
+export const compareAlphaAsc = (a, b) => {
+  let titleA = a.title;
+  let titleB = b.title;
+  let comparison = 0;
+  if (titleA > titleB) {
+    comparison = 1;
+  } else if (titleA < titleB) {
+    comparison = -1;
+  }
+  return comparison;
+};
+
+export const compareAlphaDesc = (a, b) => {
+  let titleA = a.title;
+  let titleB = b.title;
+  let comparison = 0;
+  if (titleA > titleB) {
+    comparison = 1;
+  } else if (titleA < titleB) {
+    comparison = -1;
+  }
+  return comparison * -1;
+};
+
+export const compareSizeAsc = (a, b) => {
+  let bodyA = a.body.length;
+  let bodyB = b.body.length;
+  let comparison = 0;
+  if (bodyA > bodyB) {
+    comparison = 1;
+  } else if (bodyA < bodyB) {
+    comparison = -1;
+  }
+  return comparison;
+};
+
+export const compareSizeDesc = (a, b) => {
+  let bodyA = a.body.length;
+  let bodyB = b.body.length;
+  let comparison = 0;
+  if (bodyA > bodyB) {
+    comparison = 1;
+  } else if (bodyA < bodyB) {
+    comparison = -1;
+  }
+  return comparison * -1; 
 };
 
 export const sortByKeyword = (scriptsValue, keyword) => {
@@ -121,12 +182,24 @@ export const sortByKeyword = (scriptsValue, keyword) => {
 }
 
 export const sortBySelection = (scriptsValue, selection, direction) => {
-  if (selection === 'abc') {
-    
-  } else if (selection === 'date') {
-    
-  } else if (selection === 'size') {
-
+  if (selection === 'abc' && direction === 'asc') {
+    let sortedScripts = scriptsValue.sort(compareAlphaAsc)
+    return sortedScripts    
+  } else if (selection === 'abc' && direction === 'desc') {
+    let sortedScripts = scriptsValue.sort(compareAlphaDesc)
+    return sortedScripts
+  } else if (selection === 'date' && direction === 'asc') {
+    let sortedScripts = scriptsValue.sort(compareDatesAsc)
+    return sortedScripts
+  } else if (selection === 'date' && direction === 'desc') {
+    let sortedScripts = scriptsValue.sort(compareDatesDesc)
+    return sortedScripts 
+  } else if (selection === 'size' && direction === 'asc') {
+    let sortedScripts = scriptsValue.sort(compareSizeAsc)
+    return sortedScripts 
+  } else if (selection === 'size' && direction === 'desc') {
+    let sortedScripts = scriptsValue.sort(compareSizeDesc)
+    return sortedScripts  
   } else {
     return scriptsValue
   }
