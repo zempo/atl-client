@@ -265,5 +265,6 @@ export const formateScriptDate = isoStr => {
   months[12] = "December";
   newDate.month = months[newDate.month];
 
-  return newDate;
+  let fullDate = `${newDate.month} ${newDate.day}, ${newDate.year}`;
+  return fullDate;
 };

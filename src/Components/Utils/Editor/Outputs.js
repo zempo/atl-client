@@ -42,13 +42,13 @@ const Output = ({ currentId }) => {
           date = result.data[0].date_updated;
         }
         const sort = await sortScriptSentences(result.data[0].body);
+        const formatDate = await formateScriptDate(date);
 
-        console.log(formateScriptDate(date));
         setTitlePg({
           title: result.data[0].title,
           author: result.data[0].author,
           subtitle: result.data[0].subtitle,
-          datePublished: date
+          datePublished: formatDate
         });
         if (sort.length !== 0) {
           setScriptTxt(sort);
@@ -73,12 +73,13 @@ const Output = ({ currentId }) => {
         date = result.data[0].date_updated;
       }
       const sort = await sortScriptSentences(result.data[0].body);
+      const formatDate = await formateScriptDate(date);
 
       setTitlePg({
         title: result.data[0].title,
         author: result.data[0].author,
         subtitle: result.data[0].subtitle,
-        datePublished: date
+        datePublished: formatDate
       });
       if (sort.length !== 0) {
         setScriptTxt(sort);
