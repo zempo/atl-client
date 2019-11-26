@@ -21,7 +21,7 @@ const ScriptEditor = props => {
   } = useContext(UserContext);
   const {
     value: { updateScript }
-  } = useContext(EditContext); 
+  } = useContext(EditContext);
 
   useEffect(() => {
     window.scrollTo(0, 0);

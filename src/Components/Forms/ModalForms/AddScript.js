@@ -2,10 +2,12 @@ import React, { useState, useContext } from "react";
 import { useInput } from "../../../Hooks/use-input";
 import { AtlNotification } from "../../Utils/Utils";
 import { newScript } from "../../../Services/endpoints-service";
-import {ScriptsContext} from '../../../Contexts/ScriptsContext';
+import { ScriptsContext } from "../../../Contexts/ScriptsContext";
 
 const AddScript = ({ cancel }) => {
-  const {value: {addToScripts, scripts, searchScripts}} = useContext(ScriptsContext)
+  const {
+    value: { addToScripts, scripts, searchScripts }
+  } = useContext(ScriptsContext);
   const { value: title, bind: bindTitle } = useInput("");
   const { value: author, bind: bindAuthor } = useInput("");
   const { value: subtitle, bind: bindSubtitle } = useInput("");
@@ -33,10 +35,14 @@ const AddScript = ({ cancel }) => {
     });
 
     try {
-      const result = await newScript.post(`/`, scriptToPost); 
-      console.log(result.data)  
-      let addedToScripts = await addToScripts(scripts, searchScripts, result.data) 
-      console.log(addedToScripts)  
+      const result = await newScript.post(`/`, scriptToPost);
+      console.log(result.data);
+      let addedToScripts = await addToScripts(
+        scripts,
+        searchScripts,
+        result.data
+      );
+      console.log(addedToScripts);
       setTimeout(() => {
         setErr({
           resMsg: "Created Script",
@@ -52,7 +58,7 @@ const AddScript = ({ cancel }) => {
       });
       setTimeout(() => {
         setErr({
-          resMsg: "", 
+          resMsg: "",
           resStatus: 0
         });
       }, 5000);

@@ -28,6 +28,7 @@ const DeleteListScript = ({ item, cancel }) => {
       }, 5000);
     }
   };
+
   return (
     <div className="modal-action delete-script">
       {resStatus === 0 ? null : (

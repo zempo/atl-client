@@ -1,11 +1,12 @@
 import React, { useState, useContext } from "react";
 import { AtlNotification } from "../../Utils/Utils";
 import { readScripts, newScript } from "../../../Services/endpoints-service";
-import {ScriptsContext} from '../../../Contexts/ScriptsContext';
-
+import { ScriptsContext } from "../../../Contexts/ScriptsContext";
 
 const CopyScript = ({ item, cancel }) => {
-  const {value: {addToScripts, scripts, searchScripts}} = useContext(ScriptsContext)
+  const {
+    value: { addToScripts, scripts, searchScripts }
+  } = useContext(ScriptsContext);
   const [resMsg, setResMsg] = useState("");
   const [resStatus, setResStatus] = useState(0);
 
@@ -14,7 +15,7 @@ const CopyScript = ({ item, cancel }) => {
     setResStatus(0);
     setResMsg("");
     let scriptToCopy = {};
- 
+
     try {
       const getScript = await readScripts.get(`/${item}`);
       scriptToCopy.title = getScript.data[0].title + " Copy";
@@ -25,7 +26,11 @@ const CopyScript = ({ item, cancel }) => {
       scriptToCopy.tags = getScript.data[0].tags;
       const copyScipt = await newScript.post("/", scriptToCopy);
 
-      let addedToScripts = await addToScripts(scripts, searchScripts, copyScipt.data) 
+      let addedToScripts = await addToScripts(
+        scripts,
+        searchScripts,
+        copyScipt.data
+      );
 
       setResStatus(200);
       setResMsg("Copied Script");

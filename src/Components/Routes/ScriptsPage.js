@@ -44,7 +44,7 @@ const ScriptsPage = () => {
       <h1 className="animated-h1">My Works</h1>
       <AddBtn />
       <div className={`scripts-container ${direction}`}>
-        {loading ? <SkeletonLoaderScripts/>: null}
+        {loading ? <SkeletonLoaderScripts /> : null}
         {!searching
           ? currentScripts.map((script, i) => {
               return (

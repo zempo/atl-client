@@ -9,11 +9,13 @@ import { useModal } from "../../../Hooks/use-modal";
 import Modal from "../../../Modals/Modal";
 import Moment from "react-moment";
 import { HotKeys } from "react-hotkeys";
-import {SkeletonTags} from '../Utils'
+import { SkeletonTags } from "../Utils";
 import "../Styles/Editor.css";
 
 const Input = ({ currentId, body, history }) => {
-  const {value: {editScripts, scripts, searchScripts}} = useContext(ScriptsContext)
+  const {
+    value: { editScripts, scripts, searchScripts }
+  } = useContext(ScriptsContext);
   const { isShowing: isShowingCopy, toggle: toggleCopy } = useModal();
   const { isShowing: isShowingDelete, toggle: toggleDelete } = useModal();
   const {
@@ -39,7 +41,7 @@ const Input = ({ currentId, body, history }) => {
   const [updated, setUpdated] = useState(false);
   const [actors, setActors] = useState([]);
   const [tags, setTags] = useState([]);
-  const [tagsLoading, setTagsLoading] = useState(true)
+  const [tagsLoading, setTagsLoading] = useState(true);
   const inputRef = useRef();
 
   useEffect(() => {
@@ -48,7 +50,7 @@ const Input = ({ currentId, body, history }) => {
       try {
         const result = await readScripts.get(`/${currentId}`);
         setCurrentBody(result.data[0].body);
-        setTagsLoading(false)
+        setTagsLoading(false);
         setActors(result.data[0].actors);
         setTags(result.data[0].tags);
         date = result.data[0].date_created;
@@ -56,12 +58,12 @@ const Input = ({ currentId, body, history }) => {
           date = result.data[0].date_updated;
         }
         setDate(date);
-      } catch (error) { 
+      } catch (error) {
         console.log(error);
       }
     };
 
-    findScript(); 
+    findScript();
     let len = inputRef.current.value.length;
     inputRef.current.setSelectionRange(len, len);
   }, []);
@@ -71,12 +73,15 @@ const Input = ({ currentId, body, history }) => {
     setUpdated(true);
 
     try {
-      const scriptDidUpdate = await updateScriptBody(currentScript, currentBody);
-      editScripts(scripts, searchScripts, scriptDidUpdate[0])
-      updateScript(scriptDidUpdate[0]) 
+      const scriptDidUpdate = await updateScriptBody(
+        currentScript,
+        currentBody
+      );
+      editScripts(scripts, searchScripts, scriptDidUpdate[0]);
+      updateScript(scriptDidUpdate[0]);
     } catch (err) {
-      console.log(err)
-    } 
+      console.log(err);
+    }
   };
 
   const handleChange = e => {
@@ -91,11 +96,11 @@ const Input = ({ currentId, body, history }) => {
     let newBody = currentBody + currentTag;
     setCurrentBody(newBody);
     try {
-    const scriptDidUpdate = await updateScriptBody(currentScript, newBody);
-    editScripts(scripts, searchScripts, scriptDidUpdate[0])
-    updateScript(scriptDidUpdate[0]) 
+      const scriptDidUpdate = await updateScriptBody(currentScript, newBody);
+      editScripts(scripts, searchScripts, scriptDidUpdate[0]);
+      updateScript(scriptDidUpdate[0]);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   };
 
@@ -108,11 +113,11 @@ const Input = ({ currentId, body, history }) => {
     setCurrentBody(newBody);
     try {
       const scriptDidUpdate = await updateScriptBody(currentScript, newBody);
-      editScripts(scripts, searchScripts, scriptDidUpdate[0])
-      updateScript(scriptDidUpdate[0]) 
-      } catch (err) {
-        console.log(err)
-      }
+      editScripts(scripts, searchScripts, scriptDidUpdate[0]);
+      updateScript(scriptDidUpdate[0]);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const removeActor = async e => {
@@ -120,12 +125,12 @@ const Input = ({ currentId, body, history }) => {
     let actorToRmv = e.target.id;
     try {
       const removed = await rmvFromActors(currentScript, actors, actorToRmv);
-      
+
       setTimeout(() => {
         window.location.reload();
       }, 300);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   };
 
@@ -134,15 +139,15 @@ const Input = ({ currentId, body, history }) => {
     let tagToRmv = e.target.id;
     try {
       const removed = await rmvFromTags(currentScript, tags, tagToRmv);
-      
+
       setTimeout(() => {
         window.location.reload();
       }, 300);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   };
- 
+
   let hotSave = React.useCallback(async () => {
     let bodyToUpdate;
     let fieldsToUpdate = {};
@@ -152,15 +157,18 @@ const Input = ({ currentId, body, history }) => {
     setLoading(true);
     try {
       const result = await readScripts.patch(`/${currentId}`, fieldsToUpdate);
-      const scriptDidUpdate = await readScripts.get(`${currentId}`)
+      const scriptDidUpdate = await readScripts.get(`${currentId}`);
       const regularScripts = await readScripts.get("/");
- 
-      editScripts(regularScripts.data, regularScripts.data, scriptDidUpdate.data[0]) 
-      updateScript(scriptDidUpdate.data[0])
+
+      editScripts(
+        regularScripts.data,
+        regularScripts.data,
+        scriptDidUpdate.data[0]
+      );
+      updateScript(scriptDidUpdate.data[0]);
       setTimeout(() => {
         setLoading(false);
       }, 300);
-
     } catch (err) {
       console.log(err);
       setLoading(false);
@@ -180,7 +188,7 @@ const Input = ({ currentId, body, history }) => {
     HOT_COPY: hotCopy,
     HOT_DELETE: hotDelete
   };
- 
+
   return (
     <HotKeys handlers={handlers} attach={window}>
       <Box
@@ -231,68 +239,81 @@ const Input = ({ currentId, body, history }) => {
           {error ? error : null}
           <fieldset className="input-top">
             <ul className="actors">
-              {!tagsLoading ? actors.map((actor, i) => {
-                return (
-                  <li key={i} className="actor-control">
-                    <button
-                      className="append-tag"
-                      id={i}
-                      style={{
-                        background: userColor,
-                        border: `2px solid ${userColor}`
-                      }}
-                      onClick={appendActor}
-                    >
-                      {actor}
-                    </button>
-                    <button
-                      className="delete-tag"
-                      id={i}
-                      onClick={removeActor}
-                      style={{
-                        background: `${userColor}b3`,
-                        border: `2px solid ${userColor}`
-                      }}
-                    >
-                      x
-                    </button> 
-                  </li>
-                );
-              }): <SkeletonTags/>} 
+              {!tagsLoading ? (
+                actors.map((actor, i) => {
+                  return (
+                    <li key={i} className="actor-control">
+                      <button
+                        className="append-tag"
+                        id={i}
+                        style={{
+                          background: userColor,
+                          border: `2px solid ${userColor}`
+                        }}
+                        onClick={appendActor}
+                      >
+                        {actor}
+                      </button>
+                      <button
+                        className="delete-tag"
+                        id={i}
+                        onClick={removeActor}
+                        style={{
+                          background: `${userColor}b3`,
+                          border: `2px solid ${userColor}`
+                        }}
+                      >
+                        x
+                      </button>
+                    </li>
+                  );
+                })
+              ) : (
+                <SkeletonTags />
+              )}
             </ul>
           </fieldset>
           <fieldset className="input-bottom">
             <ul className="tags">
-              {!tagsLoading ? tags.map((tag, i) => {
-                return (
-                  <li key={i} className="tag-control">
-                    <button
-                      className="append-tag"
-                      id={i}
-                      style={{
-                        background: userColor,
-                        border: `2px solid ${userColor}`
-                      }}
-                      onClick={appendTag}
-                    >
-                      {tag}
-                    </button>
-                    <button
-                      className="delete-tag"
-                      // these tags can't be removed!
-                      disabled={tag === 'Header' || tag === 'Action'} 
-                      id={i}
-                      onClick={removeTag}
-                      style={{
-                        background: `${userColor}b3`,
-                        border: `2px solid ${userColor}`
-                      }}
-                    >
-                      x
-                    </button>
-                  </li>
-                );
-              }): <SkeletonTags/>}
+              {!tagsLoading ? (
+                tags.map((tag, i) => {
+                  return (
+                    <li key={i} className="tag-control">
+                      <button
+                        className="append-tag"
+                        id={i}
+                        style={{
+                          background: userColor,
+                          border: `2px solid ${userColor}`
+                        }}
+                        onClick={appendTag}
+                      >
+                        {tag}
+                      </button>
+                      <button
+                        className="delete-tag"
+                        // these tags can't be removed!
+                        disabled={
+                          tag === "Header" ||
+                          tag === "Action" ||
+                          tag === "Shot" ||
+                          tag === "Transition"
+                        }
+                        id={i}
+                        onClick={removeTag}
+                        style={{
+                          background: `${userColor}b3`,
+                          border: `2px solid ${userColor}`
+                        }}
+                      >
+                        x
+                      </button>
+                    </li>
+                  );
+                })
+              ) : (
+                <SkeletonTags />
+              )}
             </ul>
           </fieldset>
           <textarea
