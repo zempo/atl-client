@@ -13,13 +13,11 @@ export const ScriptsSearch = () => {
     const handleKeywordSearch = async e => {
         e.preventDefault()
 
-        // console.log(keyword)
         setSearching(true)
         try {
             const resetScripts = await readScripts.get('/')
             const keywordSearch = await sortByKeyword(resetScripts.data, keyword)
             
-            // console.log(keywordSearch)
             setSearchScripts(keywordSearch)
             resetKeyword()
         } catch (err) {
@@ -42,10 +40,14 @@ export const ScriptsSearch = () => {
     return (
         <>
         <form className="atl-form search-form">
+            <fieldset className="keyword-search">
+
             <input type="text" name="keyword" placeholder="Search Your Scripts" {...bindKeyword}/>
             <button className="scripts-search-btn" onClick={handleKeywordSearch} title="search">
                 <img width="20" height="20" src={MagGlass} alt="search scripts"/>
             </button> 
+            </fieldset>
+            <fieldset className="sort-search">
             <select name="sort" onChange={handleSort} defaultValue="abc"> 
                 <option value="abc">Alphabetically</option>
                 <option value="date">Last Modified</option> 
@@ -53,6 +55,7 @@ export const ScriptsSearch = () => {
             </select>
             {/* descending means smaller/least amount of a quality will be last, ascending means smaller will be first */}
         <button className="search-btn-sort" onClick={toggleSortDirection}>{sortDirection === 'desc' ? '↑':'↓'}</button>
+            </fieldset>
         </form> 
         </>
     )
