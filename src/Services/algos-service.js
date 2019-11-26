@@ -77,6 +77,29 @@ export const sortScriptSentences = (str, callback = splitByTags) => {
   return scriptBody 
 } 
 
+export const compareDatesAsc = (a, b) => {
+  const dateA = Date.parse(a.date_created);
+  const dateB = Date.parse(b.date_created);
+  let comparison = 0;
+  if (dateA > dateB) {
+    comparison = 1;
+  } else if (dateA < dateB) {
+    comparison = -1;
+  }
+  return comparison;
+};
+export const compareDatesDesc = (a, b) => {
+  const dateA = Date.parse(a.date_created);
+  const dateB = Date.parse(b.date_created);
+  let comparison = 0;
+  if (dateA > dateB) {
+    comparison = 1;
+  } else if (dateA < dateB) {
+    comparison = -1;
+  }
+  return comparison * -1;
+};
+
 export const sortByKeyword = (scriptsValue, keyword) => {
   if (keyword) {
     const byKeyword = scriptsValue.filter((script) => {
@@ -92,6 +115,18 @@ export const sortByKeyword = (scriptsValue, keyword) => {
       }
     })
     return byKeyword
+  } else {
+    return scriptsValue
+  }
+}
+
+export const sortBySelection = (scriptsValue, selection, direction) => {
+  if (selection === 'abc') {
+    
+  } else if (selection === 'date') {
+    
+  } else if (selection === 'size') {
+
   } else {
     return scriptsValue
   }

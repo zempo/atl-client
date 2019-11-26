@@ -1,0 +1,15 @@
+.search-form {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-left: 10%;
+}
+
+.search-form fieldset {
+    border: none;
+}
+
+.search-form input {
+    /* width: 100%; */
+    border-radius: 5px;
+}

@@ -4,6 +4,7 @@ import MagGlass from '../../../Images/mGlass.svg.png'
 import { ScriptsContext } from '../../../Contexts/ScriptsContext';
 import { readScripts } from '../../../Services/endpoints-service';
 import { sortByKeyword } from '../../../Services/algos-service';
+import '../Styles/Forms.css'
 
 export const ScriptsSearch = () => {
     const { value: keyword, bind: bindKeyword, reset: resetKeyword } = useInput("");
