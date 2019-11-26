@@ -12,5 +12,5 @@ const Landing = () => {
     </AtlSection>
   );
 };
- 
+
 export default Landing;

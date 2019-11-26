@@ -40,8 +40,9 @@ const ScriptsPage = () => {
 
   return (
     <AtlSection className="atl-pg scripts-pg">
+      <h1 className="animated-h1">My Projects</h1>
       <ScriptsSearch />
-      <h1 className="animated-h1">My Works</h1>
+      <hr />
       <AddBtn />
       <div className={`scripts-container ${direction}`}>
         {loading ? <SkeletonLoaderScripts /> : null}

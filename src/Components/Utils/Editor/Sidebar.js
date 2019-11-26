@@ -17,13 +17,15 @@ const Sidebar = ({ history, currentId }) => {
     {},
     { 1: validationSpacer, 2: validationSpacer, 3: validationSpacer }
   );
-  const { 
+  const {
     value: { addToActors, addToTags, currentScript, updateTitlePage }
   } = useContext(EditContext);
   const {
     value: { winHeight, tenthWidth }
   } = useContext(StyleContext);
-  const {value: {editScripts, scripts, searchScripts}} = useContext(ScriptsContext)
+  const {
+    value: { editScripts, scripts, searchScripts }
+  } = useContext(ScriptsContext);
   const { value: tags, bind: bindTags, reset: resetTags } = useInput("");
   const { value: actors, bind: bindActors, reset: resetActors } = useInput("");
   const [currentTitle, setCurrentTitle] = useState("");
@@ -52,15 +54,19 @@ const Sidebar = ({ history, currentId }) => {
     const { title, author, subtitle } = values;
     setUpdating(true);
     try {
-      
-      const hasUpdated = await updateTitlePage(currentScript, title, author, subtitle);
+      const hasUpdated = await updateTitlePage(
+        currentScript,
+        title,
+        author,
+        subtitle
+      );
 
-      editScripts(scripts, searchScripts, hasUpdated) 
+      editScripts(scripts, searchScripts, hasUpdated);
       setTimeout(() => {
         setUpdating(false);
       }, 300);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   };
 
@@ -69,13 +75,12 @@ const Sidebar = ({ history, currentId }) => {
     let newActor = actors;
     resetActors();
     try {
-    const actorsUpdated = await addToActors(currentScript, newActor);
-    setTimeout(() => {
-      window.location.reload();
-    }, 300);
-      
+      const actorsUpdated = await addToActors(currentScript, newActor);
+      setTimeout(() => {
+        window.location.reload();
+      }, 300);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   };
 
@@ -83,15 +88,15 @@ const Sidebar = ({ history, currentId }) => {
     e.preventDefault();
     let newTag = tags;
     try {
-    const tagsUpdated = await addToTags(currentScript, newTag);
-    resetTags();
-    setTimeout(() => {
-      window.location.reload();
-    }, 300);
+      const tagsUpdated = await addToTags(currentScript, newTag);
+      resetTags();
+      setTimeout(() => {
+        window.location.reload();
+      }, 300);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }; 
+  };
 
   return (
     <>
@@ -119,7 +124,7 @@ const Sidebar = ({ history, currentId }) => {
             </button>
             <input
               ref={tagRef}
-              placeholder="FADE IN"
+              placeholder="Add Your Own Transitions"
               type="text"
               name="tags"
               {...bindTags}
@@ -171,35 +176,47 @@ const Sidebar = ({ history, currentId }) => {
           </fieldset>
         </form>
         <div className="sidebar-info">
-
-          <h3>[Header]</h3>
+          <p>
+            <b>[Header]/[Shot]</b>
+          </p>
           <ol>
-            <li>At the top of your scene</li>
-            <li>Describes setting in 1 line</li>
+            <li>1 line</li>
             <li>'[Header] Int Home - Night'</li>
+            <li>'[Shot] Establishing Shot - Home'</li>
           </ol>
 
-          <h3>[Action]</h3>
+          <p>
+            <b>[Action]</b>
+          </p>
           <ol>
-            <li>Below the header</li>
-            <li>Or above relevant dialogue</li>
             <li>Events that can only be seen/heard</li>
             <li>Present Tense</li>
             <li>'[Action] He slumps into his chair'</li>
           </ol>
 
-          <h3>[Other Tags]</h3>
-            <ol>
-              <li>Also known as Transitions</li>
-              <li>Only appear in shooting script</li>
-              <li>It is convention to rarely use these</li>
-            </ol>
-          <h3>(Parentheticals)</h3>
+          <p>
+            <b>[Transition]</b>
+          </p>
           <ol>
-  <li>Extension: {`'{Matt} ((V.O.))'`} <br/> Use the double parentheses, after actor </li>
-<li>Descriptive: {`'(Breathing heavily)'`} <br/> Use single parentheses </li>
+            <li>Only appear in shooting script</li>
+            <li>It is convention to rarely use these</li>
           </ol>
-          <h3>Hotkeys</h3>
+          <p>
+            <b>(Parentheticals)</b>
+          </p>
+          <ol>
+            <li>
+              Extension: {`'{Matt} ((V.O.))'`} <br /> Use the double
+              parentheses, after actor{" "}
+            </li>
+            <li>
+              Descriptive: {`'(Breathing heavily)'`} <br /> Use single
+              parentheses{" "}
+            </li>
+          </ol>
+          <p>
+            <b>Hotkeys</b>
+          </p>
           <ol>
             <li>
               Save | <kbd>alt</kbd> + <kbd>s</kbd>{" "}

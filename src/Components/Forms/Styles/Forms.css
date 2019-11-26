@@ -1,15 +1,69 @@
+.atl-form input,
+.atl-form select {
+  font-family: "Lato", sans-serif;
+}
+
 .search-form {
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
-    margin-left: 10%;
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  margin-left: 2.5%;
+}
+
+hr {
+  margin-bottom: 5rem;
+  position: relative;
+  top: -10px;
+  border: 0.5px solid rgba(0, 0, 0, 0.2);
 }
 
 .search-form fieldset {
-    border: none;
+  border: none;
+  /* border: 1px solid black; */
+  width: 20%;
+  position: relative;
+  padding: 0.7rem;
 }
 
-.search-form input {
-    /* width: 100%; */
-    border-radius: 5px;
+.keyword-search input,
+.sort-search select {
+  width: 100%;
+  text-indent: 5px;
+  border-radius: 10px;
+  border: 1px solid rgb(243, 243, 243, 0);
+  height: calc(35px - 0.4rem);
+  font-size: large;
+}
+
+.sort-search select {
+  background: rgb(255, 255, 255);
+  height: 35px;
+}
+
+.sort-search button {
+  position: absolute;
+  left: -35px;
+  top: 0.7rem;
+  padding: 0;
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(0, 0, 0, 0);
+  font-weight: bolder;
+  font-size: 1.5rem;
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+}
+
+.keyword-search button {
+  position: absolute;
+  right: 0.8rem;
+  top: 1rem;
+  background: rgb(255, 255, 255, 0);
+  border: 1px solid rgb(0, 0, 0, 0);
+  border-radius: 5px;
+}
+
+form.search-form .sort-search span {
+  /* position: relative; */
+  /* top: -0.5rem; */
 }

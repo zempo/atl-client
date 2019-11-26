@@ -4,6 +4,7 @@ import { useModal } from "../../../Hooks/use-modal";
 import { MenuOption } from "../Utils";
 import "../Styles/Scripts.css";
 import "../../Routes/Styles/ScriptsPage.css";
+import { ProcessMsg } from "../../../Services/algos-service";
 
 const ListScript = ({ script }) => {
   const { isShowing: isShowingCopy, toggle: toggleCopy } = useModal();
@@ -52,12 +53,15 @@ const ListScript = ({ script }) => {
             </button>
           </div>
           <div className="script-pg">
-            <h3>{script.title}</h3>
+            <h3>{ProcessMsg(script.title, 15)}</h3>
+            <p>Written by</p>
+            <p>{ProcessMsg(script.author, 17)}</p>
             {script.subtitle !== "" || script.subtitle !== " " ? (
-              <p>{script.subtitle}</p>
+              <p>{ProcessMsg(script.subtitle, 17)}</p>
             ) : null}
-            <p>By</p>
-            <p>{script.author}</p>
+            <div className="hole-1"></div>
+            <div className="hole-2"></div>
+            <div className="hole-3"></div>
           </div>
         </label>
       </div>

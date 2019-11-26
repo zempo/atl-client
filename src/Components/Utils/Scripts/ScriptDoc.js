@@ -55,6 +55,12 @@ const styles = StyleSheet.create({
     width: "100px",
     height: "96px"
   },
+  date: {
+    marginTop: 16,
+    width: 336,
+    textAlign: "center",
+    marginLeft: 96
+  },
   header: {
     width: "576px",
     marginBottom: "16px",
@@ -102,6 +108,7 @@ export const ScriptDoc = ({ titlePg, scriptTxt }) => {
           <Text style={styles.scriptAuthor}>written by</Text>
           <Text style={styles.scriptAuthor}>{titlePg.author}</Text>
           <Text style={styles.scriptSubtitle}>{titlePg.subtitle}</Text>
+          <Text style={styles.date}>{titlePg.datePublished}</Text>
         </View>
         <View break style={styles.section}>
           <Text style={styles.top} fixed></Text>

@@ -232,3 +232,38 @@ export const sortBySelection = (scriptsValue, selection, direction) => {
     return scriptsValue;
   }
 };
+
+export const ProcessMsg = (message, maxLength) => {
+  if (message.length > maxLength) {
+    return message.substring(0, maxLength) + "...";
+  } else {
+    return message;
+  }
+};
+
+export const formateScriptDate = isoStr => {
+  let dateToFormat = isoStr;
+  let getDateStr = dateToFormat.split("T")[0];
+  let d = getDateStr.split("-");
+  let newDate = {};
+  newDate.year = d[0];
+  newDate.month = d[1];
+  newDate.day = d[2];
+
+  let months = new Array();
+  months[1] = "January";
+  months[2] = "February";
+  months[3] = "March";
+  months[4] = "April";
+  months[5] = "May";
+  months[6] = "June";
+  months[7] = "July";
+  months[8] = "August";
+  months[9] = "September";
+  months[10] = "October";
+  months[11] = "November";
+  months[12] = "December";
+  newDate.month = months[newDate.month];
+
+  return newDate;
+};

@@ -34,25 +34,21 @@ input:focus {
   -webkit-transition: all 0.3s ease-out;
   opacity: 1;
   outline: none;
-  -moz-box-shadow: 0 0 2px 2px rgb(127, 212, 255);
-  -webkit-box-shadow: 0 0 2px 2px rgb(127, 212, 255);
-  box-shadow: 0 0 2px 2px rgb(127, 212, 255);
+  -moz-box-shadow: 0 0 1px 1px rgb(243, 243, 243);
+  -webkit-box-shadow: 0 0 1px 1px rgb(243, 243, 243);
+  box-shadow: 0 0 1px 1px rgb(243, 243, 243);
 }
 
 button:focus {
-  /* -moz-transform: scale(1.05, 1.05);
-  -o-transform: scale(1.05, 1.05);
-  -ms-transform: scale(1.05, 1.05);
-  transform: scale(1.05, 1.05); */
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
   opacity: 1;
   outline: none;
-  -moz-box-shadow: 0 0 2px 2px rgb(127, 212, 255);
-  -webkit-box-shadow: 0 0 2px 2px rgb(127, 212, 255);
-  box-shadow: 0 0 2px 2px rgb(127, 212, 255);
+  -moz-box-shadow: 0 0 1px 1px rgb(243, 243, 243);
+  -webkit-box-shadow: 0 0 1px 1px rgb(243, 243, 243);
+  box-shadow: 0 0 1px 1px rgb(243, 243, 243);
 }
 .nav-menu-btn {
   opacity: 1;

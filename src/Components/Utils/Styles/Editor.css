@@ -115,7 +115,8 @@
   margin-right: 1rem;
 }
 
-.append-tag:focus, .delete-tag:focus {
+.append-tag:focus,
+.delete-tag:focus {
   text-decoration: underline;
 }
 
@@ -135,7 +136,7 @@
 }
 
 .delete-tag:disabled {
-  color: rgb(243, 243, 243, 0);  
+  color: rgb(243, 243, 243, 0);
 }
 
 .append-tag:hover,
@@ -144,9 +145,8 @@
 }
 
 .delete-tag:disabled:hover {
-  color: rgb(243, 243, 243, 0);  
+  color: rgb(243, 243, 243, 0);
 }
-
 
 /* sidebar */
 .box-sidebar {
@@ -245,11 +245,15 @@
   list-style-position: inside;
 }
 .sidebar-info ol {
-  padding-left: .5rem;
+  padding-left: 0.5rem;
+}
+.sidebar-info p {
+  font-size: large;
+  text-indent: 10px;
 }
 .sidebar-info li {
   font-weight: normal;
-  font-size: 1.2rem;
+  /* font-size: 1.2rem; */
 }
 kbd {
   background-color: #eee;
