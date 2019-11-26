@@ -76,3 +76,23 @@ export const sortScriptSentences = (str, callback = splitByTags) => {
   })
   return scriptBody 
 } 
+
+export const sortByKeyword = (scriptsValue, keyword) => {
+  if (keyword) {
+    const byKeyword = scriptsValue.filter((script) => {
+      let title = script.title.toLowerCase()
+      let author = script.author.toLowerCase()
+      let subtitle = script.subtitle.toLowerCase()
+      let body = script.body.toLowerCase()
+      let searchTerm = keyword.toLowerCase()
+      if (title.includes(searchTerm) || author.includes(searchTerm) || subtitle.includes(searchTerm) || body.includes(searchTerm)) {
+        return 1
+      } else {
+        return 0
+      }
+    })
+    return byKeyword
+  } else {
+    return scriptsValue
+  }
+}

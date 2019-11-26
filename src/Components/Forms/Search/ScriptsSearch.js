@@ -1,10 +1,12 @@
 import React, {useContext, useRef, useState} from 'react'
 import { useInput } from '../../../Hooks/use-input';
 import MagGlass from '../../../Images/mGlass.svg.png'
+import { ScriptsContext } from '../../../Contexts/ScriptsContext';
 
 export const ScriptsSearch = () => {
     const { value: keyword, bind: bindKeyword, reset: resetKeyword } = useInput("");
     const [sortDirection, setSortDirection] = useState('desc') 
+    const {value: {scripts, searchScripts, setSearching}} = useContext(ScriptsContext)
 
     const handleKeywordSearch = async e => {
         e.preventDefault()
