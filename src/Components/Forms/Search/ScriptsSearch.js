@@ -9,6 +9,7 @@ import '../Styles/Forms.css'
 export const ScriptsSearch = () => {
     const { value: keyword, bind: bindKeyword, reset: resetKeyword } = useInput("");
     const [sortDirection, setSortDirection] = useState('desc') 
+    const [sortVal, setSortVal] = useState('abc') 
     const {value: {setSearchScripts, setSearching}} = useContext(ScriptsContext)
 
     const handleKeywordSearch = async e => {
@@ -28,23 +29,38 @@ export const ScriptsSearch = () => {
     const handleSort = async e => {
         e.preventDefault()
         let sortBy = e.target.value
-
+        setSortVal(sortBy)
+        setSearching(true)
         try {
         const resetScripts = await readScripts.get('/')
         const sortSearch = await sortBySelection(resetScripts.data, sortBy, sortDirection)
-
-        console.log(sortSearch)
+ 
         setSearchScripts(sortSearch)
         } catch (err) {
             console.log(err)
         }
     }
-    const toggleSortDirection = e => {
+    const toggleSortDirection = async e => {
         e.preventDefault()
+        setSearching(true)
         if (sortDirection === 'desc') {
             setSortDirection('asc')
+            try {
+                const resetScripts = await readScripts.get('/')
+                const sortSearch = await sortBySelection(resetScripts.data, sortVal, sortDirection)
+            setSearchScripts(sortSearch)
+            } catch (err) {
+                console.log(err)
+            }
         } else {
             setSortDirection('desc')
+            try {
+                const resetScripts = await readScripts.get('/')
+                const sortSearch = await sortBySelection(resetScripts.data, sortVal, sortDirection)
+        setSearchScripts(sortSearch)    
+            } catch (err) {
+                console.log(err)
+            }
         }
     }
     return (
