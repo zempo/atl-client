@@ -8,7 +8,7 @@ const Landing = () => {
 
   return (
     <AtlSection className="atl-pg landing-pg">
-      <h1 className="animated-h1">Landing Page</h1>
+      <h1 className="animated-h1">Above The Line</h1>
     </AtlSection>
   );
 };

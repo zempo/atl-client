@@ -29,10 +29,15 @@ hr {
 .sort-search select {
   width: 100%;
   text-indent: 5px;
-  border-radius: 10px;
+  border-radius: 7px;
   border: 1px solid rgb(243, 243, 243, 0);
   height: calc(35px - 0.4rem);
   font-size: large;
+  opacity: 0.95;
+}
+.keyword-search input:active,
+.sort-search select:active {
+  opacity: 1;
 }
 
 .sort-search select {
@@ -51,7 +56,7 @@ hr {
   font-size: 1.5rem;
   width: 35px;
   height: 35px;
-  border-radius: 10px;
+  border-radius: 7px;
 }
 
 .keyword-search button {

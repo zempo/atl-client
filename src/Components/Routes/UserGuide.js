@@ -11,6 +11,6 @@ const UserGuide = () => {
       <h1 className="animated-h1">Getting Started</h1>
     </AtlSection>
   );
-}; 
+};
 
 export default UserGuide;

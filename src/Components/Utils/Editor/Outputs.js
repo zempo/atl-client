@@ -67,12 +67,13 @@ const Output = ({ currentId }) => {
     setLoad(true);
     try {
       const result = await readScripts.get(`/${currentId}`);
+      console.log(result);
       let date;
       date = result.data[0].date_created;
       if (result.data[0].date_updated !== null) {
         date = result.data[0].date_updated;
       }
-      const sort = await sortScriptSentences(result.data[0].body);
+      const sort2 = await sortScriptSentences(result.data[0].body);
       const formatDate = await formateScriptDate(date);
 
       setTitlePg({
@@ -81,8 +82,8 @@ const Output = ({ currentId }) => {
         subtitle: result.data[0].subtitle,
         datePublished: formatDate
       });
-      if (sort.length !== 0) {
-        setScriptTxt(sort);
+      if (sort2.length !== 0) {
+        setScriptTxt(sort2);
       }
       setShow(true);
       setLoad(false);
