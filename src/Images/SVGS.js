@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useInterval } from "../Hooks/use-interval";
 
 export const LightLogo = ({ width, height }) => {
   // created with https://svg2jsx.com/
@@ -72,7 +73,9 @@ export const DarkLogo = ({ width, height }) => {
 
 export const EditorLogo = () => {
   const [currentTheme, setCurrentTheme] = useState("#455A64");
-  useEffect(() => {
+  const [currentThemeLight, setCurrentThemeLight] = useState("#596e76");
+
+  useInterval(() => {
     const colorThemes = [
       "#AD1457",
       "#d45d5d",
@@ -99,31 +102,55 @@ export const EditorLogo = () => {
       "#41292C",
       "#1B2021"
     ];
-    const randomColors = arr => {
-      let selectedColor = arr[Math.floor(Math.random() * arr.length)];
-      setCurrentTheme(selectedColor);
-    };
-    let changeColors = window.setInterval(randomColors(colorThemes), 1000);
+    const colorThemesLight = [
+      "#BD326C",
+      "#E07173",
+      "#F1816B",
+      "#7A9D83",
+      "#419C59",
+      "#388D4F",
+      "#1F7B70",
+      "#596E76",
+      "#3E7481",
+      "#1F78C5",
+      "#5477B4",
+      "#7A6D89",
+      "#735F69",
+      "#735750",
+      "#A0535D",
+      "#595959",
+      "#3C5D67",
+      "#1F5352",
+      "#1F5786",
+      "#3D4E9D",
+      "#1F3A67",
+      "#523174",
+      "#5A4346",
+      "#363B3C"
+    ];
 
-    return () => {
-      clearInterval(changeColors);
-    };
-  }, []);
+    let randomNum = Math.floor(Math.random() * colorThemes.length);
+    let selectedColor = colorThemes[randomNum];
+    let selectedColorLight = colorThemesLight[randomNum];
+    setCurrentTheme(selectedColor);
+    setCurrentThemeLight(selectedColorLight);
+  }, 1100);
 
   return (
     <svg
+      className="landing-vector-1"
       xmlns="http://www.w3.org/2000/svg"
       width="600mm"
       height="300mm"
       viewBox="0 0 600 300"
     >
-      <g transform="translate(0 3)">
+      <g transform="translate(0 3)" className="vector-container">
         <rect
           width="115.27"
           height="297.01"
           x="1.7"
           y="-1.177"
-          fill="#596e76"
+          fill={currentThemeLight}
           fillOpacity="0.878"
           paintOrder="fill markers stroke"
           rx="0"
@@ -134,7 +161,7 @@ export const EditorLogo = () => {
           height="169.01"
           x="116.97"
           y="-1.177"
-          fill="#596e76"
+          fill={currentThemeLight}
           fillOpacity="0.878"
           paintOrder="fill markers stroke"
           rx="0"
@@ -145,7 +172,7 @@ export const EditorLogo = () => {
           height="128"
           x="116.97"
           y="167.84"
-          fill="#596e76"
+          fill={currentThemeLight}
           fillOpacity="0.878"
           paintOrder="fill markers stroke"
           rx="0"
@@ -195,6 +222,9 @@ export const EditorLogo = () => {
           x="273.14"
           y="64.852"
           fill={currentTheme}
+          stroke="#313131"
+          strokeLinecap="round"
+          strokeWidth=".5"
           paintOrder="fill markers stroke"
           ry="4.44"
         ></rect>
@@ -204,6 +234,9 @@ export const EditorLogo = () => {
           x="306.55"
           y="64.852"
           fill={currentTheme}
+          stroke="#313131"
+          strokeLinecap="round"
+          strokeWidth=".5"
           paintOrder="fill markers stroke"
           ry="4.44"
         ></rect>
@@ -213,6 +246,9 @@ export const EditorLogo = () => {
           x="209.77"
           y="40.475"
           fill={currentTheme}
+          stroke="#313131"
+          strokeLinecap="round"
+          strokeWidth=".5"
           paintOrder="fill markers stroke"
           ry="4.44"
         ></rect>
@@ -222,6 +258,9 @@ export const EditorLogo = () => {
           x="243.18"
           y="40.475"
           fill={currentTheme}
+          stroke="#313131"
+          strokeLinecap="round"
+          strokeWidth=".5"
           paintOrder="fill markers stroke"
           ry="4.44"
         ></rect>
@@ -231,6 +270,9 @@ export const EditorLogo = () => {
           x="130"
           y="40.475"
           fill={currentTheme}
+          stroke="#313131"
+          strokeLinecap="round"
+          strokeWidth=".5"
           paintOrder="fill markers stroke"
           ry="4.44"
         ></rect>
@@ -240,6 +282,9 @@ export const EditorLogo = () => {
           x="164.8"
           y="40.475"
           fill={currentTheme}
+          stroke="#313131"
+          strokeLinecap="round"
+          strokeWidth=".5"
           paintOrder="fill markers stroke"
           ry="4.44"
         ></rect>
@@ -304,6 +349,9 @@ export const EditorLogo = () => {
           x="191.47"
           y="64.852"
           fill={currentTheme}
+          stroke="#313131"
+          strokeLinecap="round"
+          strokeWidth=".5"
           paintOrder="fill markers stroke"
           ry="4.44"
         ></rect>
@@ -313,6 +361,9 @@ export const EditorLogo = () => {
           x="234.49"
           y="64.852"
           fill={currentTheme}
+          stroke="#313131"
+          strokeLinecap="round"
+          strokeWidth=".5"
           paintOrder="fill markers stroke"
           ry="4.44"
         ></rect>
@@ -322,6 +373,9 @@ export const EditorLogo = () => {
           x="130"
           y="64.852"
           fill={currentTheme}
+          stroke="#313131"
+          strokeLinecap="round"
+          strokeWidth=".5"
           paintOrder="fill markers stroke"
           ry="4.44"
         ></rect>
@@ -331,6 +385,9 @@ export const EditorLogo = () => {
           x="162.2"
           y="64.852"
           fill={currentTheme}
+          stroke="#313131"
+          strokeLinecap="round"
+          strokeWidth=".5"
           paintOrder="fill markers stroke"
           ry="4.44"
         ></rect>

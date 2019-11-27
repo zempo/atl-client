@@ -1,0 +1,121 @@
+.landing-pg {
+  text-align: center;
+}
+.landing-pg h1 {
+  margin-bottom: 0;
+}
+.landing-1 h2,
+.landing-1 h3 {
+  color: rgb(243, 243, 243);
+}
+.landing-1 h2 {
+  padding-top: 2rem;
+  margin-bottom: 0;
+}
+.landing-1 h3 {
+  margin-top: 1.5rem;
+}
+
+.landing-2 h3 {
+  padding-bottom: 2rem;
+}
+.landing-container {
+  background: #262626;
+}
+
+.landing-1 {
+  background: #262626;
+  position: relative;
+  padding-bottom: 10rem;
+  margin-bottom: 0;
+}
+.landing-vector-1 {
+  max-width: 80%;
+  max-height: 70vh;
+  /* padding-bottom: 2rem; */
+}
+
+.vector-container {
+  box-shadow: 5px 5px 2px rgb(49, 49, 49);
+}
+
+.landing-txt {
+  /* font-family: courier-prime, monospace; */
+  font-size: 25px;
+  /* font-weight: bold; */
+  text-align: center;
+}
+
+.script-txt {
+  font-family: courier-prime, monospace;
+  font-size: 20px;
+  text-align: center;
+}
+
+.landing-2,
+.landing-3 {
+  position: relative;
+  color: rgb(49, 49, 49);
+  padding-top: 6rem;
+  padding-bottom: 20rem;
+  border-bottom: 1px solid rgb(49, 49, 49);
+  background: rgb(243, 243, 243);
+}
+
+.register {
+  border: 2px solid rgb(243, 243, 243);
+  border-radius: 10px;
+  position: relative;
+  width: 400px;
+  padding: 1rem;
+  margin-left: calc(50% - 200px);
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
+.register:hover {
+  background: rgb(243, 243, 243);
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
+.register:hover a {
+  color: rgb(49, 49, 49);
+  text-decoration: underline;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
+.register a {
+  text-decoration: none;
+  color: rgb(243, 243, 243);
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
+.pg-num {
+  position: absolute;
+  top: 1rem;
+  right: 96px;
+}
+
+.slugline {
+  position: absolute;
+  top: 1rem;
+  left: 96px;
+}
+
+@media screen and (max-width: 1000px) {
+  .landing-vector-1 {
+    max-width: 90%;
+    max-height: 50vh;
+  }
+}

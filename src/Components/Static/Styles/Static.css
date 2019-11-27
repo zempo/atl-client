@@ -10,6 +10,10 @@ header nav {
   padding-bottom: 1rem;
 }
 
+.nav-link h3 {
+  font-size: 1.5rem;
+}
+
 .atl-nav-menu {
   display: flex;
   justify-content: space-between;
@@ -94,6 +98,24 @@ header nav {
   padding-bottom: 2rem;
   text-align: center;
   color: rgb(243, 243, 243);
+}
+
+.logged-out a {
+  text-decoration: none;
+  color: rgb(243, 243, 243);
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+}
+
+.logged-out a:hover {
+  text-decoration: underline;
+  color: rgb(243, 243, 243);
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
 }
 
 @-o-keyframes dash {

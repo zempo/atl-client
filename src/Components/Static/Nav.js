@@ -103,7 +103,7 @@ class Nav extends Component {
               icon={<i className="fas fa-sliders-h"></i>}
               text="Appearance"
             />
-            <li>
+            <li className="nav-link">
               <Link onClick={this.handleLogoutClick} to="/">
                 <h3>
                   <i className="fas fa-sign-out-alt"></i> Log Out
