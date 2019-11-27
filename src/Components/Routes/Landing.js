@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { AtlSection } from "../Utils/Utils";
+import { EditorLogo } from "../../Images/SVGS";
 
 const Landing = () => {
   useEffect(() => {
@@ -9,6 +10,7 @@ const Landing = () => {
   return (
     <AtlSection className="atl-pg landing-pg">
       <h1 className="animated-h1">Above The Line</h1>
+      <EditorLogo />
     </AtlSection>
   );
 };
