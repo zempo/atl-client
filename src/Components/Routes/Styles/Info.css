@@ -6,6 +6,23 @@
   border: none;
 }
 
+.started-pg {
+  background: rgb(243, 243, 243);
+  color: rgb(20, 20, 20);
+  padding-top: 4rem;
+  position: relative;
+  padding-bottom: 3rem;
+  outline: 1rem solid rgb(243, 243, 243);
+}
+
+.started-pg ol {
+  text-align: center;
+  list-style-position: inside;
+  font-size: 1.5rem;
+  line-height: 2;
+  font-family: courier-prime, monospace;
+}
+
 .user-appearance {
   width: 1120px;
   margin-left: calc(50% - 560px);

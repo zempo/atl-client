@@ -91,7 +91,7 @@ class Nav extends Component {
             <NavMenuOption
               to="/scripts"
               icon={<i className="fas fa-scroll"></i>}
-              text="My Works"
+              text="My Projects"
             />
             <NavMenuOption
               to="/user-guide"
