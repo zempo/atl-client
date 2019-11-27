@@ -72,19 +72,33 @@ const AddScript = ({ cancel }) => {
       <form className="atl-form script-form">
         <label htmlFor="title">What's Your Working Title?</label>
         <br />
-        <input type="text" name="title" {...bindTitle} />
         <br />
-        <label htmlFor="" htmlFor="author">
-          Author or Pen-Name?
-        </label>
+        <input
+          type="text"
+          placeholder="The Next Big Thing"
+          name="title"
+          {...bindTitle}
+        />
         <br />
-        <input type="text" name="author" {...bindAuthor} />
+        <label htmlFor="author">Author or Pen-Name?</label>
         <br />
-        <label htmlFor="" htmlFor="subtitle">
-          Tagline or Subtitle?
-        </label>
         <br />
-        <input type="text" name="subtitle" {...bindSubtitle} />
+        <input
+          type="text"
+          placeholder="Speven Steelberg"
+          name="author"
+          {...bindAuthor}
+        />
+        <br />
+        <label htmlFor="subtitle">Tagline or Subtitle?</label>
+        <br />
+        <br />
+        <input
+          type="text"
+          placeholder="An Original Story"
+          name="subtitle"
+          {...bindSubtitle}
+        />
       </form>
       <button className="modal-btn" onClick={cancel}>
         Cancel

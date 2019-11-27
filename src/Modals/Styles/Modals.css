@@ -19,40 +19,94 @@ body {
   z-index: 0;
   margin: auto;
   overflow-y: auto;
-  background-color: rgb(243, 243, 243);
+  /* background-color: rgb(243, 243, 243); */
+  background-color: rgb(49, 49, 49);
+  color: rgb(243, 243, 243);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  /* -o-animation: zoomIn 0.6s;
-  -moz-animation: zoomIn 0.6s;
-  -webkit-animation: zoomIn 0.6s;
-  animation: zoomIn 0.6s; */
   padding: 50px;
   outline: 0;
-  border: 1px #777 solid;
   text-align: justify;
-  width: 80%;
-  max-width: 80%;
-  max-height: 80%;
+  width: 90%;
+  max-width: 100%;
+  max-height: 100%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  animation: modalEnter 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: modalEnter 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.modal-action {
+  padding-top: 1rem;
+  position: relative;
+  text-align: center;
+}
+
+.modal-action input {
+  background: rgb(243, 243, 243);
+  border: 1px solid rgb(243, 243, 243);
+  border-radius: 5px;
+  height: 1.5rem;
+  margin-bottom: 1rem;
+  text-indent: 10px;
+}
+
+.modal-action label {
+  font-size: 1.5rem;
+}
+
+.close-modal {
+  position: absolute;
+  top: -2rem;
+  right: 1rem;
+  border: 1.5px solid rgba(243, 243, 243);
+  background: rgba(49, 49, 49);
+  color: rgb(243, 243, 243);
+  border-radius: 50%;
+  font-size: 2rem;
+}
+
+.modal-btn {
+  border: 1.5px solid rgba(243, 243, 243);
+  background: rgba(49, 49, 49);
+  color: rgb(243, 243, 243);
+  border-radius: 5px;
+  font-size: 1.5rem;
+  width: 10rem;
+  margin: 1rem;
+  padding: 0.5rem;
+}
+
+.action {
+  border: 1.5px solid rgba(243, 243, 243);
+  background: rgb(243, 243, 243);
+  color: rgba(49, 49, 49);
+  border-radius: 5px;
+  font-size: 1.5rem;
+}
+
+.delete-script .action {
+  border: 1.5px solid rgb(236, 65, 65);
+  background: rgb(236, 65, 65);
+  color: rgba(49, 49, 49);
+  border-radius: 5px;
+  font-size: 1.5rem;
 }
 
 /* stick with this animation. it's clean and simple! */
 @keyframes modalEnter {
   0% {
     -webkit-transform: scale(0);
-            transform: scale(0);
+    transform: scale(0);
     -webkit-transform-origin: 50% 0%;
-            transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
     opacity: 1;
   }
   100% {
     -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
     -webkit-transform-origin: 50% 0%;
-            transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
     opacity: 1;
   }
 }

@@ -8,12 +8,11 @@ import DeleteListScript from "../Components/Forms/ModalForms/DeleteListScript";
 import PrintListScript from "../Components/Forms/ModalForms/PrintListScript";
 
 const Modal = ({ item, history, action, isShowing, hide }) => {
-
   if (isShowing) {
     return ReactDOM.createPortal(
       <div onClick={hide} className="Modal">
         <div
-          onClick={e => e.stopPropagation()} 
+          onClick={e => e.stopPropagation()}
           className={`Modal__inner ${isShowing}`}
           autoFocus={true}
         >
