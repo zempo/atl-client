@@ -6,6 +6,10 @@
   color: rgb(48, 199, 81);
 }
 
+.atl-notification {
+  color: rgb(243, 243, 243);
+}
+
 .btn-add {
   font-size: 1.2rem;
   margin: auto;

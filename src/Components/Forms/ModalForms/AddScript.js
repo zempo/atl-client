@@ -43,11 +43,11 @@ const AddScript = ({ cancel }) => {
         result.data
       );
       console.log(addedToScripts);
+      setErr({
+        resMsg: "Created Script",
+        resStatus: 201
+      });
       setTimeout(() => {
-        setErr({
-          resMsg: "Created Script",
-          resStatus: 201
-        });
         cancel();
         // window.location.reload();
       }, 500);

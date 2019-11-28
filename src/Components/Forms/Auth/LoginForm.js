@@ -78,6 +78,7 @@ const LoginForm = props => {
           Email
         </label>
         <br />
+        <br />
         <input
           ref={emailRef}
           placeholder="john@doemail.com"
@@ -88,10 +89,12 @@ const LoginForm = props => {
           onChange={handleChange}
         />
         <br />
+        <br />
         <label htmlFor="password">
           <Required met={values.password.length === 0 ? false : true} />
           Password
         </label>
+        <br />
         <br />
         <input
           ref={pwdRef}
@@ -104,7 +107,7 @@ const LoginForm = props => {
         />
       </fieldset>
       <button
-        className="action"
+        className="action-auth"
         disabled={values.email.length === 0 || values.password.length === 0}
       >
         Login

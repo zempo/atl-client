@@ -144,7 +144,7 @@ const RegisterForm = props => {
           />
         </fieldset>
         <button
-          className="action"
+          className="action-auth"
           disabled={
             !validReq ||
             usernameRef.current.value.length === 0 ||
@@ -153,7 +153,7 @@ const RegisterForm = props => {
           }
           type="submit"
         >
-          Bring My Scenes to Life
+          Start Creating
         </button>
       </form>
     </>
