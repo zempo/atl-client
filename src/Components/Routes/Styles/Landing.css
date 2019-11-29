@@ -53,13 +53,25 @@
 }
 
 .landing-2,
-.landing-3 {
+.landing-3,
+.landing-4 {
   position: relative;
   color: rgb(49, 49, 49);
   padding-top: 6rem;
   padding-bottom: 20rem;
   border-bottom: 1px solid rgb(49, 49, 49);
   background: rgb(243, 243, 243);
+}
+
+.landing-4 {
+  border-bottom: 1px solid rgb(243, 243, 243);
+  outline: 1rem solid rgb(243, 243, 243); 
+  margin-top: 1rem; 
+}
+
+.landing-gif {
+  width: 100%;
+  max-width: 800px;
 }
 
 .register {
@@ -98,7 +110,7 @@
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
-  -webkit-transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out; 
 }
 
 .pg-num {

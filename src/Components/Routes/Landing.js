@@ -3,6 +3,8 @@ import { AtlSection } from "../Utils/Utils";
 import { EditorLogo } from "../../Images/SVGS";
 import { NavLink } from "react-router-dom";
 import Img1 from "../../Images/section1.gif";
+import Img2 from "../../Images/section2.gif";
+import Img3 from "../../Images/section3.gif";
 import "./Styles/Landing.css";
 
 const Landing = () => {
@@ -51,15 +53,21 @@ const Landing = () => {
         </div>
         <div className="landing-3">
           <h3>Your Script Writing Ecosystem</h3>
-          <img src={Img1} alt="gif of website" />
+          <img className="landing-gif" src={Img1} alt="gif of website" />
+          <h3>Made Simple and Personal</h3>
           <p className="landing-txt">
             Add actors and tags to your script. Then keep on typing.
           </p>
           <p className="landing-txt">Just be sure to save your work!</p>
-          <p className="script-txt pg-num">2</p>
+          <p className="script-txt pg-num">2</p> 
         </div>
         <div className="landing-4">
-          <h3>Secure, yet Flexible</h3>
+          <h3>Organize</h3>
+          <img className="landing-gif" src={Img3} alt="gif of website" />
+          <br/>
+          <h3>Customize</h3>
+          <img className="landing-gif" src={Img2} alt="gif of website" />
+          <p className="script-txt pg-num">3</p>
         </div>
       </div>
     </AtlSection>
