@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import RegisterForm from "../Forms/Auth/RegisterForm";
 import { AuthService } from "../../Services/Auth/auth-service";
 import { AtlSection } from "../Utils/Utils";
-
+ 
 const RegistrationPage = props => {
   const handleRegistrationSuccess = async (email, password) => {
     try {
