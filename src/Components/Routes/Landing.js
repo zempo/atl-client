@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { AtlSection } from "../Utils/Utils";
 import { EditorLogo } from "../../Images/SVGS";
 import { NavLink } from "react-router-dom";
+import Img1 from "../../Images/section1.gif";
 import "./Styles/Landing.css";
 
 const Landing = () => {
@@ -49,13 +50,16 @@ const Landing = () => {
           <p className="script-txt slugline">Int. Above the Line HQ</p>
         </div>
         <div className="landing-3">
-          <h3>Save Every Second</h3>
+          <h3>Your Script Writing Ecosystem</h3>
+          <img src={Img1} alt="gif of website" />
           <p className="landing-txt">
             Add actors and tags to your script. Then keep on typing.
-            <br /> With a click of a button, everything gets formatted for you.
           </p>
           <p className="landing-txt">Just be sure to save your work!</p>
           <p className="script-txt pg-num">2</p>
+        </div>
+        <div className="landing-4">
+          <h3>Secure, yet Flexible</h3>
         </div>
       </div>
     </AtlSection>
