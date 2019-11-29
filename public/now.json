@@ -1,0 +1,9 @@
+{
+    "version": 2,
+    "alias": "zelenkosolomon-atl",
+    "name": "Above-The-Line",
+    "routes": [
+        { "handle": "filesystem" },
+        { "src": "/.*", "dest": "/index.html" }
+    ]
+  }
