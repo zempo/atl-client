@@ -49,6 +49,7 @@ const RegisterForm = props => {
       resStatus: 0
     });
     try {
+      // eslint-disable-next-line
       const createdUser = await AuthService.postUser(newUser);
 
       setErr({

@@ -22,6 +22,7 @@ export const EditContextProvider = props => {
     setCurrentScript(newFields);
 
     try {
+      // eslint-disable-next-line
       const result = await autoSave.patch(`${prevFields.id}`, fieldsToUpdate);
       const scriptDidUpdate = await autoSave.get(`${prevFields.id}`)
 
@@ -52,6 +53,7 @@ export const EditContextProvider = props => {
       newFields.subtitle = subtitle;
     }
     try {
+      // eslint-disable-next-line
       const result = await autoSave.patch(`/${prevFields.id}`, newFields);
       const didUpdateTitlePg = await autoSave.get(`/${prevFields.id}`);
       setError(false);
@@ -65,15 +67,17 @@ export const EditContextProvider = props => {
   }; 
 
   const addToActors = async (prevFields, newActor) => {
+// eslint-disable-next-line
     let actorToAdd = newActor;
     setLoading(true);
-
+// eslint-disable-next-line
     let newFields = prevFields;
     let fieldsToUpdate = {};
 
     try {
       const toUpdate = await autoSave.get(`${prevFields.id}`);
       fieldsToUpdate.actors = [...toUpdate.data[0].actors, newActor];
+// eslint-disable-next-line
       const result = await autoSave.patch(`${prevFields.id}`, fieldsToUpdate);
       setError(false);
       setLoading(false);
@@ -85,14 +89,17 @@ export const EditContextProvider = props => {
   };
 
   const rmvFromActors = async (prevFields, prevActors, target) => {
+// eslint-disable-next-line
     let filteredActors = prevActors.filter((actor, i) => i != target);
 
     setLoading(true);
+// eslint-disable-next-line
     let newFields = prevFields;
     let fieldsToUpdate = {};
     fieldsToUpdate.actors = filteredActors;
 
     try {
+// eslint-disable-next-line
       const result = await autoSave.patch(`/${prevFields.id}`, fieldsToUpdate);
       setError(false);
       setLoading(false);
@@ -104,15 +111,17 @@ export const EditContextProvider = props => {
   };
 
   const addToTags = async (prevFields, newTag) => {
+// eslint-disable-next-line
     let tagToAdd = newTag;
     setLoading(true);
-
+// eslint-disable-next-line
     let newFields = prevFields;
     let fieldsToUpdate = {};
 
     try {
       const toUpdate = await autoSave.get(`${prevFields.id}`);
       fieldsToUpdate.tags = [...toUpdate.data[0].tags, newTag];
+// eslint-disable-next-line
       const result = await autoSave.patch(`${prevFields.id}`, fieldsToUpdate);
       setError(false);
       setLoading(false);
@@ -124,14 +133,17 @@ export const EditContextProvider = props => {
   };
 
   const rmvFromTags = async (prevFields, prevTags, target) => {
+// eslint-disable-next-line
     let filteredTags = prevTags.filter((tag, i) => i != target);
     setLoading(true);
+// eslint-disable-next-line
     let newFields = prevFields;
     let fieldsToUpdate = {};
     fieldsToUpdate.tags = filteredTags;
     // console.log(newFields);
 
     try {
+// eslint-disable-next-line
       const result = await autoSave.patch(`/${prevFields.id}`, fieldsToUpdate);
       setError(false);
       setLoading(false);

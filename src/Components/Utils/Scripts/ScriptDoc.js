@@ -118,6 +118,7 @@ export const ScriptDoc = ({ titlePg, scriptTxt }) => {
             fixed
           />
           {scriptTxt.length > 0
+          // eslint-disable-next-line
             ? scriptTxt.map((para, i) => {
                 if (para.tag !== null) {
                   if (para.tag === "Header" || para.tag === "Shot") {

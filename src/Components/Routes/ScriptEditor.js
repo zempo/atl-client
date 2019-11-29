@@ -30,6 +30,7 @@ const ScriptEditor = props => {
       const { item } = props.location.state;
       updateScript(item);
     }
+// eslint-disable-next-line
   }, []);
 
   return (

@@ -66,7 +66,7 @@ const Input = ({ currentId, body, history }) => {
     findScript();
     let len = inputRef.current.value.length;
     inputRef.current.setSelectionRange(len, len);
-  }, []);
+  }, [currentId]);
 
   const handleSave = async e => {
     e.preventDefault();
@@ -124,6 +124,7 @@ const Input = ({ currentId, body, history }) => {
     e.preventDefault();
     let actorToRmv = e.target.id;
     try {
+      // eslint-disable-next-line
       const removed = await rmvFromActors(currentScript, actors, actorToRmv);
 
       setTimeout(() => {
@@ -138,6 +139,7 @@ const Input = ({ currentId, body, history }) => {
     e.preventDefault();
     let tagToRmv = e.target.id;
     try {
+      // eslint-disable-next-line
       const removed = await rmvFromTags(currentScript, tags, tagToRmv);
 
       setTimeout(() => {
@@ -156,6 +158,7 @@ const Input = ({ currentId, body, history }) => {
     setUpdated(true);
     setLoading(true);
     try {
+      // eslint-disable-next-line
       const result = await readScripts.patch(`/${currentId}`, fieldsToUpdate);
       const scriptDidUpdate = await readScripts.get(`${currentId}`);
       const regularScripts = await readScripts.get("/");
@@ -173,14 +176,17 @@ const Input = ({ currentId, body, history }) => {
       console.log(err);
       setLoading(false);
     }
+// eslint-disable-next-line
   }, []);
 
   let hotCopy = React.useCallback(() => {
     toggleCopy();
+// eslint-disable-next-line
   }, []);
 
   let hotDelete = React.useCallback(() => {
     toggleDelete();
+// eslint-disable-next-line
   }, []);
 
   const handlers = {

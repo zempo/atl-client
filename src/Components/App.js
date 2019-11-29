@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { BrowserRouter as ROUTER, Route, Switch } from "react-router-dom";
+import { BrowserRouter as ROUTER, Switch } from "react-router-dom";
 import { UserContext } from "../Contexts/UserContext";
 // SERVICES
+// eslint-disable-next-line
 import { AuthService } from "../Services/Auth/auth-service";
 import IdleService from "../Services/Auth/idle-service";
 import TokenService from "../Services/Auth/token-service";

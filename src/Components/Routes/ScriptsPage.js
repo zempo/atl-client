@@ -1,6 +1,5 @@
 import React, { useEffect, useContext } from "react";
 import { ScriptsContext } from "../../Contexts/ScriptsContext";
-import { UserContext } from "../../Contexts/UserContext";
 import { AtlSection, AddBtn, PaginateScripts } from "../Utils/Utils";
 import ListScript from "../Utils/Scripts/ListScript";
 import ListSearchScript from "../Utils/Scripts/ListSearchScript";
@@ -29,21 +28,18 @@ const ScriptsPage = () => {
       loading
     }
   } = useContext(ScriptsContext);
-  const {
-    value: { userName }
-  } = useContext(UserContext);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     setDirection("");
-  }, []);
+  }, [setDirection]);
 
   return (
     <AtlSection className="atl-pg scripts-pg">
       <h1 className="animated-h1">My Projects</h1>
       <ScriptsSearch />
       <hr />
-      <AddBtn />
+      <AddBtn /> 
       <div className={`scripts-container ${direction}`}>
         {loading ? <SkeletonLoaderScripts /> : null}
         {!searching

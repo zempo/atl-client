@@ -1,4 +1,5 @@
 export const splitColorData = dataStr => {
+  // eslint-disable-next-line
   const exp1 = /[\{}]+/g;
   let str = dataStr.replace(exp1, "").split(",");
   return str;
@@ -249,7 +250,7 @@ export const formateScriptDate = isoStr => {
   newDate.year = d[0];
   newDate.month = d[1];
   newDate.day = d[2];
-
+  // eslint-disable-next-line
   let months = new Array();
   months[1] = "January";
   months[2] = "February";

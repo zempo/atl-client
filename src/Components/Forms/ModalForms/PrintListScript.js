@@ -37,7 +37,7 @@ const PrintListScript = ({ item, cancel }) => {
     };
 
     findScript();
-  }, []);
+  }, [item]);
 
   return (
     <div className="modal-action print-script">

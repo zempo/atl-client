@@ -25,7 +25,7 @@ const CopyScript = ({ item, cancel }) => {
       scriptToCopy.actors = getScript.data[0].actors;
       scriptToCopy.tags = getScript.data[0].tags;
       const copyScipt = await newScript.post("/", scriptToCopy);
-
+      // eslint-disable-next-line
       let addedToScripts = await addToScripts(
         scripts,
         searchScripts,

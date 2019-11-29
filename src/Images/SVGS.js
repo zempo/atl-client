@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useInterval } from "../Hooks/use-interval";
 
 export const LightLogo = ({ width, height }) => {

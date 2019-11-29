@@ -11,6 +11,7 @@ import "../Styles/Editor.css";
 import { readScripts } from "../../../Services/endpoints-service";
 
 const Sidebar = ({ history, currentId }) => {
+  // eslint-disable-next-line
   const { values, errors, handleChange, reset } = useForm(
     { title: "", author: "", subtitle: "" },
     { 1: [], 2: [], 3: [] },
@@ -47,7 +48,7 @@ const Sidebar = ({ history, currentId }) => {
       }
     };
     findScript();
-  }, []);
+  }, [currentId]);
 
   const updateTitlePg = async e => {
     e.preventDefault();
@@ -75,6 +76,7 @@ const Sidebar = ({ history, currentId }) => {
     let newActor = actors;
     resetActors();
     try {
+      // eslint-disable-next-line
       const actorsUpdated = await addToActors(currentScript, newActor);
       setTimeout(() => {
         window.location.reload();
@@ -88,6 +90,7 @@ const Sidebar = ({ history, currentId }) => {
     e.preventDefault();
     let newTag = tags;
     try {
+// eslint-disable-next-line
       const tagsUpdated = await addToTags(currentScript, newTag);
       resetTags();
       setTimeout(() => {

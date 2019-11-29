@@ -65,19 +65,17 @@ export const ScriptsContextProvider = props => {
 
   const paginate = e => {
     const { id } = e.target;
-    setTimeout(() => {
-      setDirection("");
-    }, 10)
+    setDirection("");
     if (id === "prev") {
       setCurrentPg(currentPg - 1);
       setTimeout(() => {
         setDirection("l");
-      }, 50);
+      }, 40);
     } else if (id === "next") {
       setCurrentPg(currentPg + 1);
       setTimeout(() => {
         setDirection("r");
-      }, 50);
+      }, 40);
     }
   };
 
@@ -148,7 +146,6 @@ export const ScriptsContextProvider = props => {
     currentSearchScripts,
     paginate,
     paginateSearch,
-    lastSearchPg,
     setSearching,
     setSearchScripts,
     setScriptsPerPg,

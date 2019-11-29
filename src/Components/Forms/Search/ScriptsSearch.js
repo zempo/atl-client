@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useInput } from "../../../Hooks/use-input";
 import MagGlass from "../../../Images/mGlass.svg.png";
 import { ScriptsContext } from "../../../Contexts/ScriptsContext";
@@ -35,6 +35,7 @@ export const ScriptsSearch = () => {
       console.log(err);
     }
   };
+
   const handleSort = async e => {
     e.preventDefault();
     let sortBy = e.target.value;

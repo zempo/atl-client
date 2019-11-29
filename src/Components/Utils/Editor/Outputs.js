@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { ResizableBox as Box } from "react-resizable";
 import { StyleContext } from "../../../Contexts/StyleContext";
 import "../Styles/Editor.css";
-import { UserContext } from "../../../Contexts/UserContext";
+// import { UserContext } from "../../../Contexts/UserContext";
 import { PDFViewer } from "@react-pdf/renderer";
 import { ScriptDoc } from "../Scripts/ScriptDoc";
 import { readScripts } from "../../../Services/endpoints-service";
@@ -16,9 +16,9 @@ const Output = ({ currentId }) => {
   const {
     value: { tenthHeight, tenthWidth }
   } = useContext(StyleContext);
-  const {
-    value: { userColor }
-  } = useContext(UserContext);
+  // const {
+  //   value: { userColor }
+  // } = useContext(UserContext);
 
   const [titlePg, setTitlePg] = useState({
     title: "",
@@ -60,14 +60,14 @@ const Output = ({ currentId }) => {
     };
 
     findScript();
-  }, []);
+  }, [currentId]);
 
   const updateOutput = async e => {
     e.preventDefault();
     setLoad(true);
     try {
       const result = await readScripts.get(`/${currentId}`);
-      console.log(result);
+      // console.log(result);
       let date;
       date = result.data[0].date_created;
       if (result.data[0].date_updated !== null) {

@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from "react";
-import { useInput } from "../../Hooks/use-input";
+// import { useInput } from "../../Hooks/use-input";
 import { AtlSection } from "../Utils/Utils";
 import { UserContext } from "../../Contexts/UserContext";
 import { splitColorData } from "../../Services/algos-service";
@@ -8,10 +8,11 @@ import "./Styles/Info.css";
 
 const UserSettings = () => {
   const {
-    value: { userColor, userName, setUserColor, loading, setLoading }
+    value: { userColor, setUserColor, loading, setLoading }
   } = useContext(UserContext);
   const [selectedColor, setSelectedColor] = useState(userColor);
   const [colors, setColors] = useState([]);
+      // eslint-disable-next-line
   const [usr, setUsr] = useState({
     currentName: "",
     currentColor: ""
@@ -20,6 +21,7 @@ const UserSettings = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     const getColors = async () => {
+      // eslint-disable-next-line
       let fetchedColors = [];
       try {
         const result1 = await readUser.get("/");
@@ -61,6 +63,7 @@ const UserSettings = () => {
     userToPatch.theme = selectedColor;
     setLoading(true);
     try {
+      // eslint-disable-next-line
       const updatedUser = await readUser.patch(`/`, userToPatch);
       setTimeout(() => {
         setLoading(false);
