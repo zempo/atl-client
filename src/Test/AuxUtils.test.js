@@ -61,11 +61,9 @@ describe('Buttons and Notification Utilities', () => {
 
 
   it("renders AltNotification.js without crashing", () => {
-    const div = document.createElement("div");
-    ReactDOM.render(
-          <AtlNotification />
-  , div);
-  ReactDOM.unmountComponentAtNode(div);
+  const notification = shallow(<AtlNotification/>)
+  let exists = notification.exists()
+  console.log(exists)
 });
 
 it("renders AddButton.js without crashing", () => {

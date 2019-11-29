@@ -92,7 +92,7 @@ const RegisterForm = props => {
             <Required met={values.username.length === 0 ? false : true} />
             Username
           </label>
-          <br />
+          <br /><br/>
           <input
             ref={usernameRef}
             type="text"
@@ -112,6 +112,7 @@ const RegisterForm = props => {
             <Required met={values.email.length === 0 ? false : true} />
             Email
           </label>
+          <br/>
           <br />
           <input
             ref={emailRef}
@@ -132,7 +133,7 @@ const RegisterForm = props => {
             <Required met={values.password.length === 0 ? false : true} />
             Password
           </label>
-          <br />
+          <br /><br/>
           <input
             ref={pwdRef}
             type="text"

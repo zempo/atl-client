@@ -112,14 +112,14 @@ describe('Script Utilities', () => {
   
     it("renders ListScript.js without crashing", () => {
       const listScript = shallow(
-                  <ListScript script={{}} />)
+                  <ListScript script={{title: "", author: "sosos", subtitle: "ssfds"}} />)
       let exists = listScript.exists()
       console.log(exists)
   });
 
   it("renders ListSearchScript.js without crashing", () => {
     const listSearchScript = shallow(
-                <ListSearchScript script={{}} />)
+                <ListSearchScript script={{title: "", author: "sosos", subtitle: "ssfds"}} />)
     let exists = listSearchScript.exists()
     console.log(exists)
 });

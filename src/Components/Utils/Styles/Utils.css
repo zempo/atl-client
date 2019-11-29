@@ -71,7 +71,7 @@
   position: fixed;
   cursor: pointer;
   left: 10%;
-  top: calc(50%);
+  top: calc(50% + 4rem); 
   width: 8rem;
   height: 8rem;
   background: none;
@@ -110,7 +110,7 @@
   position: fixed;
   cursor: pointer;
   right: 10%;
-  top: calc(50%);
+  top: calc(50% + 4rem);
   width: 8rem;
   height: 8rem;
   background: none;

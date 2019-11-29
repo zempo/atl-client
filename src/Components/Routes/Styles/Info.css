@@ -18,7 +18,8 @@
 .started-pg ol {
   text-align: center;
   list-style-position: inside;
-  font-size: 1.5rem;
+  padding-left: 0;
+  font-size: 1.3rem;
   line-height: 2;
   font-family: courier-prime, monospace;
 }
@@ -96,8 +97,7 @@
     width: 80%;
     margin-left: 10%;
   }
-  .user-appearance input {
-    /* border: 1px solid pink; */
+  .user-appearance input { 
     width: 80%;
     height: 100px;
   }
@@ -106,5 +106,9 @@
     height: 100px;
     width: 80%;
     border-radius: 0%;
+  }
+  .started-pg ol {
+    text-align: justify;
+    padding-left: 2.5%;
   }
 }

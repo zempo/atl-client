@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 // setup
 import {shallow} from 'enzyme'
+import {BrowserRouter as ROUTER} from 'react-router-dom'
 import { UserContextProvider as UserProvider } from "../Contexts/UserContext";
 import { ScriptsContextProvider as ScriptsProvider } from "../Contexts/ScriptsContext";
 import { StyleContextProvider as StyleProvider } from "../Contexts/StyleContext";
@@ -32,11 +33,15 @@ describe('Router Pages', () => {
         console.error = originalErr
         console.clear()
     })
-    
+     
 
   it("renders Landing.js without crashing", () => {
     const div = document.createElement("div");
-    ReactDOM.render(<Landing/>, div);
+    ReactDOM.render(
+    <ROUTER>
+      <Landing/>
+    </ROUTER>
+    , div);
   ReactDOM.unmountComponentAtNode(div);
 });
 

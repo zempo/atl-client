@@ -78,9 +78,9 @@
   border: 2px solid rgb(243, 243, 243);
   border-radius: 10px;
   position: relative;
-  width: 400px;
+  width: 350px;
   padding: 1rem;
-  margin-left: calc(50% - 200px);
+  margin-left: calc(50% - 175px); 
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
@@ -123,11 +123,19 @@
   position: absolute;
   top: 1rem;
   left: 96px;
-}
+} 
 
 @media screen and (max-width: 1000px) {
   .landing-vector-1 {
     max-width: 90%;
     max-height: 50vh;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .register {
+    width: 300px;
+    padding: 1rem;
+    margin-left: calc(50% - 150px); 
   }
 }

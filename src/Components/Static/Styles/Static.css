@@ -51,6 +51,7 @@ header nav {
 .accordion-menu ul {
   list-style-type: none;
   text-align: justify;
+  padding-left: 0; 
 }
 
 .accordion-menu li {
