@@ -38,8 +38,10 @@ header nav {
 .open {
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -o-animation: accordionIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  -moz-animation: accordionIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   -webkit-animation: accordionIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   animation: accordionIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
@@ -211,19 +213,3 @@ header nav {
   }
 }
 
-/* @keyframes accordionOut {
-  0% {
-    -webkit-transform: scaleY(1);
-    transform: scaleY(1);
-    -webkit-transform-origin: 100% 0%;
-    transform-origin: 100% 0%;
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: scaleY(0);
-    transform: scaleY(0);
-    -webkit-transform-origin: 100% 0%;
-    transform-origin: 100% 0%;
-    opacity: 1;
-  }
-} */

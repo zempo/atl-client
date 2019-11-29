@@ -93,7 +93,54 @@ body {
   font-size: 1.5rem;
 }
 
-/* stick with this animation. it's clean and simple! */
+@-moz-keyframes modalEnter {
+  0% {
+    -moz-transform: scale(0);
+    transform: scale(0);
+    -moz-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+    opacity: 1;
+  }
+  100% {
+    -moz-transform: scale(1);
+    transform: scale(1);
+    -moz-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+    opacity: 1;
+  } 
+}
+@-webkit-keyframes modalEnter {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+    opacity: 1;
+  }
+}
+@-o-keyframes modalEnter {
+  0% {
+    -o-transform: scale(0);
+    transform: scale(0);
+    -o-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+    opacity: 1;
+  }
+  100% {
+    -o-transform: scale(1);
+    transform: scale(1);
+    -o-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+    opacity: 1;
+  }
+}
 @keyframes modalEnter {
   0% {
     -webkit-transform: scale(0);

@@ -67,17 +67,17 @@ export const ScriptsContextProvider = props => {
     const { id } = e.target;
     setTimeout(() => {
       setDirection("");
-    }, 20)
+    }, 10)
     if (id === "prev") {
       setCurrentPg(currentPg - 1);
       setTimeout(() => {
         setDirection("l");
-      }, 40);
+      }, 50);
     } else if (id === "next") {
       setCurrentPg(currentPg + 1);
       setTimeout(() => {
         setDirection("r");
-      }, 40);
+      }, 50);
     }
   };
 
