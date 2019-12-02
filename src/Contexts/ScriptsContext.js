@@ -31,7 +31,7 @@ export const ScriptsContextProvider = props => {
           error.response.data.error === "This user has no scripts at the moment"
         ) {
           const sampleScript = {
-            title: "Starting Your Screenplay",
+            title: "Hello, Screenplay",
             author: "Solomon Zelenko",
             subtitle: "Above the Line",
             body:

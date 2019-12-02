@@ -201,4 +201,7 @@ height: 17px;
   #next {
     right: 10%;
   }
+  .pagination-counter {
+    font-size: 1.5rem;
+  }
 }

@@ -12,7 +12,7 @@ const UserGuide = () => {
       <AtlSection className="started-pg">
         <h3>Edit Your First Script</h3>
         <ol>
-          <li>Click the 'Getting Started' script</li>
+          <li>Click the 'Hello, Screenplay' script</li>
           <li>Then click the 'edit'/pencil icon</li>
           <li>Play around with the tutorial!</li>
         </ol>

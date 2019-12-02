@@ -75,7 +75,7 @@ class App extends Component {
           <main className="atl-main" style={{ background: `${userColor}e0` }}>
             <ErrorPage>
               <Switch>
-                <Route exact path={"/"} component={Landing} />
+                <PublicRoute exact path={"/"} component={Landing} />
                 <AuthorizedRoute
                   exact
                   path={"/scripts"}
