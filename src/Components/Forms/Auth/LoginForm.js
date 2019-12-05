@@ -103,7 +103,6 @@ const LoginForm = props => {
           type="password"
           id={2}
           value={values.password}
-          maxLength="50"
           onChange={handleChange}
         />
       </fieldset>

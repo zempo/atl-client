@@ -29,7 +29,7 @@ export const ScriptsSearch = () => {
 
       setSearchScripts(keywordSearch);
       setSearching(true);
-      resetKeyword();
+      // resetKeyword();
     } catch (err) {
       setLoading(false);
       console.log(err);
