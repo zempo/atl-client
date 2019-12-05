@@ -52,9 +52,17 @@ export const sortScriptSentences = (str, callback = splitByTags) => {
           chars[i] = `||${char}`;
         }
       });
+      let empty = false;
+      let placeholder = ["..."];
       sortLn = sortLn.join("").split("||");
+      if (sortLn.length === 1 && (sortLn[0] === " " || sortLn[0] === "")) {
+        empty = true;
+      }
       sortLn = sortLn.filter(l => l !== " ");
-      para.lines = sortLn;
+      para.lines = placeholder;
+      if (!empty) {
+        para.lines = sortLn;
+      }
       scriptBody.push(para);
     }
     if (el.includes("{")) {
@@ -90,9 +98,17 @@ export const sortScriptSentences = (str, callback = splitByTags) => {
           chars[i] = `||${char}`;
         }
       });
+      let empty = false;
+      let placeholder = ["..."];
       sortLn = sortLn.join("").split("||");
+      if (sortLn.length === 1 && (sortLn[0] === " " || sortLn[0] === "")) {
+        empty = true;
+      }
       sortLn = sortLn.filter(l => l !== " ");
-      para.lines = sortLn;
+      para.lines = placeholder;
+      if (!empty) {
+        para.lines = sortLn;
+      }
       scriptBody.push(para);
     }
 

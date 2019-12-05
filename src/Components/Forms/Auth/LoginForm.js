@@ -45,7 +45,7 @@ const LoginForm = props => {
         resMsg: "Successful Login!",
         resStatus: 200
       });
-      reset();
+      // reset();
       props.onLoginSuccess();
       console.clear();
     } catch (error) {
@@ -103,6 +103,7 @@ const LoginForm = props => {
           type="password"
           id={2}
           value={values.password}
+          maxLength="50"
           onChange={handleChange}
         />
       </fieldset>

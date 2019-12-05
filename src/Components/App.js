@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as ROUTER, Route, Switch } from "react-router-dom";
+import { BrowserRouter as ROUTER, Switch } from "react-router-dom";
 import { UserContext } from "../Contexts/UserContext";
 // SERVICES
 // eslint-disable-next-line

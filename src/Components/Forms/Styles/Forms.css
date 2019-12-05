@@ -78,7 +78,7 @@ hr {
     padding: 0.7rem;
   }
 }
- 
+
 @media screen and (max-width: 600px) {
   .search-form {
     display: flex;
@@ -86,14 +86,14 @@ hr {
     flex-wrap: wrap;
     width: 95%;
     margin-left: 2.5%;
-  }  
+  }
   .search-form .keyword-search {
     border: none;
     /* border: 1px solid black; */
     width: 100%;
     position: relative;
     padding: 0.7rem;
-    margin-left: 5%;    
+    margin-left: 5%;
   }
   .search-form .sort-search {
     border: none;
