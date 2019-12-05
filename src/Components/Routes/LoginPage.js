@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import LoginForm from "../Forms/Auth/LoginForm";
 import { AtlSection } from "../Utils/Utils";
 
-const Login = (props) => {
+const Login = props => {
   const handleLoginSuccess = () => {
     const { location, history } = props;
-    const destination = (location.state || {}).from || "/scripts"; 
+    const destination = (location.state || {}).from || "/";
     history.push(destination);
   };
- 
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

@@ -45,7 +45,7 @@ const LoginForm = props => {
         resMsg: "Successful Login!",
         resStatus: 200
       });
-      // reset();
+      reset();
       props.onLoginSuccess();
       console.clear();
     } catch (error) {

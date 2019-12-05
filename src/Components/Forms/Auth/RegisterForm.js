@@ -58,7 +58,7 @@ const RegisterForm = props => {
       });
       setValidReq(false);
       props.onRegistrationSuccess(email, password);
-      // reset();
+      reset();
     } catch (error) {
       setErr({
         resStatus: error.response.status,
