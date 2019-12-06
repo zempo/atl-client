@@ -16,7 +16,7 @@ export default function AuthorizedRoute({ component, ...props }) {
               pathname: "/login",
               state: { from: componentProps.location } 
             }}
-          />
+          />  
         )
       }
     />

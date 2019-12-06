@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as ROUTER, Switch } from "react-router-dom";
+import { BrowserRouter as ROUTER, Route, Switch } from "react-router-dom";
 import { UserContext } from "../Contexts/UserContext";
 // SERVICES
 // eslint-disable-next-line
@@ -75,7 +75,7 @@ class App extends Component {
           <main className="atl-main" style={{ background: `${userColor}e0` }}>
             <ErrorPage>
               <Switch>
-                <PublicRoute exact path={"/"} component={Landing} />
+                <Route exact path={"/"} component={Landing} />
                 <AuthorizedRoute
                   exact
                   path={"/scripts"}

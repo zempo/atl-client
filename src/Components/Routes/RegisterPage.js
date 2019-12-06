@@ -26,7 +26,7 @@ const RegistrationPage = props => {
     window.scrollTo(0, 0);
   }, []);
 
-  return (
+  return ( 
     <AtlSection className="atl-page registration-page">
       <h1 className="animated-h1">Register</h1>
       <RegisterForm onRegistrationSuccess={handleRegistrationSuccess} />

@@ -29,7 +29,7 @@ const LoginForm = props => {
     setErr({
       resMsg: "",
       resStatus: 0
-    });
+    }); 
 
     try {
       const validLogin = await AuthService.postLogin({

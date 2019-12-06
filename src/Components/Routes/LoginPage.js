@@ -5,9 +5,9 @@ import { AtlSection } from "../Utils/Utils";
 const Login = props => {
   const handleLoginSuccess = () => {
     const { location, history } = props;
-    const destination = (location.state || {}).from || "/";
+    const destination = (location.state || {}).from || "/scripts";
     history.push(destination);
-  };
+  }; 
 
   useEffect(() => {
     window.scrollTo(0, 0);
