@@ -8,7 +8,7 @@ const Login = props => {
     const destination = (location.state || {}).from || "/scripts";
     history.push(destination);
   }; 
-
+ 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

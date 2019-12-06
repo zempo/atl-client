@@ -47,7 +47,7 @@ class App extends Component {
       // IdleService.regiserIdleTimerResets();
       // TokenService.queueCallbackBeforeExpiry(() => {
       //   AuthService.postRefreshToken();
-      // });
+      // }); 
     }
   }
 
@@ -80,7 +80,7 @@ class App extends Component {
                   exact
                   path={"/scripts"}
                   component={ScriptsPage}
-                />
+                /> 
                 <AuthorizedRoute
                   exact
                   path={"/script-editor"}

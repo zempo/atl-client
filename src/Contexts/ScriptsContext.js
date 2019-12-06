@@ -38,7 +38,9 @@ export const ScriptsContextProvider = props => {
               "[Header] Int. Real Voice LA - Noon [Action] In the recording booth, two voice actors glance down at their scripts and look expectantly towards the control room. An exec nods at a sound engineer, who then glances down at the console while giving the thumbs up. {Jane} ((V.O.)) Click on the header tag to add your slug-line or setting! You can even add a subheader, like this: [Header] Int. Tutorial - Misplaced Subheader {Jane} ((CON'T)) Just like that! (Beat) And, guess what? You can keep on typing after you click on a tag! {John} ((Also V.O.)) No need to keep googling those script indentations! {Jane} The script generator will take care of that for you! You can add action with the action tag. [Action] Some action happens here. [Shot] Establishing shot of this action. {John} But make sure to save your work! Use the sidebar to add new actors and scene directions! {Jane} Once you're ready to download your script, save it and click the generate button below! [Transition] Fade Out"
           };
           newScript.post("/", sampleScript).then(res => {
-            window.location.reload();
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000)
           });
         }
         setSearching(false);

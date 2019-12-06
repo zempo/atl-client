@@ -88,6 +88,7 @@ header nav {
   background: rgb(243, 243, 243);
   width: 24px;
   height: 23.5px;
+  cursor: pointer;
   /* color: #313131; */
 }
 

@@ -27,11 +27,12 @@ const LoginForm = props => {
     const { email, password } = values;
 
     setErr({
-      resMsg: "",
+      resMsg: "",      
       resStatus: 0
     }); 
 
     try {
+
       const validLogin = await AuthService.postLogin({
         email,
         password
