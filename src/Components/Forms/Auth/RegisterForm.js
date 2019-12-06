@@ -57,8 +57,11 @@ const RegisterForm = props => {
         resStatus: 200
       });
       setValidReq(false);
-      props.onRegistrationSuccess(email, password);
+      setTimeout(() => {
+        props.onRegistrationSuccess(email, password);
+      }, 500)
       reset();
+      console.clear()
     } catch (error) {
       setErr({
         resStatus: error.response.status,

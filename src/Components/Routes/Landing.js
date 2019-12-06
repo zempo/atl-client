@@ -21,7 +21,7 @@ const Landing = () => {
           <h3>As Fast as You Can Think</h3>
           <EditorLogo />
           <h3 className="register">
-            <NavLink exact activeClassName="active-auth" to="/register">
+            <NavLink exact activeClassName="active-auth" to="/register" title="register">
               Start Crafting Scenes
             </NavLink>
           </h3>

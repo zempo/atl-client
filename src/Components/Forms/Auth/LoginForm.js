@@ -38,16 +38,19 @@ const LoginForm = props => {
         password
       });
 
-      if (!validLogin) {
-        console.log("Failed Login");
-      }
-
       setErr({
         resMsg: "Successful Login!",
         resStatus: 200
       });
-      reset();
-      props.onLoginSuccess();
+
+      // if (!validLogin) {
+      //   console.log("Failed Login");
+      // }
+ 
+      setTimeout(() => {
+        reset();
+        props.onLoginSuccess();
+      }, 500)
       console.clear();
     } catch (error) {
       setErr({

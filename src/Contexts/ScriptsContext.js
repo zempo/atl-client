@@ -26,7 +26,6 @@ export const ScriptsContextProvider = props => {
         setScripts(result.data);
         setSearchScripts(result.data);
       } catch (error) {
-        console.log(error.response);
         if (
           error.response.data.error === "This user has no scripts at the moment"
         ) {
