@@ -14,6 +14,14 @@ header nav {
   font-size: 1.5rem;
 }
 
+.signature img {
+  height: 60px;
+  cursor: pointer;
+  /* margin-left: 10px; */
+  position: relative;
+  top: 20px;
+}
+
 .atl-nav-menu {
   display: flex;
   justify-content: space-between;
@@ -53,7 +61,7 @@ header nav {
 .accordion-menu ul {
   list-style-type: none;
   text-align: justify;
-  padding-left: 0; 
+  padding-left: 0;
 }
 
 .accordion-menu li {
@@ -213,4 +221,3 @@ header nav {
     opacity: 1;
   }
 }
-
