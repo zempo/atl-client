@@ -23,6 +23,8 @@ main {
   padding-top: 10rem;
   padding-bottom: 1rem;
   overflow-x: hidden;
+  /* for internet explorer */
+  background: rgb(54, 59, 60);
 }
 
 input {
@@ -126,16 +128,23 @@ main {
   h3 {
     font-size: 1.3rem;
   }
+  .signature img {
+    height: 40px;
+    cursor: pointer;
+    /* margin-left: 10px; */
+    position: relative;
+    top: 15px;
+  }
   .script-txt,
   .landing-txt {
     font-size: 1rem;
-  } 
+  }
   .pg-num {
     position: absolute;
     top: 1rem;
     right: 30px;
   }
-  
+
   .slugline {
     position: absolute;
     top: 1rem;
