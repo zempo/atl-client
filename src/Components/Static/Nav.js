@@ -67,7 +67,7 @@ class Nav extends Component {
   }
 
   render() {
-    const { userColor } = this.context.value;
+    const { userColor, admin } = this.context.value;
     // let error = this.context.value.error;
 
     return (
@@ -88,6 +88,18 @@ class Nav extends Component {
           style={{ background: `${userColor}` }}
         >
           <ul onClick={() => this.setState({ showing: !this.state.showing })}>
+            {admin ? (
+              <NavMenuOption
+                to="/admin"
+                icon={<i className="fas fa-tools"></i>}
+                text="Admin Pg"
+              />
+            ) : null}
+            <NavMenuOption
+              to="/user-settings"
+              icon={<i className="fas fa-sliders-h"></i>}
+              text="Appearance"
+            />
             <NavMenuOption
               to="/scripts"
               icon={<i className="fas fa-scroll"></i>}
@@ -97,11 +109,6 @@ class Nav extends Component {
               to="/user-guide"
               icon={<i className="far fa-question-circle"></i>}
               text="Get Started"
-            />
-            <NavMenuOption
-              to="/user-settings"
-              icon={<i className="fas fa-sliders-h"></i>}
-              text="Appearance"
             />
             <li className="nav-link">
               <Link onClick={this.handleLogoutClick} to="/">

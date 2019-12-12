@@ -19,7 +19,7 @@ const Input = ({ currentId, body, history }) => {
   const { isShowing: isShowingCopy, toggle: toggleCopy } = useModal();
   const { isShowing: isShowingDelete, toggle: toggleDelete } = useModal();
   const {
-    value: { tenthHeight, tenthWidth }
+    value: { tenthHeight, tenthWidth, mobile }
   } = useContext(StyleContext);
   const {
     value: { userColor }
@@ -176,17 +176,17 @@ const Input = ({ currentId, body, history }) => {
       console.log(err);
       setLoading(false);
     }
-// eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
 
   let hotCopy = React.useCallback(() => {
     toggleCopy();
-// eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
 
   let hotDelete = React.useCallback(() => {
     toggleDelete();
-// eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
 
   const handlers = {
@@ -200,7 +200,7 @@ const Input = ({ currentId, body, history }) => {
       <Box
         className="box box-top"
         height={tenthHeight * 10}
-        width={tenthWidth * 7.92}
+        width={mobile ? tenthWidth * 10 : tenthWidth * 7.92}
         axis="both"
         resizeHandles={["s"]}
       >

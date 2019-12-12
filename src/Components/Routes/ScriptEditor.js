@@ -30,7 +30,7 @@ const ScriptEditor = props => {
       const { item } = props.location.state;
       updateScript(item);
     }
-// eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -39,16 +39,16 @@ const ScriptEditor = props => {
         className="atl-page editor-pg"
         style={{ outline: `3.5rem solid ${userColor}` }}
       >
+        <Sidebar
+          history={props.history}
+          currentId={props.location.state.item.id}
+        />
         <Input
           body={props.location.state.item.body}
           currentId={props.location.state.item.id}
           history={props.history}
         />
         <Output currentId={props.location.state.item.id} />
-        <Sidebar
-          history={props.history}
-          currentId={props.location.state.item.id}
-        />
       </AtlSection>
     </HotKeys>
   );

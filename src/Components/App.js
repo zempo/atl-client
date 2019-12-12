@@ -23,6 +23,7 @@ import AuthorizedRoute from "./Utils/Auth/AuthorizedRoute";
 import PublicRoute from "./Utils/Auth/PublicRoute";
 import { configure } from "react-hotkeys";
 import "./App.css";
+import { UsersPage } from "./Routes/UsersPage";
 
 class App extends Component {
   state = { hasError: false };
@@ -47,7 +48,7 @@ class App extends Component {
       // IdleService.regiserIdleTimerResets();
       // TokenService.queueCallbackBeforeExpiry(() => {
       //   AuthService.postRefreshToken();
-      // }); 
+      // });
     }
   }
 
@@ -76,11 +77,12 @@ class App extends Component {
             <ErrorPage>
               <Switch>
                 <Route exact path={"/"} component={Landing} />
+                <AuthorizedRoute exact path={"/admin"} component={UsersPage} />
                 <AuthorizedRoute
                   exact
                   path={"/scripts"}
                   component={ScriptsPage}
-                /> 
+                />
                 <AuthorizedRoute
                   exact
                   path={"/script-editor"}

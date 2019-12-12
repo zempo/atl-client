@@ -22,7 +22,7 @@ const Sidebar = ({ history, currentId }) => {
     value: { addToActors, addToTags, currentScript, updateTitlePage }
   } = useContext(EditContext);
   const {
-    value: { winHeight, tenthWidth }
+    value: { winHeight, tenthWidth, mobile }
   } = useContext(StyleContext);
   const {
     value: { editScripts, scripts, searchScripts }
@@ -90,7 +90,7 @@ const Sidebar = ({ history, currentId }) => {
     e.preventDefault();
     let newTag = tags;
     try {
-// eslint-disable-next-line
+      // eslint-disable-next-line
       const tagsUpdated = await addToTags(currentScript, newTag);
       resetTags();
       setTimeout(() => {
@@ -105,7 +105,10 @@ const Sidebar = ({ history, currentId }) => {
     <>
       <div
         className="box box-sidebar"
-        style={{ height: `${winHeight * 1.5}px`, width: `${tenthWidth * 2}px` }}
+        style={{
+          height: `${mobile ? 550 : winHeight * 1.5}px`,
+          width: `${mobile ? tenthWidth * 10 : tenthWidth * 2}px`
+        }}
       >
         <BackBtn history={history} />
         <form className="sidebar-inputs">
@@ -121,6 +124,7 @@ const Sidebar = ({ history, currentId }) => {
             <button
               className="side-add-btn"
               title="add actor"
+              disabled={actors === ""}
               onClick={updateActors}
             >
               +
@@ -135,6 +139,7 @@ const Sidebar = ({ history, currentId }) => {
             <button
               className="side-add-btn"
               title="add tag"
+              disabled={tags === ""}
               onClick={updateTags}
             >
               +

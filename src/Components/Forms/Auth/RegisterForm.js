@@ -58,10 +58,12 @@ const RegisterForm = props => {
       });
       setValidReq(false);
       setTimeout(() => {
-        props.onRegistrationSuccess(email, password);
-      }, 500)
+        if (createdUser.status === 201) {
+          props.onRegistrationSuccess(email, password);
+        }
+      }, 600);
       reset();
-      console.clear()
+      console.clear();
     } catch (error) {
       setErr({
         resStatus: error.response.status,

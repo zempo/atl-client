@@ -14,7 +14,7 @@ import "../Styles/Output.css";
 
 const Output = ({ currentId }) => {
   const {
-    value: { tenthHeight, tenthWidth }
+    value: { tenthHeight, tenthWidth, mobile }
   } = useContext(StyleContext);
   // const {
   //   value: { userColor }
@@ -99,7 +99,7 @@ const Output = ({ currentId }) => {
       <Box
         className="box box-bottom"
         height={tenthHeight * 7.5}
-        width={tenthWidth * 7.92}
+        width={mobile ? tenthWidth * 10 : tenthWidth * 7.92}
         axis="both"
         resizeHandles={["s"]}
       >
