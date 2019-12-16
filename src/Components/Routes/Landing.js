@@ -6,11 +6,28 @@ import Img1 from "../../Images/section1.gif";
 import Img2 from "../../Images/section2.gif";
 import Img3 from "../../Images/section3.gif";
 import "./Styles/Landing.css";
+import { AuthService } from "../../Services/Auth/auth-service";
 
-const Landing = () => {
+const Landing = props => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const runDemo = async e => {
+    e.preventDefault();
+    let email = "guest@scodes.com";
+    let password = "GreatGuest@@17";
+    try {
+      const { history } = props;
+      history.push("/scripts");
+      const validLogin = await AuthService.postLogin({
+        email,
+        password
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <AtlSection className="atl-pg landing-pg">
@@ -20,11 +37,17 @@ const Landing = () => {
           <h2>Scripts & Screenplays</h2>
           <h3>As Fast as You Can Think</h3>
           <EditorLogo />
-          <h3 className="register">
-            <NavLink exact activeClassName="active-auth" to="/register" title="register">
-              Start Crafting Scenes
-            </NavLink>
-          </h3>
+          <NavLink
+            exact
+            activeClassName="active-auth"
+            to="/register"
+            title="register"
+          >
+            <h3 className="register">Start Crafting Scenes</h3>
+          </NavLink>
+          <button onClick={runDemo} className="demo" title="demo">
+            <h3>Try it Out</h3>
+          </button>
         </div>
         <div className="landing-2">
           <h3>{`Introducing { Actors } & [ Tags ]`}</h3>
@@ -59,12 +82,12 @@ const Landing = () => {
             Add actors and tags to your script. Then keep on typing.
           </p>
           <p className="landing-txt">Just be sure to save your work!</p>
-          <p className="script-txt pg-num">2</p> 
+          <p className="script-txt pg-num">2</p>
         </div>
         <div className="landing-4">
           <h3>Organize</h3>
           <img className="landing-gif" src={Img3} alt="gif of website" />
-          <br/>
+          <br />
           <h3>Customize</h3>
           <img className="landing-gif" src={Img2} alt="gif of website" />
           <p className="script-txt pg-num">3</p>
@@ -72,6 +95,12 @@ const Landing = () => {
       </div>
     </AtlSection>
   );
+};
+
+Landing.defaultProps = {
+  history: {
+    push: () => {}
+  }
 };
 
 export default Landing;

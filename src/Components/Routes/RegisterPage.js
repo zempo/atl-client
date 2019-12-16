@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import RegisterForm from "../Forms/Auth/RegisterForm";
 import { AuthService } from "../../Services/Auth/auth-service";
 import { AtlSection } from "../Utils/Utils";
- 
+
 const RegistrationPage = props => {
   const handleRegistrationSuccess = async (email, password) => {
     try {
@@ -26,7 +26,7 @@ const RegistrationPage = props => {
     window.scrollTo(0, 0);
   }, []);
 
-  return ( 
+  return (
     <AtlSection className="atl-page registration-page">
       <h1 className="animated-h1">Register</h1>
       <RegisterForm onRegistrationSuccess={handleRegistrationSuccess} />

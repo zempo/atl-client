@@ -65,8 +65,8 @@
 
 .landing-4 {
   border-bottom: 1px solid rgb(243, 243, 243);
-  outline: 1rem solid rgb(243, 243, 243); 
-  margin-top: 1rem; 
+  outline: 1rem solid rgb(243, 243, 243);
+  margin-top: 1rem;
 }
 
 .landing-gif {
@@ -74,20 +74,33 @@
   max-width: 800px;
 }
 
-.register {
+.register,
+.demo {
   border: 2px solid rgb(243, 243, 243);
   border-radius: 10px;
   position: relative;
-  width: 350px;
-  padding: 1rem;
-  margin-left: calc(50% - 175px); 
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
+  width: 350px;
+  margin-left: calc(50% - 175px);
 }
 
-.register:hover {
+.register {
+  padding: 1rem;
+}
+.demo {
+  background: rgb(49, 49, 49, 0);
+  padding: 0;
+  height: auto;
+  height: 80px;
+  width: 385px;
+  margin-left: 35px;
+}
+
+.register:hover,
+.demo:hover {
   background: rgb(243, 243, 243);
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
@@ -95,7 +108,8 @@
   -webkit-transition: all 0.3s ease-out;
 }
 
-.register:hover a {
+.register:hover,
+.demo:hover h3 {
   color: rgb(49, 49, 49);
   text-decoration: underline;
   -moz-transition: all 0.3s ease-out;
@@ -104,13 +118,14 @@
   -webkit-transition: all 0.3s ease-out;
 }
 
-.register a {
+a,
+.demo {
   text-decoration: none;
   color: rgb(243, 243, 243);
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
-  -webkit-transition: all 0.3s ease-out; 
+  -webkit-transition: all 0.3s ease-out;
 }
 
 .pg-num {
@@ -123,7 +138,7 @@
   position: absolute;
   top: 1rem;
   left: 96px;
-} 
+}
 
 @media screen and (max-width: 1000px) {
   .landing-vector-1 {
@@ -136,6 +151,6 @@
   .register {
     width: 300px;
     padding: 1rem;
-    margin-left: calc(50% - 150px); 
+    margin-left: calc(50% - 150px);
   }
 }

@@ -40,7 +40,7 @@ const RegisterForm = props => {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    const { password, email, username } = values;
+    let { password, email, username } = values;
     let newUser = { password, email };
     newUser.user_name = username;
 
@@ -62,8 +62,8 @@ const RegisterForm = props => {
           props.onRegistrationSuccess(email, password);
         }
       }, 600);
-      reset();
-      console.clear();
+      // reset();
+      // console.clear();
     } catch (error) {
       setErr({
         resStatus: error.response.status,

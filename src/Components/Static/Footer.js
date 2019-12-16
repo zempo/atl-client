@@ -8,9 +8,13 @@ const Footer = () => {
   const {
     value: { userColor }
   } = useContext(UserContext);
+
+  const scrollUp = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   return (
     <footer className="atl-footer" style={{ background: `${userColor}` }}>
-      <h2>Above The Line</h2>
+      <h2 onClick={scrollUp}>Above The Line</h2>
       <h3>
         Created by{" "}
         <a

@@ -112,6 +112,10 @@ header nav {
   color: rgb(243, 243, 243);
 }
 
+.atl-footer h2 {
+  cursor: pointer;
+}
+
 .logged-out a {
   text-decoration: none;
   color: rgb(243, 243, 243);

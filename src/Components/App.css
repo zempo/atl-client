@@ -61,6 +61,8 @@ button:focus {
   transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
 }
+.demo:focus,
+.demo:active,
 .nav-menu-btn:focus,
 .nav-menu-btn:active,
 .append-tag:focus,
@@ -89,6 +91,7 @@ button {
   -webkit-transition: all 0.3s ease-out;
   opacity: 0.9;
   border-radius: 3px;
+  cursor: pointer;
 }
 
 button:hover {

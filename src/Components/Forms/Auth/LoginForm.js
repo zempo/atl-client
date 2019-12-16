@@ -27,12 +27,11 @@ const LoginForm = props => {
     const { email, password } = values;
 
     setErr({
-      resMsg: "",      
+      resMsg: "",
       resStatus: 0
-    }); 
+    });
 
     try {
-
       const validLogin = await AuthService.postLogin({
         email,
         password
@@ -46,12 +45,12 @@ const LoginForm = props => {
       // if (!validLogin) {
       //   console.log("Failed Login");
       // }
- 
+
       setTimeout(() => {
-        reset();
+        // reset();
         props.onLoginSuccess();
-      }, 500)
-      console.clear();
+      }, 600);
+      // console.clear();
     } catch (error) {
       setErr({
         resStatus: error.response.status,
