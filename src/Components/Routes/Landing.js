@@ -7,7 +7,8 @@ import Img2 from "../../Images/section2.gif";
 import Img3 from "../../Images/section3.gif";
 import "./Styles/Landing.css";
 import { AuthService } from "../../Services/Auth/auth-service";
-
+import TokenService from "../../Services/Auth/token-service";
+ 
 const Landing = props => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -45,7 +46,7 @@ const Landing = props => {
           >
             <h3 className="register">Start Crafting Scenes</h3>
           </NavLink>
-          <button onClick={runDemo} className="demo" title="demo">
+          <button disabled={TokenService.hasAuthToken()} onClick={runDemo} className="demo" title="demo">
             <h3>Try it Out</h3>
           </button>
         </div>

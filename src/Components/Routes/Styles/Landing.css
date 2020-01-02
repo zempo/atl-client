@@ -140,6 +140,11 @@ a,
   left: 96px;
 }
 
+.demo:disabled {
+  visibility: hidden;
+  height: 0;
+}
+
 @media screen and (max-width: 1000px) {
   .landing-vector-1 {
     max-width: 90%;
@@ -148,9 +153,18 @@ a,
 }
 
 @media screen and (max-width: 600px) {
-  .register {
+  .register, .demo {
     width: 300px;
     padding: 1rem;
     margin-left: calc(50% - 150px);
+  }
+  .demo {
+    height: 60px;
+    width: 335px;
+    margin-left: 35px;
+  }
+  .demo h3 {
+    position: relative;
+    top: -20px;
   }
 }
