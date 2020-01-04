@@ -40,7 +40,7 @@ header nav {
 .accordion-menu {
   width: 100%;
   background: rgb(49, 49, 49, 0.99);
-  padding: 1rem;
+  padding: 1rem 0rem;
 }
 
 .open {
@@ -65,7 +65,7 @@ header nav {
 }
 
 .accordion-menu li {
-  margin-left: calc(50% - 75px);
+  margin-left: calc(50% - 95px);
   width: 190px;
 }
 

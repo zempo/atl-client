@@ -69,10 +69,10 @@ button:focus {
 .append-tag:active,
 .delete-tag:focus,
 .delete-tag:active {
-  -moz-transform: scaleX(1);
-  -o-transform: scaleX(1);
-  -ms-transform: scaleX(1);
-  transform: scaleX(1);
+  -moz-transform: scale(.95, .95);
+  -o-transform: scale(.95, .95);
+  -ms-transform: scale(.95, .95);
+  transform: scale(.95, .95);
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
@@ -101,12 +101,12 @@ button:hover {
   -webkit-transition: all 0.3s ease-out;
   opacity: 1;
 }
-
+  
 button:active {
-  -moz-transform: scaleX(1.05);
-  -o-transform: scaleX(1.05);
-  -ms-transform: scaleX(1.05);
-  transform: scaleX(1.05);
+  -moz-transform: scale(.95, .95);
+  -o-transform: scale(.95, .95);
+  -ms-transform: scale(.95, .95);
+  transform: scale(.95, .95);
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
