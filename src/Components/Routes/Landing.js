@@ -52,46 +52,50 @@ const Landing = props => {
         </div>
         <div className="landing-2">
           <h3>{`Introducing { Actors } & [ Tags ]`}</h3>
-          <p className="script-txt">
+          <p className="script-txt line">
             "[Action] Kitt and Alex are hired to convince you to use this
             website. They will do their best.
           </p>
-          <p className="script-txt">
+          <p className="script-txt line">
             {`{Kitt}`} I can't believe this website autoformats your scripts!{" "}
           </p>
-          <p className="script-txt">
+          <p className="script-txt line">
             {`{Alex}`} I know, right? I've saved so much time!
           </p>
-          <p className="script-txt">
+          <p className="script-txt line">
             (The producer agressively points to the teleprompter)
           </p>
-          <p className="script-txt">Oh, yeah! And it's totally free!</p>
-          <p className="script-txt">{`{Kitt}`} Wow! That's amazing!</p>
-          <p className="script-txt">
+          <p className="script-txt line">Oh, yeah! And it's totally free!</p>
+          <p className="script-txt line">{`{Kitt}`} Wow! That's amazing!</p>
+          <p className="script-txt line">
             {`{Alex}`} I'm contractually obligated to agree with you!
           </p>
-          <p className="script-txt">[Transition] Fade Out"</p>
-          <br />
+          <p className="script-txt line">[Transition] Fade Out"</p>
           <p className="script-txt pg-num">1</p>
           <p className="script-txt slugline">Int. Above the Line HQ</p>
         </div>
         <div className="landing-3">
-          <h3>Your Script Writing Ecosystem</h3>
-          <img className="landing-gif" src={Img1} alt="gif of website" />
-          <h3>Made Simple and Personal</h3>
+          <h3>Create at your Pace</h3> 
+          <img className="landing-gif" src={Img1} alt="gif of website homepage" />
           <p className="landing-txt">
-            Add actors and tags to your script. Then keep on typing.
+ Just add the title page info, insert actors and tags in your lines. <br/> And we'll take care of the rest.
           </p>
-          <p className="landing-txt">Just be sure to save your work!</p>
+          <br/>
+          <p className="landing-txt">Just be sure to save!</p>
           <p className="script-txt pg-num">2</p>
         </div>
         <div className="landing-4">
-          <h3>Organize</h3>
-          <img className="landing-gif" src={Img3} alt="gif of website" />
+          <h3>Organize your Projects</h3>
+          <img className="landing-gif" src={Img3} alt="gif of website search form" />
+          <p className="landing-txt">Even when your projects start to pile up, find what you need. <br/> Above the Line is your script management system.</p>
           <br />
-          <h3>Customize</h3>
-          <img className="landing-gif" src={Img2} alt="gif of website" />
           <p className="script-txt pg-num">3</p>
+        </div>
+        <div className="landing-5">
+          <h3>Customize your Workplace</h3>
+          <img className="landing-gif" src={Img2} alt="gif of website" />
+          <p className="landing-txt">Whether the sun goes down or up, your ideas don't have to. <br/> Above the Line is your script writing environment. </p>
+          <p className="script-txt pg-num">4</p>
         </div>
       </div>
     </AtlSection>
