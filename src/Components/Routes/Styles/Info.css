@@ -15,6 +15,12 @@
   outline: 1rem solid rgb(243, 243, 243);
 }
 
+.started-pg a, .started-pg a {
+  color: rgb(20, 20, 20);
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 .started-pg ol {
   text-align: center;
   list-style-position: inside;
@@ -90,7 +96,7 @@
     margin-left: calc(50% - 300px);
   }
 }
-
+ 
 @media screen and (max-width: 650px) {
   .user-appearance {
     display: flex;

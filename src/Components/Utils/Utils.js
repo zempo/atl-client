@@ -18,10 +18,10 @@ export const AtlNotification = ({ type, msg, done }) => {
     return (
       <div id={type} className="atl-notification" onClick={handleClick}>
         <h3>
-          {type < 208 ? (
-            <i class="fas fa-check"></i>
+          {type < 208 ? ( 
+            <i className="fas fa-check"></i>
           ) : (
-            <i class="fas fa-times-circle"></i>
+            <i className="fas fa-times-circle"></i>
           )}
           &nbsp;
           {msg}
