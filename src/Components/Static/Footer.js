@@ -16,7 +16,7 @@ const Footer = () => {
     <footer className="atl-footer" style={{ background: `${userColor}` }}>
       <h2 onClick={scrollUp}>Above The Line</h2>
       <h3>
-        Created by{" "}
+      &copy; 2020, All Rights Reserved &nbsp; Website By 
         <a
           className="signature"
           href="https://github.com/zempo"

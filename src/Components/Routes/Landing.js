@@ -94,7 +94,7 @@ const Landing = props => {
         <div className="landing-5">
           <h3>Customize your Workplace</h3>
           <img className="landing-gif" src={Img2} alt="gif of website" />
-          <p className="landing-txt">Whether the sun goes down or up, your ideas don't have to. <br/> Above the Line is your script writing environment. </p>
+          <p className="landing-txt">Above the Line is your script writing environment. </p>
           <p className="script-txt pg-num">4</p>
         </div>
       </div>
