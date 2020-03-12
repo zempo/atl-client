@@ -154,6 +154,9 @@ a,
     max-width: 90%;
     max-height: 50vh;
   }
+  .spacer-break {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -178,9 +181,5 @@ a,
   .demo h3 {
     position: relative;
     top: -20px;
-  }
-
-  .spacer-break {
-    display: none;
   }
 }
