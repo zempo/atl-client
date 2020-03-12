@@ -145,6 +145,10 @@ a,
   height: 0;
 }
 
+.spacer-break {
+  display: none;
+}
+
 @media screen and (max-width: 1000px) {
   .landing-vector-1 {
     max-width: 90%;
@@ -174,5 +178,9 @@ a,
   .demo h3 {
     position: relative;
     top: -20px;
+  }
+
+  .spacer-break {
+    display: none;
   }
 }
