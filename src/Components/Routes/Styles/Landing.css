@@ -155,7 +155,7 @@ a,
     max-height: 50vh;
   }
   .spacer-break {
-    display: none;
+    display: block;
   }
 }
 

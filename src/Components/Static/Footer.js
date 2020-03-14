@@ -19,7 +19,7 @@ const Footer = () => {
       &copy; 2020, All Rights Reserved &nbsp; <br className="spacer-break" /> Website By 
         <a
           className="signature"
-          href="https://github.com/zempo"
+          href="https://solomonzelenko.com"
           target="_blank"
           rel="noopener noreferrer"
         >
