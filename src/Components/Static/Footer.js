@@ -14,18 +14,15 @@ const Footer = () => {
   };
   return (
     <footer className="atl-footer" style={{ background: `${userColor}` }}>
-      <h2 onClick={scrollUp}>Above The Line</h2>
-      <h3>
-      &copy; 2020, All Rights Reserved &nbsp; <br className="spacer-break" /> Website By 
-        <a
+      <h3 style={{fontSize: 30, cursor: 'pointer'}} onClick={scrollUp}>Above The Line</h3>
+      <h4 style={{fontSize: 20, marginTop: -10}}><strong>&copy; 2020</strong> <a
           className="signature"
-          href="https://solomonzelenko.com"
+          href="https://solomonzelenko.dev"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={Sig} alt="Solomon Zelenko" />
-        </a>
-      </h3>
+          <img src="https://i.imgur.com/LlMXxEm.png" alt="Solomon Zelenko" />
+        </a></h4>
     </footer>
   );
 };
