@@ -1,21 +1,46 @@
 import React, { useEffect, useContext, useState } from "react";
-// import { useInput } from "../../Hooks/use-input";
 import { AtlSection } from "../Utils/Utils";
 import { UserContext } from "../../Contexts/UserContext";
-import { splitColorData } from "../../Services/algos-service";
-import { readThemes, readUser } from "../../Services/endpoints-service";
+import { readUser } from "../../Services/endpoints-service";
 import "./Styles/Info.css";
+
+const userThemes = [
+  "#AD1457",
+  "#d45d5d",
+  "#E76F51",
+  "#6B8F71",
+  "#388E3C",
+  "#2E7D32",
+  "#00695C",
+  "#455A64",
+  "#2E6171",
+  "#1565C0",
+  "#4464AD",
+  "#67597A",
+  "#5E4955",
+  "#5D4037",
+  "#8E3B46",
+  "#424242",
+  "#264653",
+  "#073B3A",
+  "#034078",
+  "#283593",
+  "#001F54",
+  "#391463",
+  "#41292C",
+  "#1B2021",
+];
 
 const UserSettings = () => {
   const {
-    value: { userColor, setUserColor, loading, setLoading }
+    value: { userColor, setUserColor, loading, setLoading },
   } = useContext(UserContext);
   const [selectedColor, setSelectedColor] = useState(userColor);
   const [colors, setColors] = useState([]);
-      // eslint-disable-next-line
+  // eslint-disable-next-line
   const [usr, setUsr] = useState({
     currentName: "",
-    currentColor: ""
+    currentColor: "",
   });
 
   useEffect(() => {
@@ -26,14 +51,13 @@ const UserSettings = () => {
       try {
         const result1 = await readUser.get("/");
         setUsr({
-          currentName: result1.data.user_name,
-          currentColor: result1.data.theme
+          currentName: result1.data.payload.user_name,
+          currentColor: result1.data.payload.theme,
         });
-        setSelectedColor(result1.data.theme);
-        const result2 = await readThemes.get("/");
-        const process = await splitColorData(result2.data);
-
-        setColors(process);
+        setSelectedColor(result1.data.payload.theme);
+        // const result2 = await readThemes.get("/");
+        // const process = await splitColorData(result2.data);
+        setColors(userThemes);
       } catch (error) {
         console.log(error);
       }
@@ -42,7 +66,7 @@ const UserSettings = () => {
     getColors();
   }, []);
 
-  const handleColor = e => {
+  const handleColor = (e) => {
     const { value } = e.target;
     setSelectedColor(value);
     setUserColor(value);
@@ -56,7 +80,7 @@ const UserSettings = () => {
   //   });
   // };
 
-  const updateUser = async e => {
+  const updateUser = async (e) => {
     e.preventDefault();
 
     let userToPatch = {};
@@ -65,27 +89,28 @@ const UserSettings = () => {
     try {
       // eslint-disable-next-line
       const updatedUser = await readUser.patch(`/`, userToPatch);
+
       setTimeout(() => {
         setLoading(false);
       }, 500);
     } catch (error) {
-      console.log(error);
+      console.log(error.response.data);
       setLoading(false);
     }
   };
 
   return (
-    <AtlSection className="atl-pg settings-pg">
-      <h1 className="animated-h1">Appearance</h1>
-      <form className="atl-form user-edit-form">
-        <button className="theme-update-btn" onClick={updateUser}>
+    <AtlSection className='atl-pg settings-pg'>
+      <h1 className='animated-h1'>Appearance</h1>
+      <form className='atl-form user-edit-form'>
+        <button className='theme-update-btn' onClick={updateUser}>
           {loading ? "Painting..." : "Apply"}
         </button>
-        <fieldset className="user-appearance">
+        <fieldset className='user-appearance'>
           {colors.map((c, i) => {
             return (
               <label
-                htmlFor="selectedColor"
+                htmlFor='selectedColor'
                 key={i}
                 style={{
                   background: c,
@@ -93,16 +118,16 @@ const UserSettings = () => {
                   borderColor:
                     selectedColor === c
                       ? "rgb(243,243,243)"
-                      : "rgba(49,49,49, 0.2)"
+                      : "rgba(49,49,49, 0.2)",
                 }}
               >
                 <input
-                  type="radio"
-                  name="selectedColor"
+                  type='radio'
+                  name='selectedColor'
                   value={c}
                   checked={selectedColor === c}
                   onChange={handleColor}
-                  tabIndex="0"
+                  tabIndex='0'
                 />
               </label>
             );

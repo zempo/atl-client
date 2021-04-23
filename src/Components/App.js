@@ -36,19 +36,19 @@ class App extends Component {
   }
 
   componentDidMount() {
-    IdleService.setIdleCallback(this.logoutFromIdle);
+    // IdleService.setIdleCallback(this.logoutFromIdle);
     configure({
       customKeyCodes: {
-        32: "SPACE_BAR"
+        32: "SPACE_BAR",
       },
-      ignoreTags: []
+      ignoreTags: [],
     });
 
     if (TokenService.hasAuthToken()) {
-      // IdleService.regiserIdleTimerResets();
-      // TokenService.queueCallbackBeforeExpiry(() => {
-      //   AuthService.postRefreshToken();
-      // });
+      IdleService.regiserIdleTimerResets();
+      TokenService.queueCallbackBeforeExpiry(() => {
+        AuthService.postRefreshToken();
+      });
     }
   }
 
@@ -70,10 +70,10 @@ class App extends Component {
     return (
       <>
         <ROUTER>
-          <header className="atl-header">
+          <header className='atl-header'>
             <Nav />
           </header>
-          <main className="atl-main" style={{ background: `${userColor}e0` }}>
+          <main className='atl-main' style={{ background: `${userColor}e0` }}>
             <ErrorPage>
               <Switch>
                 <Route exact path={"/"} component={Landing} />

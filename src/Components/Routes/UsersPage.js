@@ -7,11 +7,11 @@ import "./Styles/Misc.css";
 export const UsersPage = () => {
   const [usrs, setUsrs] = useState([]);
   const [resMsg, setResMsg] = useState("");
-  const [resStatus, setResStatus] = useState(0); 
-  const [current, setCurrent] = useState(0)
+  const [resStatus, setResStatus] = useState(0);
+  const [current, setCurrent] = useState(0);
 
   const {
-    value: { admin, user }
+    value: { admin, user },
   } = useContext(UserContext);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export const UsersPage = () => {
       try {
         const result = await readUsers.get("/");
 
-        setUsrs(result.data);
+        setUsrs(result.data.payload);
       } catch (err) {
         console.log(err);
       }
@@ -30,43 +30,49 @@ export const UsersPage = () => {
   }, []);
 
   const deleteUsr = async (id) => {
-    setCurrent(id)
+    setCurrent(id);
     try {
-      const delUsr = await readUsers.delete(`/${id}`)
+      const delUsr = await readUsers.delete(`/${id}`);
 
-      setResStatus(201)
-      setResMsg('User Deleted')
+      setResStatus(201);
+      setResMsg("User Deleted");
       setTimeout(() => {
         setResStatus(0);
       }, 3000);
-    } catch (err) { 
+    } catch (err) {
       setResStatus(err.response.status);
-      setResMsg(Object.values(err.response.data.error));
-      console.log(err)
+      setResMsg(Object.values(err.response.data.message));
+      console.log(err);
       setTimeout(() => {
         setResStatus(0);
       }, 3000);
     }
-  }
+  };
 
   return (
-    <AtlSection className="atl-pg admin-pg">
+    <AtlSection className='atl-pg admin-pg'>
       <h1>Administration</h1>
       <ul>
         {usrs.map((usr, i) => {
-          if (usr.user_name !== user.user_name) {   
-            return ( 
+          if (usr.user_name !== user.user_name) {
+            return (
               <li key={i}>
-      {(resStatus > 0 && usr.id === current) ? (<>
-      <br/>
-        <AtlNotification type={resStatus} msg={resMsg} />
-      </>
-      ): null}
-              <h3>{usr.user_name}</h3>
-              <button onClick={(e) => deleteUsr(usr.id)} className="admin-btn">Delete</button>
-            </li>
-          );
-        }
+                {resStatus > 0 && usr.id === current ? (
+                  <>
+                    <br />
+                    <AtlNotification type={resStatus} msg={resMsg} />
+                  </>
+                ) : null}
+                <h3>{usr.user_name}</h3>
+                <button
+                  onClick={(e) => deleteUsr(usr.id)}
+                  className='admin-btn'
+                >
+                  Delete
+                </button>
+              </li>
+            );
+          }
         })}
       </ul>
     </AtlSection>

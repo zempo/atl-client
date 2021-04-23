@@ -7,7 +7,7 @@ import "./Styles/ScriptsPage.css";
 import { SkeletonLoaderScripts } from "../Utils/Scripts/SkeletonScripts";
 import ScriptsSearch from "../Forms/Search/ScriptsSearch";
 
-const ScriptsPage = () => {
+const ScriptsPage = (props) => {
   const {
     value: {
       scripts,
@@ -25,8 +25,8 @@ const ScriptsPage = () => {
       lastSearchPg,
       direction,
       setDirection,
-      loading
-    }
+      loading,
+    },
   } = useContext(ScriptsContext);
 
   useEffect(() => {
@@ -34,12 +34,22 @@ const ScriptsPage = () => {
     setDirection("");
   }, [setDirection]);
 
+  useEffect(() => {
+    if (props.history.location.state && props.history.location.state.new) {
+      props.history.push({
+        state: { new: false },
+        pathname: "/scripts",
+      });
+      window.location.reload();
+    }
+  }, []);
+
   return (
-    <AtlSection className="atl-pg scripts-pg">
-      <h1 className="animated-h1">My Projects</h1>
+    <AtlSection className='atl-pg scripts-pg'>
+      <h1 className='animated-h1'>My Projects</h1>
       <ScriptsSearch />
       <hr />
-      <AddBtn /> 
+      <AddBtn />
       <div className={`scripts-container ${direction}`}>
         {loading ? <SkeletonLoaderScripts /> : null}
         {!searching

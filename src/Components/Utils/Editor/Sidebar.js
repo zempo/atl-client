@@ -19,13 +19,13 @@ const Sidebar = ({ history, currentId }) => {
     { 1: validationSpacer, 2: validationSpacer, 3: validationSpacer }
   );
   const {
-    value: { addToActors, addToTags, currentScript, updateTitlePage }
+    value: { addToActors, addToTags, currentScript, updateTitlePage },
   } = useContext(EditContext);
   const {
-    value: { winHeight, tenthWidth, mobile }
+    value: { winHeight, tenthWidth, mobile },
   } = useContext(StyleContext);
   const {
-    value: { editScripts, scripts, searchScripts }
+    value: { editScripts, scripts, searchScripts },
   } = useContext(ScriptsContext);
   const { value: tags, bind: bindTags, reset: resetTags } = useInput("");
   const { value: actors, bind: bindActors, reset: resetActors } = useInput("");
@@ -40,9 +40,9 @@ const Sidebar = ({ history, currentId }) => {
     const findScript = async () => {
       try {
         const result = await readScripts.get(`/${currentId}`);
-        setCurrentAuthor(result.data[0].author);
-        setCurrentSubtitle(result.data[0].subtitle);
-        setCurrentTitle(result.data[0].title);
+        setCurrentAuthor(result.data.payload[0].author);
+        setCurrentSubtitle(result.data.payload[0].subtitle);
+        setCurrentTitle(result.data.payload[0].title);
       } catch (error) {
         console.log(error);
       }
@@ -50,7 +50,7 @@ const Sidebar = ({ history, currentId }) => {
     findScript();
   }, [currentId]);
 
-  const updateTitlePg = async e => {
+  const updateTitlePg = async (e) => {
     e.preventDefault();
     const { title, author, subtitle } = values;
     setUpdating(true);
@@ -71,7 +71,7 @@ const Sidebar = ({ history, currentId }) => {
     }
   };
 
-  const updateActors = async e => {
+  const updateActors = async (e) => {
     e.preventDefault();
     let newActor = actors;
     resetActors();
@@ -86,7 +86,7 @@ const Sidebar = ({ history, currentId }) => {
     }
   };
 
-  const updateTags = async e => {
+  const updateTags = async (e) => {
     e.preventDefault();
     let newTag = tags;
     try {
@@ -104,26 +104,26 @@ const Sidebar = ({ history, currentId }) => {
   return (
     <>
       <div
-        className="box box-sidebar"
+        className='box box-sidebar'
         style={{
           height: `${mobile ? 550 : winHeight * 1.5}px`,
-          width: `${mobile ? tenthWidth * 10 : tenthWidth * 2}px`
+          width: `${mobile ? tenthWidth * 10 : tenthWidth * 2}px`,
         }}
       >
         <BackBtn history={history} />
-        <form className="sidebar-inputs">
-          <fieldset className="side-tags">
-            <label htmlFor="actor"></label>
+        <form className='sidebar-inputs'>
+          <fieldset className='side-tags'>
+            <label htmlFor='actor'></label>
             <input
               ref={actorRef}
-              placeholder="Anton Q."
-              type="text"
-              name="actors"
+              placeholder='Anton Q.'
+              type='text'
+              name='actors'
               {...bindActors}
             />
             <button
-              className="side-add-btn"
-              title="add actor"
+              className='side-add-btn'
+              title='add actor'
               disabled={actors === ""}
               onClick={updateActors}
             >
@@ -131,59 +131,59 @@ const Sidebar = ({ history, currentId }) => {
             </button>
             <input
               ref={tagRef}
-              placeholder="Add Your Own Transitions"
-              type="text"
-              name="tags"
+              placeholder='Add Your Own Transitions'
+              type='text'
+              name='tags'
               {...bindTags}
             />
             <button
-              className="side-add-btn"
-              title="add tag"
+              className='side-add-btn'
+              title='add tag'
               disabled={tags === ""}
               onClick={updateTags}
             >
               +
             </button>
           </fieldset>
-          <fieldset className="side-title">
-            <label htmlFor="title">Title</label>
+          <fieldset className='side-title'>
+            <label htmlFor='title'>Title</label>
             <br />
             <input
               defaultValue={currentTitle}
-              placeholder="amazing screenplay"
-              name="title"
-              type="text"
+              placeholder='amazing screenplay'
+              name='title'
+              type='text'
               id={1}
               onChange={handleChange}
             />
             <br />
-            <label htmlFor="author">Author</label>
+            <label htmlFor='author'>Author</label>
             <br />
             <input
               defaultValue={currentAuthor}
-              placeholder="Jimmy Dean"
-              name="author"
-              type="text"
+              placeholder='Jimmy Dean'
+              name='author'
+              type='text'
               id={2}
               onChange={handleChange}
             />
             <br />
-            <label htmlFor="subtitle">Subtitle</label>
+            <label htmlFor='subtitle'>Subtitle</label>
             <br />
             <input
               defaultValue={currentSubtitle}
-              placeholder="Based on a True Story"
-              name="subtitle"
-              type="text"
+              placeholder='Based on a True Story'
+              name='subtitle'
+              type='text'
               id={3}
               onChange={handleChange}
             />
-            <button className="side-update-btn" onClick={updateTitlePg}>
+            <button className='side-update-btn' onClick={updateTitlePg}>
               {updating ? "Updating" : "Update"}
             </button>
           </fieldset>
         </form>
-        <div className="sidebar-info">
+        <div className='sidebar-info'>
           <p>
             <b>[Header]/[Shot]</b>
           </p>

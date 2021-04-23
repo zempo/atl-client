@@ -3,7 +3,7 @@ import { readScripts, newScript } from "../Services/endpoints-service";
 
 export const ScriptsContext = createContext();
 
-export const ScriptsContextProvider = props => {
+export const ScriptsContextProvider = (props) => {
   const [scripts, setScripts] = useState([]);
   const [currentPg, setCurrentPg] = useState(1);
   const [scriptsPerPg, setScriptsPerPg] = useState(6);
@@ -23,23 +23,24 @@ export const ScriptsContextProvider = props => {
 
         setLoading(false);
         setSearching(false);
-        setScripts(result.data);
-        setSearchScripts(result.data);
+        setScripts(result.data.payload);
+        setSearchScripts(result.data.payload);
       } catch (error) {
         if (
-          error.response.data.error === "This user has no scripts at the moment"
+          error.response.data.message ===
+          "This user hasn't created any scripts."
         ) {
           const sampleScript = {
             title: "Hello, Screenplay",
             author: "Solomon Zelenko",
             subtitle: "Above the Line",
             body:
-              "[Header] Int. Real Voice LA - Noon [Action] In the recording booth, two voice actors glance down at their scripts and look expectantly towards the control room. An exec nods at a sound engineer, who then glances down at the console while giving the thumbs up. {Jane} ((V.O.)) Click on the header tag to add your slug-line or setting! You can even add a subheader, like this: [Header] Int. Tutorial - Misplaced Subheader {Jane} ((CON'T)) Just like that! (Beat) And, guess what? You can keep on typing after you click on a tag! {John} ((Also V.O.)) No need to keep googling those script indentations! {Jane} The script generator will take care of that for you! You can add action with the action tag. [Action] Some action happens here. [Shot] Establishing shot of this action. {John} But make sure to save your work! Use the sidebar to add new actors and scene directions! {Jane} Once you're ready to download your script, save it and click the generate button below! [Transition] Fade Out"
+              "[Header] Int. Real Voice LA - Noon [Action] In the recording booth, two voice actors glance down at their scripts and look expectantly towards the control room. An exec nods at a sound engineer, who then glances down at the console while giving the thumbs up. {Jane} ((V.O.)) Click on the header tag to add your slug-line or setting! You can even add a subheader, like this: [Header] Int. Tutorial - Misplaced Subheader {Jane} ((CON'T)) Just like that! (Beat) And, guess what? You can keep on typing after you click on a tag! {John} ((Also V.O.)) No need to keep googling those script indentations! {Jane} The script generator will take care of that for you! You can add action with the action tag. [Action] Some action happens here. [Shot] Establishing shot of this action. {John} But make sure to save your work! Use the sidebar to add new actors and scene directions! {Jane} Once you're ready to download your script, save it and click the generate button below! [Transition] Fade Out",
           };
-          newScript.post("/", sampleScript).then(res => {
+          newScript.post("/", sampleScript).then((res) => {
             setTimeout(() => {
               window.location.reload();
-            }, 1000)
+            }, 1000);
           });
         }
         setSearching(false);
@@ -64,7 +65,7 @@ export const ScriptsContextProvider = props => {
   );
   let lastSearchPg = Math.ceil(searchScripts.length / searchScriptsPerPg);
 
-  const paginate = e => {
+  const paginate = (e) => {
     const { id } = e.target;
     setDirection("");
     if (id === "prev") {
@@ -80,7 +81,7 @@ export const ScriptsContextProvider = props => {
     }
   };
 
-  const paginateSearch = e => {
+  const paginateSearch = (e) => {
     const { id } = e.target;
     setDirection("");
     if (id === "prev") {
@@ -106,10 +107,10 @@ export const ScriptsContextProvider = props => {
     let scriptsToEdit = currentScripts;
     let searchScriptsToEdit = currentSearchScripts;
     let editedScripts = scriptsToEdit.map(
-      obj => scriptToEdit.find(o => o.id === obj.id) || obj
+      (obj) => scriptToEdit.find((o) => o.id === obj.id) || obj
     );
     let editedSearchScripts = searchScriptsToEdit.map(
-      obj => scriptToEdit.find(o => o.id === obj.id) || obj
+      (obj) => scriptToEdit.find((o) => o.id === obj.id) || obj
     );
 
     setScripts(editedScripts);
@@ -153,7 +154,7 @@ export const ScriptsContextProvider = props => {
     setSearchScriptsPerPg,
     loading,
     setLoading,
-    error
+    error,
   };
 
   return (

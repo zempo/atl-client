@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import {
   validatePwd,
   validateUsername,
-  validateEmail
+  validateEmail,
 } from "../../../Services/validation/auth-form-service";
 import { useForm } from "../../../Hooks/use-files";
 import { AuthService } from "../../../Services/Auth/auth-service";
@@ -10,7 +10,7 @@ import { AtlNotification, Required } from "../../Utils/Utils";
 import "../Styles/Forms.css";
 import "../Styles/Auth.css";
 
-const RegisterForm = props => {
+const RegisterForm = (props) => {
   const { values, errors, handleChange, reset } = useForm(
     { username: "", email: "", password: "" },
     { 1: [], 2: [], 3: [] },
@@ -19,7 +19,7 @@ const RegisterForm = props => {
   );
   const [err, setErr] = useState({
     resMsg: "",
-    resStatus: 0
+    resStatus: 0,
   });
   const [validReq, setValidReq] = useState(false);
   const usernameRef = useRef();
@@ -38,7 +38,7 @@ const RegisterForm = props => {
     }
   }, [errors]);
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     let { password, email, username } = values;
     let newUser = { password, email };
@@ -46,15 +46,15 @@ const RegisterForm = props => {
 
     setErr({
       resMsg: "",
-      resStatus: 0
+      resStatus: 0,
     });
     try {
       // eslint-disable-next-line
       const createdUser = await AuthService.postUser(newUser);
 
       setErr({
-        resMsg: "Sign Up Successful!",
-        resStatus: 200
+        resMsg: "Sign Up Successful",
+        resStatus: 200,
       });
       setValidReq(false);
       setTimeout(() => {
@@ -67,12 +67,12 @@ const RegisterForm = props => {
     } catch (error) {
       setErr({
         resStatus: error.response.status,
-        resMsg: Object.values(error.response.data.error)
+        resMsg: Object.values(error.response.data.message),
       });
       setTimeout(() => {
         setErr({
           resMsg: "",
-          resStatus: 0
+          resStatus: 0,
         });
       }, 5000);
     }
@@ -81,9 +81,9 @@ const RegisterForm = props => {
   return (
     <>
       <form
-        className="atl-form register-form"
+        className='atl-form register-form'
         onSubmit={handleSubmit}
-        autoComplete="off"
+        autoComplete='off'
       >
         {err.resStatus === 0 ? null : (
           <AtlNotification type={err.resStatus} msg={err.resMsg} />
@@ -94,7 +94,7 @@ const RegisterForm = props => {
               <li key={i}>{err}</li>
             ))}
           </ul>
-          <label htmlFor="username">
+          <label htmlFor='username'>
             <Required met={values.username.length === 0 ? false : true} />
             Username
           </label>
@@ -102,9 +102,9 @@ const RegisterForm = props => {
           <br />
           <input
             ref={usernameRef}
-            type="text"
-            name="username"
-            placeholder="Steven SpielBerg"
+            type='text'
+            name='username'
+            placeholder='Steven SpielBerg'
             id={1}
             value={values.username}
             onChange={handleChange}
@@ -115,7 +115,7 @@ const RegisterForm = props => {
               <li key={i}>{err}</li>
             ))}
           </ul>
-          <label htmlFor="email">
+          <label htmlFor='email'>
             <Required met={values.email.length === 0 ? false : true} />
             Email
           </label>
@@ -123,9 +123,9 @@ const RegisterForm = props => {
           <br />
           <input
             ref={emailRef}
-            type="text"
-            name="email"
-            placeholder="notspielberg@gmail.com"
+            type='text'
+            name='email'
+            placeholder='notspielberg@gmail.com'
             id={2}
             value={values.email}
             onChange={handleChange}
@@ -136,7 +136,7 @@ const RegisterForm = props => {
               <li key={i}>{err}</li>
             ))}
           </ul>
-          <label htmlFor="password">
+          <label htmlFor='password'>
             <Required met={values.password.length === 0 ? false : true} />
             Password
           </label>
@@ -144,23 +144,23 @@ const RegisterForm = props => {
           <br />
           <input
             ref={pwdRef}
-            type="text"
-            name="password"
-            placeholder="etGoHome1234$"
+            type='text'
+            name='password'
+            placeholder='etGoHome1234$'
             id={3}
             value={values.password}
             onChange={handleChange}
           />
         </fieldset>
         <button
-          className="action-auth"
+          className='action-auth'
           disabled={
             !validReq ||
             usernameRef.current.value.length === 0 ||
             emailRef.current.value.length === 0 ||
             pwdRef.current.value.length === 0
           }
-          type="submit"
+          type='submit'
         >
           Start Creating
         </button>
@@ -170,7 +170,7 @@ const RegisterForm = props => {
 };
 
 RegisterForm.defaultProps = {
-  onRegistrationSuccess: () => {}
+  onRegistrationSuccess: () => {},
 };
 
 export default RegisterForm;

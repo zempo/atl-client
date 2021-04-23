@@ -14,15 +14,15 @@ import "../Styles/Editor.css";
 
 const Input = ({ currentId, body, history }) => {
   const {
-    value: { editScripts, scripts, searchScripts }
+    value: { editScripts, scripts, searchScripts },
   } = useContext(ScriptsContext);
   const { isShowing: isShowingCopy, toggle: toggleCopy } = useModal();
   const { isShowing: isShowingDelete, toggle: toggleDelete } = useModal();
   const {
-    value: { tenthHeight, tenthWidth, mobile }
+    value: { tenthHeight, tenthWidth, mobile },
   } = useContext(StyleContext);
   const {
-    value: { userColor }
+    value: { userColor },
   } = useContext(UserContext);
   const {
     value: {
@@ -33,8 +33,8 @@ const Input = ({ currentId, body, history }) => {
       rmvFromTags,
       currentScript,
       updateScriptBody,
-      updateScript
-    }
+      updateScript,
+    },
   } = useContext(EditContext);
   const [date, setDate] = useState("");
   const [currentBody, setCurrentBody] = useState(body);
@@ -49,13 +49,13 @@ const Input = ({ currentId, body, history }) => {
       let date;
       try {
         const result = await readScripts.get(`/${currentId}`);
-        setCurrentBody(result.data[0].body);
+        setCurrentBody(result.data.payload[0].body);
         setTagsLoading(false);
-        setActors(result.data[0].actors);
-        setTags(result.data[0].tags);
-        date = result.data[0].date_created;
-        if (result.data[0].date_updated !== null) {
-          date = result.data[0].date_updated;
+        setActors(result.data.payload[0].actors);
+        setTags(result.data.payload[0].tags);
+        date = result.data.payload[0].date_created;
+        if (result.data.payload[0].date_updated !== null) {
+          date = result.data.payload[0].date_updated;
         }
         setDate(date);
       } catch (error) {
@@ -68,7 +68,7 @@ const Input = ({ currentId, body, history }) => {
     inputRef.current.setSelectionRange(len, len);
   }, [currentId]);
 
-  const handleSave = async e => {
+  const handleSave = async (e) => {
     e.preventDefault();
     setUpdated(true);
 
@@ -84,11 +84,11 @@ const Input = ({ currentId, body, history }) => {
     }
   };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setCurrentBody(e.target.value);
   };
 
-  const appendActor = async e => {
+  const appendActor = async (e) => {
     e.preventDefault();
     setUpdated(true);
     inputRef.current.focus();
@@ -104,7 +104,7 @@ const Input = ({ currentId, body, history }) => {
     }
   };
 
-  const appendTag = async e => {
+  const appendTag = async (e) => {
     e.preventDefault();
     setUpdated(true);
     inputRef.current.focus();
@@ -120,7 +120,7 @@ const Input = ({ currentId, body, history }) => {
     }
   };
 
-  const removeActor = async e => {
+  const removeActor = async (e) => {
     e.preventDefault();
     let actorToRmv = e.target.id;
     try {
@@ -135,7 +135,7 @@ const Input = ({ currentId, body, history }) => {
     }
   };
 
-  const removeTag = async e => {
+  const removeTag = async (e) => {
     e.preventDefault();
     let tagToRmv = e.target.id;
     try {
@@ -164,11 +164,11 @@ const Input = ({ currentId, body, history }) => {
       const regularScripts = await readScripts.get("/");
 
       editScripts(
-        regularScripts.data,
-        regularScripts.data,
-        scriptDidUpdate.data[0]
+        regularScripts.data.payload,
+        regularScripts.data.payload,
+        scriptDidUpdate.data.payload[0]
       );
-      updateScript(scriptDidUpdate.data[0]);
+      updateScript(scriptDidUpdate.data.payload[0]);
       setTimeout(() => {
         setLoading(false);
       }, 300);
@@ -192,26 +192,26 @@ const Input = ({ currentId, body, history }) => {
   const handlers = {
     HOT_SAVE: hotSave,
     HOT_COPY: hotCopy,
-    HOT_DELETE: hotDelete
+    HOT_DELETE: hotDelete,
   };
 
   return (
     <HotKeys handlers={handlers} attach={window}>
       <Box
-        className="box box-top"
+        className='box box-top'
         height={tenthHeight * 10}
         width={mobile ? tenthWidth * 10 : tenthWidth * 7.92}
-        axis="both"
+        axis='both'
         resizeHandles={["s"]}
       >
-        <form className="alt-form editor-form">
-          <div className="document-controls">
-            <button className="save-btn" onClick={handleSave}>
+        <form className='alt-form editor-form'>
+          <div className='document-controls'>
+            <button className='save-btn' onClick={handleSave}>
               {loading ? "Saving" : "Save"}
             </button>
             <button
-              className="copy-btn"
-              onClick={e => {
+              className='copy-btn'
+              onClick={(e) => {
                 e.preventDefault();
                 toggleCopy();
               }}
@@ -219,8 +219,8 @@ const Input = ({ currentId, body, history }) => {
               Copy
             </button>
             <button
-              className="delete-btn"
-              onClick={e => {
+              className='delete-btn'
+              onClick={(e) => {
                 e.preventDefault();
                 toggleDelete();
               }}
@@ -243,30 +243,30 @@ const Input = ({ currentId, body, history }) => {
             )}{" "}
           </div>
           {error ? error : null}
-          <fieldset className="input-top">
-            <ul className="actors">
+          <fieldset className='input-top'>
+            <ul className='actors'>
               {!tagsLoading ? (
                 actors.map((actor, i) => {
                   return (
-                    <li key={i} className="actor-control">
+                    <li key={i} className='actor-control'>
                       <button
-                        className="append-tag"
+                        className='append-tag'
                         id={i}
                         style={{
                           background: userColor,
-                          border: `2px solid ${userColor}`
+                          border: `2px solid ${userColor}`,
                         }}
                         onClick={appendActor}
                       >
                         {actor}
                       </button>
                       <button
-                        className="delete-tag"
+                        className='delete-tag'
                         id={i}
                         onClick={removeActor}
                         style={{
                           background: `${userColor}b3`,
-                          border: `2px solid ${userColor}`
+                          border: `2px solid ${userColor}`,
                         }}
                       >
                         x
@@ -279,25 +279,25 @@ const Input = ({ currentId, body, history }) => {
               )}
             </ul>
           </fieldset>
-          <fieldset className="input-bottom">
-            <ul className="tags">
+          <fieldset className='input-bottom'>
+            <ul className='tags'>
               {!tagsLoading ? (
                 tags.map((tag, i) => {
                   return (
-                    <li key={i} className="tag-control">
+                    <li key={i} className='tag-control'>
                       <button
-                        className="append-tag"
+                        className='append-tag'
                         id={i}
                         style={{
                           background: userColor,
-                          border: `2px solid ${userColor}`
+                          border: `2px solid ${userColor}`,
                         }}
                         onClick={appendTag}
                       >
                         {tag}
                       </button>
                       <button
-                        className="delete-tag"
+                        className='delete-tag'
                         // these tags can't be removed!
                         disabled={
                           tag === "Header" ||
@@ -309,7 +309,7 @@ const Input = ({ currentId, body, history }) => {
                         onClick={removeTag}
                         style={{
                           background: `${userColor}b3`,
-                          border: `2px solid ${userColor}`
+                          border: `2px solid ${userColor}`,
                         }}
                       >
                         x
@@ -334,14 +334,14 @@ const Input = ({ currentId, body, history }) => {
           isShowing={isShowingCopy}
           hide={toggleCopy}
           item={currentId}
-          action="copy-script"
+          action='copy-script'
         />
         <Modal
           isShowing={isShowingDelete}
           hide={toggleDelete}
           item={currentId}
           history={history}
-          action="delete-script"
+          action='delete-script'
         />
       </Box>
     </HotKeys>

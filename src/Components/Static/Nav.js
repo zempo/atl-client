@@ -10,7 +10,7 @@ class Nav extends Component {
   constructor() {
     super();
     this.state = {
-      showing: false
+      showing: false,
     };
   }
 
@@ -30,16 +30,16 @@ class Nav extends Component {
     const { showing } = this.state;
 
     return (
-      <div className="logged-in auth-link">
+      <div className='logged-in auth-link'>
         <h3>
-          <i className="far fa-user-circle"></i> &nbsp;
+          <i className='far fa-user-circle'></i> &nbsp;
           {user_name && user_name.length > 15
             ? `${user_name.slice(0, 15)}... `
             : `${user_name} `}
           <button
-            className="nav-menu-btn"
+            className='nav-menu-btn'
             onClick={() => this.setState({ showing: !this.state.showing })}
-            title="show-menu"
+            title='show-menu'
           >
             {!showing ? <p>&#9662;</p> : <p>&#9652;</p>}
           </button>
@@ -52,13 +52,13 @@ class Nav extends Component {
     // window.location.reload();
     // console.log("reload");
     return (
-      <div className="logged-out auth-link">
+      <div className='logged-out auth-link'>
         <h3>
-          <NavLink exact activeClassName="active-auth" to="/login">
+          <NavLink exact activeClassName='active-auth' to='/login'>
             Login
           </NavLink>
           <Hyph />
-          <NavLink exact activeClassName="active-auth" to="/register">
+          <NavLink exact activeClassName='active-auth' to='/register'>
             Register
           </NavLink>
         </h3>
@@ -72,13 +72,14 @@ class Nav extends Component {
 
     return (
       <>
-        <nav className="atl-nav-menu" style={{ background: `${userColor}` }}>
-          <NavLink exact activeClassName="active" to="/scripts">
+        <nav className='atl-nav-menu' style={{ background: `${userColor}` }}>
+          <NavLink exact activeClassName='active' to='/scripts'>
             {/* created with https://svg2jsx.com/, conditional dark or light logo */}
-            <LightLogo width="120" height="90" />
+            <LightLogo width='120' height='90' />
           </NavLink>
-          <div className="nav-menu">
-            {TokenService.hasAuthToken() && this.context.value.error !== 401
+          <div className='nav-menu'>
+            {/* && this.context.value.error !== 401 */}
+            {TokenService.hasAuthToken() == true
               ? this.renderLogoutLink()
               : this.renderLoginLink()}
           </div>
@@ -90,30 +91,30 @@ class Nav extends Component {
           <ul onClick={() => this.setState({ showing: !this.state.showing })}>
             {admin ? (
               <NavMenuOption
-                to="/admin"
-                icon={<i className="fas fa-tools"></i>}
-                text="Admin Pg"
+                to='/admin'
+                icon={<i className='fas fa-tools'></i>}
+                text='Admin Pg'
               />
             ) : null}
             <NavMenuOption
-              to="/user-settings"
-              icon={<i className="fas fa-sliders-h"></i>}
-              text="Appearance"
+              to='/user-settings'
+              icon={<i className='fas fa-sliders-h'></i>}
+              text='Appearance'
             />
             <NavMenuOption
-              to="/scripts"
-              icon={<i className="fas fa-scroll"></i>}
-              text="My Projects"
+              to='/scripts'
+              icon={<i className='fas fa-scroll'></i>}
+              text='My Projects'
             />
             <NavMenuOption
-              to="/user-guide"
-              icon={<i className="far fa-question-circle"></i>}
-              text="Get Started"
+              to='/user-guide'
+              icon={<i className='far fa-question-circle'></i>}
+              text='Get Started'
             />
-            <li className="nav-link">
-              <Link onClick={this.handleLogoutClick} to="/">
+            <li className='nav-link'>
+              <Link onClick={this.handleLogoutClick} to='/'>
                 <h3>
-                  <i className="fas fa-sign-out-alt"></i> Log Out
+                  <i className='fas fa-sign-out-alt'></i> Log Out
                 </h3>
               </Link>
             </li>

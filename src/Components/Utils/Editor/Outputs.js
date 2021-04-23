@@ -8,13 +8,13 @@ import { ScriptDoc } from "../Scripts/ScriptDoc";
 import { readScripts } from "../../../Services/endpoints-service";
 import {
   sortScriptSentences,
-  formateScriptDate
+  formateScriptDate,
 } from "../../../Services/algos-service";
 import "../Styles/Output.css";
 
 const Output = ({ currentId }) => {
   const {
-    value: { tenthHeight, tenthWidth, mobile }
+    value: { tenthHeight, tenthWidth, mobile },
   } = useContext(StyleContext);
   // const {
   //   value: { userColor }
@@ -24,10 +24,10 @@ const Output = ({ currentId }) => {
     title: "",
     author: "",
     subtitle: "",
-    datePublished: ""
+    datePublished: "",
   });
   const [scriptTxt, setScriptTxt] = useState([
-    { tag: "", actor: "", lines: [""] }
+    { tag: "", actor: "", lines: [""] },
   ]);
   const [show, setShow] = useState(false);
   const [load, setLoad] = useState(false);
@@ -37,18 +37,18 @@ const Output = ({ currentId }) => {
       try {
         const result = await readScripts.get(`/${currentId}`);
         let date;
-        date = result.data[0].date_created;
-        if (result.data[0].date_updated !== null) {
-          date = result.data[0].date_updated;
+        date = result.data.payload[0].date_created;
+        if (result.data.payload[0].date_updated !== null) {
+          date = result.data.payload[0].date_updated;
         }
-        const sort = await sortScriptSentences(result.data[0].body);
+        const sort = await sortScriptSentences(result.data.payload[0].body);
         const formatDate = await formateScriptDate(date);
 
         setTitlePg({
-          title: result.data[0].title,
-          author: result.data[0].author,
-          subtitle: result.data[0].subtitle,
-          datePublished: formatDate
+          title: result.data.payload[0].title,
+          author: result.data.payload[0].author,
+          subtitle: result.data.payload[0].subtitle,
+          datePublished: formatDate,
         });
         if (sort.length !== 0) {
           setScriptTxt(sort);
@@ -62,25 +62,25 @@ const Output = ({ currentId }) => {
     findScript();
   }, [currentId]);
 
-  const updateOutput = async e => {
+  const updateOutput = async (e) => {
     e.preventDefault();
     setLoad(true);
     try {
       const result = await readScripts.get(`/${currentId}`);
       // console.log(result);
       let date;
-      date = result.data[0].date_created;
-      if (result.data[0].date_updated !== null) {
-        date = result.data[0].date_updated;
+      date = result.data.payload[0].date_created;
+      if (result.data.payload[0].date_updated !== null) {
+        date = result.data.payload[0].date_updated;
       }
-      const sort2 = await sortScriptSentences(result.data[0].body);
+      const sort2 = await sortScriptSentences(result.data.payload[0].body);
       const formatDate = await formateScriptDate(date);
 
       setTitlePg({
-        title: result.data[0].title,
-        author: result.data[0].author,
-        subtitle: result.data[0].subtitle,
-        datePublished: formatDate
+        title: result.data.payload[0].title,
+        author: result.data.payload[0].author,
+        subtitle: result.data.payload[0].subtitle,
+        datePublished: formatDate,
       });
       if (sort2.length !== 0) {
         setScriptTxt(sort2);
@@ -97,20 +97,20 @@ const Output = ({ currentId }) => {
   return (
     <>
       <Box
-        className="box box-bottom"
+        className='box box-bottom'
         height={tenthHeight * 7.5}
         width={mobile ? tenthWidth * 10 : tenthWidth * 7.92}
-        axis="both"
+        axis='both'
         resizeHandles={["s"]}
       >
-        <div className="output-controls">
-          <button className="output-update-btn" onClick={updateOutput}>
+        <div className='output-controls'>
+          <button className='output-update-btn' onClick={updateOutput}>
             {!load ? "Format Your Scene" : "Writing..."}
           </button>
           <p>*Select 'Fit to Page' when printing*</p>
         </div>
         {show && scriptTxt.length > 0 ? (
-          <PDFViewer width="100%" height="80%" className="script-viewer-output">
+          <PDFViewer width='100%' height='80%' className='script-viewer-output'>
             <ScriptDoc titlePg={titlePg} scriptTxt={scriptTxt} />
           </PDFViewer>
         ) : (

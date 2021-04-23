@@ -14,9 +14,9 @@ export default function AuthorizedRoute({ component, ...props }) {
           <Redirect
             to={{
               pathname: "/login",
-              state: { from: componentProps.location } 
+              state: { from: componentProps.location },
             }}
-          />  
+          />
         )
       }
     />

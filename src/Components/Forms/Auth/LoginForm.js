@@ -6,10 +6,10 @@ import { AtlNotification, Required } from "../../Utils/Utils";
 import "../Styles/Forms.css";
 import "../Styles/Auth.css";
 
-const LoginForm = props => {
+const LoginForm = (props) => {
   const [err, setErr] = useState({
     resMsg: "",
-    resStatus: 0
+    resStatus: 0,
   });
   // eslint-disable-next-line
   const { values, errors, handleChange, reset } = useForm(
@@ -21,25 +21,25 @@ const LoginForm = props => {
   const emailRef = useRef();
   const pwdRef = useRef();
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const { email, password } = values;
 
     setErr({
       resMsg: "",
-      resStatus: 0
+      resStatus: 0,
     });
 
     try {
       const validLogin = await AuthService.postLogin({
         email,
-        password
+        password,
       });
 
       setErr({
-        resMsg: "Successful Login!",
-        resStatus: 200
+        resMsg: "Welcome Back!",
+        resStatus: 200,
       });
 
       // if (!validLogin) {
@@ -47,19 +47,19 @@ const LoginForm = props => {
       // }
 
       setTimeout(() => {
-        // reset();
         props.onLoginSuccess();
+        // reset();
       }, 600);
       // console.clear();
     } catch (error) {
       setErr({
         resStatus: error.response.status,
-        resMsg: Object.values(error.response.data.error)
+        resMsg: Object.values(error.response.data.message),
       });
       setTimeout(() => {
         setErr({
           resMsg: "",
-          resStatus: 0
+          resStatus: 0,
         });
       }, 5000);
     }
@@ -67,16 +67,16 @@ const LoginForm = props => {
 
   return (
     <form
-      className="atl-form login-form"
+      className='atl-form login-form'
       onSubmit={handleSubmit}
-      autoComplete="dumb"
+      autoComplete='dumb'
     >
       {err.resStatus === 0 ? null : (
         <AtlNotification type={err.resStatus} msg={err.resMsg} />
       )}
       <fieldset>
         <br />
-        <label htmlFor="email">
+        <label htmlFor='email'>
           <Required met={values.email.length === 0 ? false : true} />
           Email
         </label>
@@ -84,16 +84,16 @@ const LoginForm = props => {
         <br />
         <input
           ref={emailRef}
-          placeholder="john@doemail.com"
-          name="email"
-          type="text"
+          placeholder='john@doemail.com'
+          name='email'
+          type='text'
           id={1}
           value={values.email}
           onChange={handleChange}
         />
         <br />
         <br />
-        <label htmlFor="password">
+        <label htmlFor='password'>
           <Required met={values.password.length === 0 ? false : true} />
           Password
         </label>
@@ -101,16 +101,16 @@ const LoginForm = props => {
         <br />
         <input
           ref={pwdRef}
-          placeholder="Secret@123"
-          name="password"
-          type="password"
+          placeholder='Secret@123'
+          name='password'
+          type='password'
           id={2}
           value={values.password}
           onChange={handleChange}
         />
       </fieldset>
       <button
-        className="action-auth"
+        className='action-auth'
         disabled={values.email.length === 0 || values.password.length === 0}
       >
         Login
@@ -120,7 +120,7 @@ const LoginForm = props => {
 };
 
 LoginForm.defaultProps = {
-  onLoginSuccess: () => {}
+  onLoginSuccess: () => {},
 };
 
 export default LoginForm;

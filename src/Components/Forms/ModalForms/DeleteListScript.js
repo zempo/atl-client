@@ -6,7 +6,7 @@ const DeleteListScript = ({ item, cancel }) => {
   const [resMsg, setResMsg] = useState("");
   const [resStatus, setResStatus] = useState(0);
 
-  const handleDelete = async e => {
+  const handleDelete = async (e) => {
     let scriptToDelete = item;
     e.preventDefault();
 
@@ -22,7 +22,7 @@ const DeleteListScript = ({ item, cancel }) => {
       }, 300);
     } catch (error) {
       setResStatus(error.response.status);
-      setResMsg(Object.values(error.response.data.error));
+      setResMsg(Object.values(error.response.data.message));
       setTimeout(() => {
         setResStatus(0);
       }, 5000);
@@ -30,17 +30,17 @@ const DeleteListScript = ({ item, cancel }) => {
   };
 
   return (
-    <div className="modal-action delete-script">
+    <div className='modal-action delete-script'>
       {resStatus === 0 ? null : (
         <AtlNotification type={resStatus} msg={resMsg} />
       )}
-      <button className="modal-btn" onClick={cancel}>
+      <button className='modal-btn' onClick={cancel}>
         Cancel
       </button>
-      <button className="modal-btn action" onClick={handleDelete}>
+      <button className='modal-btn action' onClick={handleDelete}>
         Delete
       </button>
-      <button className="close-modal" onClick={cancel}>
+      <button className='close-modal' onClick={cancel}>
         X
       </button>
     </div>

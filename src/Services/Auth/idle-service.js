@@ -1,6 +1,12 @@
 let _timeoutId;
 let _idleCallback = null;
-let _notIdleEvents = ["mousedown", "mousemove", "keypress", "scroll", "touchstart"];
+let _notIdleEvents = [
+  "mousedown",
+  "mousemove",
+  "keypress",
+  "scroll",
+  "touchstart",
+];
 let _30_DAYS_IN_MS = 2592000 * 1000;
 
 const IdleService = {
@@ -12,12 +18,16 @@ const IdleService = {
     _timeoutId = setTimeout(_idleCallback, _30_DAYS_IN_MS);
   },
   regiserIdleTimerResets() {
-    _notIdleEvents.forEach((event) => document.addEventListener(event, IdleService.resetIdleTimer, true));
+    _notIdleEvents.forEach((event) =>
+      document.addEventListener(event, IdleService.resetIdleTimer, true)
+    );
   },
   unRegisterIdleResets() {
     clearTimeout(_timeoutId);
-    _notIdleEvents.forEach((event) => document.removeEventListener(event, IdleService.resetIdleTimer, true));
-  }
+    _notIdleEvents.forEach((event) =>
+      document.removeEventListener(event, IdleService.resetIdleTimer, true)
+    );
+  },
 };
 
 export default IdleService;

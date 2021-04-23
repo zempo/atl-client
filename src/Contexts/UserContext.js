@@ -1,10 +1,12 @@
 import React, { createContext, useState, useEffect } from "react";
+import TokenService from "../Services/Auth/token-service";
 import { readUser } from "../Services/endpoints-service";
 
 export const UserContext = createContext();
 
-export const UserContextProvider = props => {
+export const UserContextProvider = (props) => {
   const [userName, setUserName] = useState("Error..");
+  const [token, setToken] = useState(TokenService.hasAuthToken());
   const [admin, setAdmin] = useState(false);
   const [userColor, setUserColor] = useState("#455A64");
   const [user, setUser] = useState({});
@@ -19,10 +21,10 @@ export const UserContextProvider = props => {
         const result = await readUser.get("/");
 
         setLoading(false);
-        setUser(result.data);
-        setAdmin(result.data.admin);
-        setUserName(result.data.user_name);
-        setUserColor(result.data.theme);
+        setUser(result.data.payload);
+        setAdmin(result.data.payload.admin);
+        setUserName(result.data.payload.user_name);
+        setUserColor(result.data.payload.theme);
         setError(0);
       } catch (err) {
         setError(err.response.status);
@@ -35,12 +37,13 @@ export const UserContextProvider = props => {
   const value = {
     user,
     userColor,
+    token,
     setUserColor,
     userName,
     admin,
     error,
     loading,
-    setLoading
+    setLoading,
   };
 
   return (

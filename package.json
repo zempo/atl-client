@@ -7,7 +7,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.21",
     "@fortawesome/free-solid-svg-icons": "^5.10.1",
     "@react-pdf/renderer": "^1.6.8",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "date-fns": "^2.7.0",
     "dateformat": "^3.0.3",
     "enzyme": "^3.10.0",
