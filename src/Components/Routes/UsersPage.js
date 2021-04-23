@@ -11,6 +11,7 @@ export const UsersPage = () => {
   const [current, setCurrent] = useState(0);
 
   const {
+    // eslint-disable-next-line
     value: { admin, user },
   } = useContext(UserContext);
 
@@ -32,6 +33,7 @@ export const UsersPage = () => {
   const deleteUsr = async (id) => {
     setCurrent(id);
     try {
+      // eslint-disable-next-line
       const delUsr = await readUsers.delete(`/${id}`);
 
       setResStatus(201);

@@ -79,7 +79,7 @@ class Nav extends Component {
           </NavLink>
           <div className='nav-menu'>
             {/* && this.context.value.error !== 401 */}
-            {TokenService.hasAuthToken() == true
+            {TokenService.hasAuthToken() === true
               ? this.renderLogoutLink()
               : this.renderLoginLink()}
           </div>

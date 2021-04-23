@@ -32,6 +32,7 @@ const LoginForm = (props) => {
     });
 
     try {
+      // eslint-disable-next-line
       const validLogin = await AuthService.postLogin({
         email,
         password,

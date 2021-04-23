@@ -10,6 +10,7 @@ import {
 import "../Styles/Forms.css";
 
 export const ScriptsSearch = () => {
+  // eslint-disable-next-line
   const { value: keyword, bind: bindKeyword, reset: resetKeyword } = useInput(
     ""
   );

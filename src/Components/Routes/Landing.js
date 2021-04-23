@@ -21,6 +21,7 @@ const Landing = (props) => {
     try {
       const { history } = props;
       history.push("/scripts");
+      // eslint-disable-next-line
       const validLogin = await AuthService.postLogin({
         email,
         password,

@@ -42,6 +42,7 @@ const ScriptsPage = (props) => {
       });
       window.location.reload();
     }
+    // eslint-disable-next-line
   }, []);
 
   return (

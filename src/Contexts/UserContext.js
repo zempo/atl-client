@@ -39,6 +39,7 @@ export const UserContextProvider = (props) => {
     userColor,
     token,
     setUserColor,
+    setToken,
     userName,
     admin,
     error,

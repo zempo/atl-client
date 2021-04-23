@@ -37,6 +37,7 @@ const AddScript = ({ cancel }) => {
     try {
       const result = await newScript.post(`/`, scriptToPost);
       // console.log(result.data);
+      // eslint-disable-next-line
       let addedToScripts = await addToScripts(
         scripts,
         searchScripts,

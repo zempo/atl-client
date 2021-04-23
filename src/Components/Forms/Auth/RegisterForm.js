@@ -11,6 +11,7 @@ import "../Styles/Forms.css";
 import "../Styles/Auth.css";
 
 const RegisterForm = (props) => {
+  // eslint-disable-next-line
   const { values, errors, handleChange, reset } = useForm(
     { username: "", email: "", password: "" },
     { 1: [], 2: [], 3: [] },
