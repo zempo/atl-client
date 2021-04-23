@@ -50,6 +50,7 @@ class App extends Component {
         AuthService.postRefreshToken();
       });
     }
+    console.clear();
   }
 
   componentWillUnmount() {
