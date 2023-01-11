@@ -12,7 +12,7 @@
     "dateformat": "^3.0.3",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "jwt-decode": "^2.2.0",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
